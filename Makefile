@@ -1,8 +1,8 @@
 
-build/moment-jalaali.js: components index.js builder/before.js builder/after.js
+build/moment-jalaali.js: components moment-jalaali.js builder/before.js builder/after.js
 	@$(MAKE) lint
 	@mkdir -p build
-	@cat builder/before.js components/jalaali/jalaali-js/*/index.js builder/middle.js index.js builder/after.js > build/moment-jalaali.js
+	@cat builder/before.js components/jalaali/jalaali-js/*/moment-jalaali.js builder/middle.js moment-jalaali.js builder/after.js > build/moment-jalaali.js
 
 MOCHA_CMD = mocha --reporter spec --ui bdd --colors --check-leaks
 
@@ -15,7 +15,7 @@ dev: build/moment-jalaali.js
 lint: lint-index lint-test
 
 lint-index: node_modules
-	@eslint index.js
+	@eslint moment-jalaali.js
 
 lint-test: node_modules
 	@eslint --env mocha --rule 'no-unused-expressions: 0' test.js

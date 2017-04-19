@@ -18,7 +18,7 @@
     "conversion",
     "convert"
   ],
-  "main": "index.js",
+  "main": "moment-jalaali.js",
   "scripts": {
     "test": "make test"
   },
@@ -40,5 +40,6 @@
   "dependencies": {
     "jalaali-js": "^0.2.0",
     "moment": "^2.12.0"
-  }
+  },
+  "typings": "./moment-jalali.d.ts"
 }
