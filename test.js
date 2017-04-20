@@ -1,6 +1,6 @@
 
 var chai = require('chai')
-  , moment = require('./moment-jalaali.d')
+  , moment = require('./jalali-moment.d.ts')
 
 chai.should()
 

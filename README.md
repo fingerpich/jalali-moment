@@ -1,28 +1,31 @@
-# moment-jalaali
+# jalali-moment
 
-A Jalaali (Jalali, Persian, Khorshidi, Shamsi) calendar system plugin for moment.js.
+A Jalali (Jalali, Persian, Khorshidi, Shamsi) calendar system plugin for moment.js.
 
-[![Build Status](https://travis-ci.org/jalaali/moment-jalaali.png?branch=master)](https://travis-ci.org/jalaali/moment-jalaali)
+[![Build Status](https://travis-ci.org/fingerpich/moment-jalaali.png?branch=master)](https://travis-ci.org/fingerpich/jalali-moment)
 
 Jalali calendar is a solar calendar that was used in Persia, variants of which today are still in use in Iran as well as Afghanistan. [Read more on Wikipedia](http://en.wikipedia.org/wiki/Jalali_calendar) or see [Calendar Converter](http://www.fourmilab.ch/documents/calendar/).
 
-This plugin adds Jalaali calendar support to [momentjs](http://momentjs.com) library.
+This plugin adds Jalali calendar support to [momentjs](http://momentjs.com) library.
 
 Calendar conversion is based on the [algorithm provided by Kazimierz M. Borkowski](http://www.astro.uni.torun.pl/~kb/Papers/EMP/PersianC-EMP.htm) and has a very good performance.
 
 ## Where to use it
 
-Like `momentjs`, `moment-jalaali` works in browser and in Node.js.
+Like `momentjs`, `jalali-moment` works in browser and in Node.js.
 
-### Node.js
+
+### Install
 
 ```shell
-npm install jalaali-moment
+npm install jalali-moment -S
 ```
 
 
+### Node.js
+
 ```js
-var moment = require('jalaali-moment');
+var moment = require('jalali-moment');
 moment().format('jYYYY/jM/jD');
 ```
 
@@ -31,22 +34,22 @@ moment().format('jYYYY/jM/jD');
 ```ts
 import * as moment from 'jalaali-moment';
 ```
-
 add a jalali pipe
-
 ```ts
 @Pipe({
-  name: 'jalaali'
+  name: 'jalali'
 })
-export class JalaaliPipe implements PipeTransform {
+export class JalaliPipe implements PipeTransform {
   transform(value: any, args?: any): any {
     let MomentDate=moment(value);
     return MomentDate.format("jYYYY/jM/jD");
   }
 }
 ```
-
-<div>loadedData.date|jalaali</div>
+and use it in component template
+```
+ <div>loadedData.date|jalali</div>
+```
 
 ## API
 

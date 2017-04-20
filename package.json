@@ -19,17 +19,17 @@
     "conversion",
     "convert"
   ],
-  "main": "moment-jalaali.js",
+  "main": "jalali-moment.js",
   "scripts": {
     "test": "make test"
   },
-  "homepage": "https://github.com/fingerpich/moment-jalaali",
+  "homepage": "https://github.com/fingerpich/jalali-moment",
   "bugs": {
-    "url": "https://github.com/fingerpich/moment-jalaali/issues"
+    "url": "https://github.com/fingerpich/jalali-moment/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/fingerpich/moment-jalaali.git"
+    "url": "git://github.com/fingerpich/jalali-moment.git"
   },
   "devDependencies": {
     "chai": "^2.2.0",
@@ -40,5 +40,5 @@
     "jalaali-js": "^0.2.0",
     "moment": "^2.12.0"
   },
-  "typings": "./moment-jalali.d.ts"
+  "typings": "./jalali-moment.d.ts"
 }
