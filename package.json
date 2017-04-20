@@ -1,15 +1,16 @@
 {
-  "name": "moment-jalaali",
-  "version": "0.6.1",
+  "name": "jalali-moment",
+  "version": "0.0.1",
   "description": "Jalaali (Jalali, Persian, Khorshidi, Shamsi) calendar system plugin for moment.js.",
   "author": {
-    "name": "Behrang Noruzi Niya",
-    "email": "behrangn@gmail.com"
+    "name": "Mojtaba Zarei",
+    "email": "zarei.bs@gmail.com"
   },
   "license": "MIT",
   "keywords": [
     "jalaali",
     "jalali",
+    "typescript",
     "persian",
     "khorshidi",
     "shamsi",
@@ -22,18 +23,16 @@
   "scripts": {
     "test": "make test"
   },
-  "homepage": "https://github.com/behrang/moment-jalaali",
+  "homepage": "https://github.com/fingerpich/moment-jalaali",
   "bugs": {
-    "url": "https://github.com/behrang/moment-jalaali/issues"
+    "url": "https://github.com/fingerpich/moment-jalaali/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/behrang/moment-jalaali.git"
+    "url": "git://github.com/fingerpich/moment-jalaali.git"
   },
   "devDependencies": {
-    "bower": "^1.4.1",
     "chai": "^2.2.0",
-    "component": "^1.1.0",
     "eslint": "^0.18.0",
     "mocha": "^2.2.1"
   },

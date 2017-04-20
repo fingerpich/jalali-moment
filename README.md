@@ -1,6 +1,6 @@
-# moment-jalaali
+# moment-jalaali-typescript
 
-A Jalaali (Jalali, Persian, Khorshidi, Shamsi) calendar system plugin for moment.js.
+A Jalaali (Jalali, Persian, Khorshidi, Shamsi) calendar system plugin for moment.js in typescript.
 
 [![Build Status](https://travis-ci.org/jalaali/moment-jalaali.png?branch=master)](https://travis-ci.org/jalaali/moment-jalaali)
 
@@ -17,13 +17,13 @@ Like `momentjs`, `moment-jalaali` works in browser and in Node.js.
 ### Node.js
 
 ```shell
-npm install moment-jalaali
+npm install jalaali-moment
 ```
 
 
 ```js
-var moment = require('moment-jalaali')
-moment().format('jYYYY/jM/jD')
+var moment = require('jalaali-moment');
+moment().format('jYYYY/jM/jD');
 ```
 
 ### Browser
@@ -31,7 +31,7 @@ moment().format('jYYYY/jM/jD')
 It is recommended to use [`component`](https://github.com/component/component). Otherwise, you may use the `build/moment-jalaali.js` file.
 
     <script src="moment.js"></script>
-    <script src="moment-jalaali.js"></script>
+    <script src="jalaali-moment.js"></script>
     <script>
       moment().format('jYYYY/jM/jD')
     </script>
