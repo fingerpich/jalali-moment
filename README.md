@@ -1,6 +1,6 @@
-# moment-jalaali-typescript
+# moment-jalaali
 
-A Jalaali (Jalali, Persian, Khorshidi, Shamsi) calendar system plugin for moment.js in typescript.
+A Jalaali (Jalali, Persian, Khorshidi, Shamsi) calendar system plugin for moment.js.
 
 [![Build Status](https://travis-ci.org/jalaali/moment-jalaali.png?branch=master)](https://travis-ci.org/jalaali/moment-jalaali)
 
@@ -26,15 +26,23 @@ var moment = require('jalaali-moment');
 moment().format('jYYYY/jM/jD');
 ```
 
-### Browser
+### Angular
 
-It is recommended to use [`component`](https://github.com/component/component). Otherwise, you may use the `build/moment-jalaali.js` file.
+import * as moment from 'jalaali-moment';
 
-    <script src="moment.js"></script>
-    <script src="jalaali-moment.js"></script>
-    <script>
-      moment().format('jYYYY/jM/jD')
-    </script>
+add a jalali pipe
+
+@Pipe({
+  name: 'jalaali'
+})
+export class JalaaliPipe implements PipeTransform {
+  transform(value: any, args?: any): any {
+    let MomentDate=moment(value);
+    return MomentDate.format("jYYYY/jM/jD");
+  }
+}
+
+<div>loadedData.date|jalaali</div>
 
 ## API
 
@@ -94,11 +102,11 @@ moment.loadPersian()
 
 ### ng-jalali-flat-datepicker
 
-A lightweight angular.js date picker using `moment-jalaali` is [thg303/ng-jalali-flat-datepicker](https://github.com/thg303/ng-jalali-flat-datepicker) created by [@thg303](https://github.com/thg303).
+A lightweight angular.js date picker using `jalaali-moment` is [thg303/ng-jalali-flat-datepicker](https://github.com/thg303/ng-jalali-flat-datepicker) created by [@thg303](https://github.com/thg303).
 
 ### pholiday
 
-A library based on `moment-jalaali` for calculating holidays in Persian calendar is [shkarimpour/pholiday](https://github.com/shkarimpour/pholiday) created by [@shkarimpour](https://github.com/shkarimpour).
+A library based on `jalaali-moment` for calculating holidays in Persian calendar is [shkarimpour/pholiday](https://github.com/shkarimpour/pholiday) created by [@shkarimpour](https://github.com/shkarimpour).
 
 ### moment-hijri
 
