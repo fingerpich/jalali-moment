@@ -28,10 +28,13 @@ moment().format('jYYYY/jM/jD');
 
 ### Angular
 
+```ts
 import * as moment from 'jalaali-moment';
+```
 
 add a jalali pipe
 
+```ts
 @Pipe({
   name: 'jalaali'
 })
@@ -41,6 +44,7 @@ export class JalaaliPipe implements PipeTransform {
     return MomentDate.format("jYYYY/jM/jD");
   }
 }
+```
 
 <div>loadedData.date|jalaali</div>
 
