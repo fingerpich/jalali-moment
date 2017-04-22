@@ -2,7 +2,7 @@
 
 A Jalali (Jalali, Persian, Khorshidi, Shamsi) calendar system plugin for moment.js.
 
-[![Build Status](https://travis-ci.org/fingerpich/moment-jalaali.png?branch=master)](https://travis-ci.org/fingerpich/jalali-moment)
+[![Build Status](https://travis-ci.org/fingerpich/jalali-moment.png?branch=master)](https://travis-ci.org/fingerpich/jalali-moment)
 
 Jalali calendar is a solar calendar that was used in Persia, variants of which today are still in use in Iran as well as Afghanistan. [Read more on Wikipedia](http://en.wikipedia.org/wiki/Jalali_calendar) or see [Calendar Converter](http://www.fourmilab.ch/documents/calendar/).
 
@@ -32,7 +32,7 @@ moment().format('jYYYY/jM/jD');
 ### Angular
 
 ```ts
-import * as moment from 'jalaali-moment';
+import * as moment from 'jalali-moment';
 ```
 add a jalali pipe
 ```ts
@@ -109,11 +109,11 @@ moment.loadPersian()
 
 ### ng-jalali-flat-datepicker
 
-A lightweight angular.js date picker using `jalaali-moment` is [thg303/ng-jalali-flat-datepicker](https://github.com/thg303/ng-jalali-flat-datepicker) created by [@thg303](https://github.com/thg303).
+A lightweight angular.js date picker using `jalali-moment` is [thg303/ng-jalali-flat-datepicker](https://github.com/thg303/ng-jalali-flat-datepicker) created by [@thg303](https://github.com/thg303).
 
 ### pholiday
 
-A library based on `jalaali-moment` for calculating holidays in Persian calendar is [shkarimpour/pholiday](https://github.com/shkarimpour/pholiday) created by [@shkarimpour](https://github.com/shkarimpour).
+A library based on `jalali-moment` for calculating holidays in Persian calendar is [shkarimpour/pholiday](https://github.com/shkarimpour/pholiday) created by [@shkarimpour](https://github.com/shkarimpour).
 
 ### moment-hijri
 

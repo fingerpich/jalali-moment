@@ -21,7 +21,7 @@
   ],
   "main": "jalali-moment.js",
   "scripts": {
-    "test": "make test"
+    "test": "mocha --reporter spec --ui bdd --colors --check-leaks  test.js"
   },
   "homepage": "https://github.com/fingerpich/jalali-moment",
   "bugs": {

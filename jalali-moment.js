@@ -713,7 +713,7 @@ jMoment.fn.endOf = function (units) {
 jMoment.fn.isSame = function (other, units) {
   units = normalizeUnits(units)
   if (units === 'jyear' || units === 'jmonth') {
-    return moment.fn.isSame.call(this.startOf(units), other.startOf(units))
+    return moment.fn.isSame.call(this.clone().startOf(units), other.clone().startOf(units))
   }
   return moment.fn.isSame.call(this, other, units)
 }

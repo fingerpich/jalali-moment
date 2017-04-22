@@ -72,10 +72,10 @@ declare namespace moment {
   }
 
   type RelativeTimeSpecVal = (
-    string |
-    ((n: number, withoutSuffix: boolean,
-      key: RelativeTimeKey, isFuture: boolean) => string)
-  );
+      string |
+          ((n: number, withoutSuffix: boolean,
+            key: RelativeTimeKey, isFuture: boolean) => string)
+      );
   type RelativeTimeFuturePastVal = string | ((relTime: string) => string);
 
   interface RelativeTimeSpec {
@@ -117,9 +117,6 @@ declare namespace moment {
   interface LocaleSpecification {
     months?: string[] | StandaloneFormatSpec | MonthWeekdayFn;
     monthsShort?: string[] | StandaloneFormatSpec | MonthWeekdayFn;
-
-    jMonths?: string[] | StandaloneFormatSpec | MonthWeekdayFn;
-    jMonthsShort?: string[] | StandaloneFormatSpec | MonthWeekdayFn;
 
     weekdays?: string[] | StandaloneFormatSpec | MonthWeekdayFn;
     weekdaysShort?: string[] | StandaloneFormatSpec | WeekdaySimpleFn;
@@ -282,15 +279,15 @@ declare namespace moment {
 
   namespace unitOfTime {
     type Base = (
-      "year" | "years" | "y" | "jYear" |
-      "month" | "months" | "M" | "jMonth" |
-      "week" | "weeks" | "w" | "jw" |
-      "day" | "days" | "d" | "jDay" | "jD" |
-      "hour" | "hours" | "h" |
-      "minute" | "minutes" | "m" |
-      "second" | "seconds" | "s" |
-      "millisecond" | "milliseconds" | "ms"
-    );
+        "year" | "years" | "y" | "jYear" |
+            "month" | "months" | "M" | "jMonth" | "jmonth" |
+            "week" | "weeks" | "w" | "jw" |
+            "day" | "days" | "d" | "jDay" | "jD" |
+            "hour" | "hours" | "h" |
+            "minute" | "minutes" | "m" |
+            "second" | "seconds" | "s" |
+            "millisecond" | "milliseconds" | "ms"
+        );
 
     type _quarter = "quarter" | "quarters" | "Q";
     type _isoWeek = "isoWeek" | "isoWeeks" | "W";
@@ -306,11 +303,11 @@ declare namespace moment {
     type MomentConstructor = Base | _date;
 
     type All = Base | _quarter | _isoWeek | _date |
-      "weekYear" | "weekYears" | "gg" |
-      "isoWeekYear" | "isoWeekYears" | "GG" |
-      "dayOfYear" | "dayOfYears" | "DDD" |
-      "weekday" | "weekdays" | "e" |
-      "isoWeekday" | "isoWeekdays" | "E";
+        "weekYear" | "weekYears" | "gg" |
+        "isoWeekYear" | "isoWeekYears" | "GG" |
+        "dayOfYear" | "dayOfYears" | "DDD" |
+        "weekday" | "weekdays" | "e" |
+        "isoWeekday" | "isoWeekdays" | "E";
   }
 
   interface MomentInputObject {
@@ -556,7 +553,6 @@ declare namespace moment {
     utcOffset(b: number|string, keepLocalTime?: boolean): Moment;
     isUtcOffset(): boolean;
     daysInMonth(): number;
-    jDaysInMonth(): number;
     isDST(): boolean;
 
     zoneAbbr(): string;
