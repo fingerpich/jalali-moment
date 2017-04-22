@@ -118,6 +118,9 @@ declare namespace moment {
     months?: string[] | StandaloneFormatSpec | MonthWeekdayFn;
     monthsShort?: string[] | StandaloneFormatSpec | MonthWeekdayFn;
 
+    jMonths?: string[] | StandaloneFormatSpec | MonthWeekdayFn;
+    jMonthsShort?: string[] | StandaloneFormatSpec | MonthWeekdayFn;
+
     weekdays?: string[] | StandaloneFormatSpec | MonthWeekdayFn;
     weekdaysShort?: string[] | StandaloneFormatSpec | WeekdaySimpleFn;
     weekdaysMin?: string[] | StandaloneFormatSpec | WeekdaySimpleFn;
@@ -279,10 +282,10 @@ declare namespace moment {
 
   namespace unitOfTime {
     type Base = (
-      "year" | "years" | "y" |
-      "month" | "months" | "M" |
-      "week" | "weeks" | "w" |
-      "day" | "days" | "d" |
+      "year" | "years" | "y" | "jYear" |
+      "month" | "months" | "M" | "jMonth" |
+      "week" | "weeks" | "w" | "jw" |
+      "day" | "days" | "d" | "jDay" | "jD" |
       "hour" | "hours" | "h" |
       "minute" | "minutes" | "m" |
       "second" | "seconds" | "s" |
@@ -553,6 +556,7 @@ declare namespace moment {
     utcOffset(b: number|string, keepLocalTime?: boolean): Moment;
     isUtcOffset(): boolean;
     daysInMonth(): number;
+    jDaysInMonth(): number;
     isDST(): boolean;
 
     zoneAbbr(): string;
@@ -707,6 +711,8 @@ declare namespace moment {
 
   export var defaultFormat: string;
   export var defaultFormatUtc: string;
+
+  export function loadPersian(): void;
 }
 
 export = moment;
