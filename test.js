@@ -1,6 +1,6 @@
 
 var chai = require('chai')
-  , moment = require('./jalali-moment.d.ts')
+  , moment = require('./jalali-moment.js')
 
 chai.should()
 
@@ -835,6 +835,7 @@ describe('moment', function() {
       m2.isSame(m3, 'year').should.be.false
       m2.isSame(m4, 'year').should.be.false
       m3.isSame(m4, 'year').should.be.false
+      m1.isSame(moment('2016-02-04'), 'day').should.be.true
     })
 
     it('should work correctly for same month', function () {
@@ -848,6 +849,7 @@ describe('moment', function() {
       m2.isSame(m3, 'month').should.be.false
       m2.isSame(m4, 'month').should.be.false
       m3.isSame(m4, 'month').should.be.false
+      m1.isSame(moment('2016-02-04'), 'day').should.be.true
     })
 
     it('should work correctly for same day', function () {
