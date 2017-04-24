@@ -2,9 +2,11 @@
 
 A Jalali (Jalali, Persian, Khorshidi, Shamsi) calendar system plugin for moment.js.
 
-[![Build Status](https://travis-ci.org/fingerpich/jalali-moment.png?branch=master)](https://travis-ci.org/fingerpich/jalali-moment)
+[![NPM version][npm-version-image]][npm-url] 
+[![MIT License][license-image]][license-url]
+[![Build Status][travis-image]][travis-url]
 
-Jalali calendar is a solar calendar that was used in Persia, variants of which today are still in use in Iran as well as Afghanistan. [Read more on Wikipedia](http://en.wikipedia.org/wiki/Jalali_calendar) or see [Calendar Converter](http://www.fourmilab.ch/documents/calendar/).
+Jalali calendar is a solar calendar. It gains approximately 1 day on the Julian calendar every 128 years. [Read more on Wikipedia](http://en.wikipedia.org/wiki/Jalali_calendar) or see [Calendar Converter](http://www.fourmilab.ch/documents/calendar/).
 
 This plugin adds Jalali calendar support to [momentjs](http://momentjs.com) library.
 
@@ -17,6 +19,7 @@ Like `momentjs`, `jalali-moment` works in browser and in Node.js.
 
 ### Install
 
+Install via NPM
 ```shell
 npm install jalali-moment -S
 ```
@@ -49,6 +52,12 @@ export class JalaliPipe implements PipeTransform {
 and use it in component template
 ```
  <div>loadedData.date|jalali</div>
+```
+
+### Typescript
+```ts
+import * as moment from 'jalali-moment';
+let todayJalali = moment().format('jYYYY/jM/jD');
 ```
 
 ## API
@@ -109,16 +118,18 @@ moment.loadPersian()
 
 ### ng-jalali-flat-datepicker
 
-A lightweight angular.js date picker using `jalali-moment` is [thg303/ng-jalali-flat-datepicker](https://github.com/thg303/ng-jalali-flat-datepicker) created by [@thg303](https://github.com/thg303).
-
-### pholiday
-
-A library based on `jalali-moment` for calculating holidays in Persian calendar is [shkarimpour/pholiday](https://github.com/shkarimpour/pholiday) created by [@shkarimpour](https://github.com/shkarimpour).
-
-### moment-hijri
-
-Another calendar system plugin for `momentjs` is [moment-hijri](https://github.com/xsoh/moment-hijri) created by [@xsoh](https://github.com/xsoh).
+A highly configurable date picker built for Angular 2 applications using `jalali-moment` is [fingerpich/jalali-angular-datepicker](https://github.com/fingerpich/jalali-angular-datepicker) created by [@Fingerpich](https://github.com/fingerpich).
+This project needs a plugin on moment.js to have Jalali date so I had been using [moment-hijri](https://github.com/jalaali/moment-jalaali) but it had some problem so I forked it.
 
 ## License
 
 MIT
+
+[license-image]: http://img.shields.io/badge/license-MIT-blue.svg?style=flat
+[license-url]: LICENSE
+
+[npm-url]: https://npmjs.org/package/jalali-moment
+[npm-version-image]: http://img.shields.io/npm/v/jalali-moment.svg?style=flat
+
+[travis-url]: https://travis-ci.org/fingerpich/jalali-moment
+[travis-image]: https://travis-ci.org/fingerpich/jalali-moment.png?branch=master
