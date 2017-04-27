@@ -2,11 +2,12 @@
 
 A Jalali (Jalali, Persian, Khorshidi, Shamsi) calendar system plugin for moment.js.
 
-[![NPM version][npm-version-image]][npm-url] 
 [![MIT License][license-image]][license-url]
 [![Build Status][travis-image]][travis-url]
+[![NPM version][npm-version-image]][npm-url] 
+[![Package Quality][packageQuality-image]][packageQuality-url]
 
-Jalali calendar is a solar calendar. It gains approximately 1 day on the Julian calendar every 128 years. [Read more on Wikipedia](http://en.wikipedia.org/wiki/Jalali_calendar) or see [Calendar Converter](http://www.fourmilab.ch/documents/calendar/).
+Jalali calendar is a solar calendar. It gains approximately 1 day on the Julian calendar every 128 years. [Read more on Wikipedia](http://en.wikipedia.org/wiki/Jalali_calendar).
 
 This plugin adds Jalali calendar support to [momentjs](http://momentjs.com) library.
 
@@ -116,10 +117,10 @@ moment.loadPersian()
 
 ## Related Projects
 
-### ng-jalali-flat-datepicker
+### jalali-angular-datepicker ( angular2 or more)
 
 A highly configurable date picker built for Angular 2 applications using `jalali-moment` is [fingerpich/jalali-angular-datepicker](https://github.com/fingerpich/jalali-angular-datepicker) created by [@Fingerpich](https://github.com/fingerpich).
-This project needs a plugin on moment.js to have Jalali date so I had been using [moment-hijri](https://github.com/jalaali/moment-jalaali) but it had some problem so I forked it.
+In this I needed a plugin on moment.js to have Jalali date so at first I had been using [moment-jalaali](https://github.com/jalaali/moment-jalaali) but I can't so I forked it and add some new feature to it.
 
 ## License
 
@@ -133,3 +134,6 @@ MIT
 
 [travis-url]: https://travis-ci.org/fingerpich/jalali-moment
 [travis-image]: https://travis-ci.org/fingerpich/jalali-moment.png?branch=master
+
+[packageQuality-image]: http://npm.packagequality.com/shield/jalali-moment.svg
+[packageQuality-url]: http://packagequality.com/#?package=jalali-moment
