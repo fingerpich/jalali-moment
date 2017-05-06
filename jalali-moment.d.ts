@@ -655,6 +655,18 @@ declare namespace moment {
   export function monthsShort(format: string): string[];
   export function monthsShort(format: string, index: number): string;
 
+  export function jWeekOfYear(mom:Moment, firstDayOfWeek:number, firstDayOfWeekOfYear:number) :Moment;
+  export function jYear(input:number) :Moment;
+  export function jMonth(input:number) :Moment;
+  export function jDate(input:number) :Moment;
+  export function jDayOfYear(input:number) :Moment;
+  export function jWeek(input:number) :Moment;
+  export function jWeekYear(input:number) :Moment;
+  export function jDaysInMonth(year:number, month:number) :Moment;
+  export function jIsLeapYear(): boolean;
+  export function loadPersian(): void;
+  export var jConvert:any;
+
   export function weekdays(): string[];
   export function weekdays(index: number): string;
   export function weekdays(format: string): string[];
@@ -707,8 +719,6 @@ declare namespace moment {
 
   export var defaultFormat: string;
   export var defaultFormatUtc: string;
-
-  export function loadPersian(): void;
 }
 
 export = moment;
