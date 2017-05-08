@@ -1,8 +1,8 @@
 
-module.exports = jMoment
+module.exports = jMoment;
 
 var moment = require('moment')
-    , jalaali = require('jalaali-js')
+    , jalaali = require('jalaali-js');
 
 /************************************
  Constants
@@ -70,7 +70,7 @@ var formattingTokens = /(\[[^\[]*\])|(\\)?j(Mo|MM?M?M?|Do|DDDo|DD?D?D?|w[o|w]?|Y
         , jggggg: function () {
         return leftZeroFill(this.jWeekYear(), 5)
     }
-    }
+    };
 
 function padToken(func, count) {
     return function (a) {
@@ -84,34 +84,34 @@ function ordinalizeToken(func, period) {
 }
 
 (function () {
-    var i
+    var i;
     while (ordinalizeTokens.length) {
-        i = ordinalizeTokens.pop()
+        i = ordinalizeTokens.pop();
         formatTokenFunctions['j' + i + 'o'] = ordinalizeToken(formatTokenFunctions['j' + i], i)
     }
     while (paddedTokens.length) {
-        i = paddedTokens.pop()
+        i = paddedTokens.pop();
         formatTokenFunctions['j' + i + i] = padToken(formatTokenFunctions['j' + i], 2)
     }
     formatTokenFunctions.jDDDD = padToken(formatTokenFunctions.jDDD, 3)
-}())
+}());
 
 /************************************
  Helpers
  ************************************/
 
 function extend(a, b) {
-    var key
+    var key;
     for (key in b)
         if (b.hasOwnProperty(key))
-            a[key] = b[key]
+            a[key] = b[key];
     return a
 }
 
 function leftZeroFill(number, targetLength) {
-    var output = number + ''
+    var output = number + '';
     while (output.length < targetLength)
-        output = '0' + output
+        output = '0' + output;
     return output
 }
 
@@ -132,19 +132,19 @@ function isArray(input) {
 
 function normalizeUnits(units) {
     if (units) {
-        var lowered = units.toLowerCase()
+        var lowered = units.toLowerCase();
         units = unitAliases[lowered] || lowered
     }
     return units
 }
 
 function setDate(m, year, month, date) {
-    var d = m._d
+    var d = m._d;
     if (m._isUTC) {
-      /*eslint-disable new-cap*/
+        /*eslint-disable new-cap*/
         m._d = new Date(Date.UTC(year, month, date,
-            d.getUTCHours(), d.getUTCMinutes(), d.getUTCSeconds(), d.getUTCMilliseconds()))
-      /*eslint-enable new-cap*/
+            d.getUTCHours(), d.getUTCMinutes(), d.getUTCSeconds(), d.getUTCMilliseconds()));
+        /*eslint-enable new-cap*/
     } else {
         m._d = new Date(year, month, date,
             d.getHours(), d.getMinutes(), d.getSeconds(), d.getMilliseconds())
@@ -153,15 +153,15 @@ function setDate(m, year, month, date) {
 
 function objectCreate(parent) {
     function F() {}
-    F.prototype = parent
+    F.prototype = parent;
     return new F()
 }
 
 function getPrototypeOf(object) {
     if (Object.getPrototypeOf)
-        return Object.getPrototypeOf(object)
+        return Object.getPrototypeOf(object);
     else if (''.__proto__)
-        return object.__proto__
+        return object.__proto__;
     else
         return object.constructor.prototype
 }
@@ -207,14 +207,14 @@ extend(getPrototypeOf(moment.localeData()),
         , jMonthsParse: function (monthName) {
         var i
             , mom
-            , regex
+            , regex;
         if (!this._jMonthsParse)
-            this._jMonthsParse = []
+            this._jMonthsParse = [];
         for (i = 0; i < 12; i += 1) {
             // Make the regex if we don't have it already.
             if (!this._jMonthsParse[i]) {
-                mom = jMoment([2000, (2 + i) % 12, 25])
-                regex = '^' + this.jMonths(mom, '') + '|^' + this.jMonthsShort(mom, '')
+                mom = jMoment([2000, (2 + i) % 12, 25]);
+                regex = '^' + this.jMonths(mom, '') + '|^' + this.jMonthsShort(mom, '');
                 this._jMonthsParse[i] = new RegExp(regex.replace('.', ''), 'i')
             }
             // Test the regex.
@@ -223,7 +223,7 @@ extend(getPrototypeOf(moment.localeData()),
         }
     }
     }
-)
+);
 
 /************************************
  Formatting
@@ -232,14 +232,14 @@ extend(getPrototypeOf(moment.localeData()),
 function makeFormatFunction(format) {
     var array = format.match(formattingTokens)
         , length = array.length
-        , i
+        , i;
 
     for (i = 0; i < length; i += 1)
         if (formatTokenFunctions[array[i]])
-            array[i] = formatTokenFunctions[array[i]]
+            array[i] = formatTokenFunctions[array[i]];
 
     return function (mom) {
-        var output = ''
+        var output = '';
         for (i = 0; i < length; i += 1)
             output += array[i] instanceof Function ? '[' + array[i].call(mom, format) + ']' : array[i]
         return output
@@ -253,49 +253,49 @@ function makeFormatFunction(format) {
 function getParseRegexForToken(token, config) {
     switch (token) {
         case 'jDDDD':
-            return parseTokenThreeDigits
+            return parseTokenThreeDigits;
         case 'jYYYY':
-            return parseTokenFourDigits
+            return parseTokenFourDigits;
         case 'jYYYYY':
-            return parseTokenSixDigits
+            return parseTokenSixDigits;
         case 'jDDD':
-            return parseTokenOneToThreeDigits
+            return parseTokenOneToThreeDigits;
         case 'jMMM':
         case 'jMMMM':
-            return parseTokenWord
+            return parseTokenWord;
         case 'jMM':
         case 'jDD':
         case 'jYY':
         case 'jM':
         case 'jD':
-            return parseTokenOneOrTwoDigits
+            return parseTokenOneOrTwoDigits;
         case 'DDDD':
-            return parseTokenThreeDigits
+            return parseTokenThreeDigits;
         case 'YYYY':
-            return parseTokenFourDigits
+            return parseTokenFourDigits;
         case 'YYYYY':
-            return parseTokenSixDigits
+            return parseTokenSixDigits;
         case 'S':
         case 'SS':
         case 'SSS':
         case 'DDD':
-            return parseTokenOneToThreeDigits
+            return parseTokenOneToThreeDigits;
         case 'MMM':
         case 'MMMM':
         case 'dd':
         case 'ddd':
         case 'dddd':
-            return parseTokenWord
+            return parseTokenWord;
         case 'a':
         case 'A':
-            return moment.localeData(config._l)._meridiemParse
+            return moment.localeData(config._l)._meridiemParse;
         case 'X':
-            return parseTokenTimestampMs
+            return parseTokenTimestampMs;
         case 'Z':
         case 'ZZ':
-            return parseTokenTimezone
+            return parseTokenTimezone;
         case 'T':
-            return parseTokenT
+            return parseTokenT;
         case 'MM':
         case 'DD':
         case 'YY':
@@ -310,7 +310,7 @@ function getParseRegexForToken(token, config) {
         case 'h':
         case 'm':
         case 's':
-            return parseTokenOneOrTwoDigits
+            return parseTokenOneOrTwoDigits;
         default:
             return new RegExp(token.replace('\\', ''))
     }
@@ -318,31 +318,31 @@ function getParseRegexForToken(token, config) {
 
 function addTimeToArrayFromToken(token, input, config) {
     var a
-        , datePartArray = config._a
+        , datePartArray = config._a;
 
     switch (token) {
         case 'jM':
         case 'jMM':
-            datePartArray[1] = input == null ? 0 : ~~input - 1
-            break
+            datePartArray[1] = input == null ? 0 : ~~input - 1;
+            break;
         case 'jMMM':
         case 'jMMMM':
-            a = moment.localeData(config._l).jMonthsParse(input)
+            a = moment.localeData(config._l).jMonthsParse(input);
             if (a != null)
-                datePartArray[1] = a
+                datePartArray[1] = a;
             else
-                config._isValid = false
-            break
+                config._isValid = false;
+            break;
         case 'jD':
         case 'jDD':
         case 'jDDD':
         case 'jDDDD':
             if (input != null)
-                datePartArray[2] = ~~input
-            break
+                datePartArray[2] = ~~input;
+            break;
         case 'jYY':
-            datePartArray[0] = ~~input + (~~input > 47 ? 1300 : 1400)
-            break
+            datePartArray[0] = ~~input + (~~input > 47 ? 1300 : 1400);
+            break;
         case 'jYYYY':
         case 'jYYYYY':
             datePartArray[0] = ~~input
@@ -356,24 +356,24 @@ function dateFromArray(config) {
         , j
         , jy = config._a[0]
         , jm = config._a[1]
-        , jd = config._a[2]
+        , jd = config._a[2];
 
     if ((jy == null) && (jm == null) && (jd == null))
-        return [0, 0, 1]
-    jy = jy != null ? jy : 0
-    jm = jm != null ? jm : 0
-    jd = jd != null ? jd : 1
+        return [0, 0, 1];
+    jy = jy != null ? jy : 0;
+    jm = jm != null ? jm : 0;
+    jd = jd != null ? jd : 1;
     if (jd < 1 || jd > jMoment.jDaysInMonth(jy, jm) || jm < 0 || jm > 11)
-        config._isValid = false
-    g = toGregorian(jy, jm, jd)
-    j = toJalaali(g.gy, g.gm, g.gd)
-    config._jDiff = 0
+        config._isValid = false;
+    g = toGregorian(jy, jm, jd);
+    j = toJalaali(g.gy, g.gm, g.gd);
+    config._jDiff = 0;
     if (~~j.jy !== jy)
-        config._jDiff += 1
+        config._jDiff += 1;
     if (~~j.jm !== jm)
-        config._jDiff += 1
+        config._jDiff += 1;
     if (~~j.jd !== jd)
-        config._jDiff += 1
+        config._jDiff += 1;
     return [g.gy, g.gm, g.gd]
 }
 
@@ -383,20 +383,20 @@ function makeDateFromStringAndFormat(config) {
         , len = tokens.length
         , i
         , token
-        , parsedInput
+        , parsedInput;
 
-    config._a = []
+    config._a = [];
 
     for (i = 0; i < len; i += 1) {
-        token = tokens[i]
-        parsedInput = (getParseRegexForToken(token, config).exec(string) || [])[0]
+        token = tokens[i];
+        parsedInput = (getParseRegexForToken(token, config).exec(string) || [])[0];
         if (parsedInput)
-            string = string.slice(string.indexOf(parsedInput) + parsedInput.length)
+            string = string.slice(string.indexOf(parsedInput) + parsedInput.length);
         if (formatTokenFunctions[token])
             addTimeToArrayFromToken(token, parsedInput, config)
     }
     if (string)
-        config._il = string
+        config._il = string;
     return dateFromArray(config)
 }
 
@@ -407,25 +407,25 @@ function makeDateFromStringAndArray(config, utc) {
         , tempMoment
         , bestMoment
         , currentScore
-        , scoreToBeat
+        , scoreToBeat;
 
     if (len === 0) {
         return makeMoment(new Date(NaN))
     }
 
     for (i = 0; i < len; i += 1) {
-        format = config._f[i]
-        currentScore = 0
-        tempMoment = makeMoment(config._i, format, config._l, config._strict, utc)
+        format = config._f[i];
+        currentScore = 0;
+        tempMoment = makeMoment(config._i, format, config._l, config._strict, utc);
 
-        if (!tempMoment.isValid()) continue
+        if (!tempMoment.isValid()) continue;
 
         // currentScore = compareArrays(tempMoment._a, tempMoment.toArray())
-        currentScore += tempMoment._jDiff
+        currentScore += tempMoment._jDiff;
         if (tempMoment._il)
-            currentScore += tempMoment._il.length
+            currentScore += tempMoment._il.length;
         if (scoreToBeat == null || currentScore < scoreToBeat) {
-            scoreToBeat = currentScore
+            scoreToBeat = currentScore;
             bestMoment = tempMoment
         }
     }
@@ -441,20 +441,20 @@ function removeParsedTokens(config) {
         , len = array.length
         , i
         , match
-        , parsed
+        , parsed;
 
     for (i = 0; i < len; i += 1) {
-        match = array[i]
-        parsed = (getParseRegexForToken(match, config).exec(string) || [])[0]
+        match = array[i];
+        parsed = (getParseRegexForToken(match, config).exec(string) || [])[0];
         if (parsed)
-            string = string.slice(string.indexOf(parsed) + parsed.length)
+            string = string.slice(string.indexOf(parsed) + parsed.length);
         if (!(formatTokenFunctions[match] instanceof Function)) {
-            format += match
+            format += match;
             if (parsed)
                 input += parsed
         }
     }
-    config._i = input
+    config._i = input;
     config._f = format
 }
 
@@ -465,7 +465,7 @@ function removeParsedTokens(config) {
 function jWeekOfYear(mom, firstDayOfWeek, firstDayOfWeekOfYear) {
     var end = firstDayOfWeekOfYear - firstDayOfWeek
         , daysToDayOfWeek = firstDayOfWeekOfYear - mom.day()
-        , adjustedMoment
+        , adjustedMoment;
 
     if (daysToDayOfWeek > end) {
         daysToDayOfWeek -= 7
@@ -473,7 +473,7 @@ function jWeekOfYear(mom, firstDayOfWeek, firstDayOfWeekOfYear) {
     if (daysToDayOfWeek < end - 7) {
         daysToDayOfWeek += 7
     }
-    adjustedMoment = jMoment(mom).add(daysToDayOfWeek, 'd')
+    adjustedMoment = jMoment(mom).add(daysToDayOfWeek, 'd');
     return  { week: Math.ceil(adjustedMoment.jDayOfYear() / 7)
         , year: adjustedMoment.jYear()
     }
@@ -485,13 +485,13 @@ function jWeekOfYear(mom, firstDayOfWeek, firstDayOfWeekOfYear) {
 
 function makeMoment(input, format, lang, strict, utc) {
     if (typeof lang === 'boolean') {
-        utc = strict
-        strict = lang
+        utc = strict;
+        strict = lang;
         lang = undefined
     }
 
     if (format && typeof format === 'string')
-        format = fixFormat(format, moment)
+        format = fixFormat(format, moment);
 
     var config =
         { _i: input
@@ -504,14 +504,14 @@ function makeMoment(input, format, lang, strict, utc) {
         , m
         , jm
         , origInput = input
-        , origFormat = format
+        , origFormat = format;
     if (format) {
         if (isArray(format)) {
             return makeDateFromStringAndArray(config, utc)
         } else {
-            date = makeDateFromStringAndFormat(config)
-            removeParsedTokens(config)
-            format = 'YYYY-MM-DD-' + config._f
+            date = makeDateFromStringAndFormat(config);
+            removeParsedTokens(config);
+            format = 'YYYY-MM-DD-' + config._f;
             input = leftZeroFill(date[0], 4) + '-'
                 + leftZeroFill(date[1] + 1, 2) + '-'
                 + leftZeroFill(date[2], 2) + '-'
@@ -519,14 +519,14 @@ function makeMoment(input, format, lang, strict, utc) {
         }
     }
     if (utc)
-        m = moment.utc(input, format, lang, strict)
+        m = moment.utc(input, format, lang, strict);
     else
-        m = moment(input, format, lang, strict)
+        m = moment(input, format, lang, strict);
     if (config._isValid === false)
-        m._isValid = false
-    m._jDiff = config._jDiff || 0
-    jm = objectCreate(jMoment.fn)
-    extend(jm, m)
+        m._isValid = false;
+    m._jDiff = config._jDiff || 0;
+    jm = objectCreate(jMoment.fn);
+    extend(jm, m);
     if (strict && jm.isValid()) {
         jm._isValid = jm.format(origFormat) === origInput
     }
@@ -537,28 +537,28 @@ function jMoment(input, format, lang, strict) {
     return makeMoment(input, format, lang, strict, false)
 }
 
-extend(jMoment, moment)
-jMoment.fn = objectCreate(moment.fn)
+extend(jMoment, moment);
+jMoment.fn = objectCreate(moment.fn);
 
 jMoment.utc = function (input, format, lang, strict) {
     return makeMoment(input, format, lang, strict, true)
-}
+};
 
 jMoment.unix = function (input) {
     return makeMoment(input * 1000)
-}
+};
 
 /************************************
  jMoment Prototype
  ************************************/
 
 function fixFormat(format, _moment) {
-    var i = 5
+    var i = 5;
     var replace = function (input) {
         return _moment.localeData().longDateFormat(input) || input
-    }
+    };
     while (i > 0 && localFormattingTokens.test(format)) {
-        i -= 1
+        i -= 1;
         format = format.replace(localFormattingTokens, replace)
     }
     return format
@@ -567,189 +567,189 @@ function fixFormat(format, _moment) {
 jMoment.fn.format = function (format) {
 
     if (format) {
-        format = fixFormat(format, this)
+        format = fixFormat(format, this);
 
         if (!formatFunctions[format]) {
-            formatFunctions[format] = makeFormatFunction(format)
+            formatFunctions[format] = makeFormatFunction(format);
         }
-        format = formatFunctions[format](this)
+        format = formatFunctions[format](this);
     }
     return moment.fn.format.call(this, format)
-}
+};
 
 jMoment.fn.jYear = function (input) {
     var lastDay
         , j
-        , g
+        , g;
     if (typeof input === 'number') {
-        j = toJalaali(this.year(), this.month(), this.date())
-        lastDay = Math.min(j.jd, jMoment.jDaysInMonth(input, j.jm))
-        g = toGregorian(input, j.jm, lastDay)
-        setDate(this, g.gy, g.gm, g.gd)
-        moment.updateOffset(this)
+        j = toJalaali(this.year(), this.month(), this.date());
+        lastDay = Math.min(j.jd, jMoment.jDaysInMonth(input, j.jm));
+        g = toGregorian(input, j.jm, lastDay);
+        setDate(this, g.gy, g.gm, g.gd);
+        moment.updateOffset(this);
         return this
     } else {
-        return toJalaali(this.year(), this.month(), this.date()).jy
+        return toJalaali(this.year(), this.month(), this.date()).jy;
     }
-}
+};
 
 jMoment.fn.jMonth = function (input) {
     var lastDay
         , j
-        , g
+        , g;
     if (input != null) {
         if (typeof input === 'string') {
-            input = this.lang().jMonthsParse(input)
+            input = this.lang().jMonthsParse(input);
             if (typeof input !== 'number')
-                return this
+                return this;
         }
-        j = toJalaali(this.year(), this.month(), this.date())
-        lastDay = Math.min(j.jd, jMoment.jDaysInMonth(j.jy, input))
-        this.jYear(j.jy + div(input, 12))
-        input = mod(input, 12)
+        j = toJalaali(this.year(), this.month(), this.date());
+        lastDay = Math.min(j.jd, jMoment.jDaysInMonth(j.jy, input));
+        this.jYear(j.jy + div(input, 12));
+        input = mod(input, 12);
         if (input < 0) {
-            input += 12
-            this.jYear(this.jYear() - 1)
+            input += 12;
+            this.jYear(this.jYear() - 1);
         }
-        g = toGregorian(this.jYear(), input, lastDay)
-        setDate(this, g.gy, g.gm, g.gd)
-        moment.updateOffset(this)
-        return this
+        g = toGregorian(this.jYear(), input, lastDay);
+        setDate(this, g.gy, g.gm, g.gd);
+        moment.updateOffset(this);
+        return this;
     } else {
-        return toJalaali(this.year(), this.month(), this.date()).jm
+        return toJalaali(this.year(), this.month(), this.date()).jm;
     }
-}
+};
 
 jMoment.fn.jDate = function (input) {
     var j
-        , g
+        , g;
     if (typeof input === 'number') {
-        j = toJalaali(this.year(), this.month(), this.date())
-        g = toGregorian(j.jy, j.jm, input)
-        setDate(this, g.gy, g.gm, g.gd)
-        moment.updateOffset(this)
-        return this
+        j = toJalaali(this.year(), this.month(), this.date());
+        g = toGregorian(j.jy, j.jm, input);
+        setDate(this, g.gy, g.gm, g.gd);
+        moment.updateOffset(this);
+        return this;
     } else {
-        return toJalaali(this.year(), this.month(), this.date()).jd
+        return toJalaali(this.year(), this.month(), this.date()).jd;
     }
-}
+};
 
 jMoment.fn.jDayOfYear = function (input) {
-    var dayOfYear = Math.round((jMoment(this).startOf('day') - jMoment(this).startOf('jYear')) / 864e5) + 1
-    return input == null ? dayOfYear : this.add(input - dayOfYear, 'd')
-}
+    var dayOfYear = Math.round((jMoment(this).startOf('day') - jMoment(this).startOf('jYear')) / 864e5) + 1;
+    return input == null ? dayOfYear : this.add(input - dayOfYear, 'd');
+};
 
 jMoment.fn.jWeek = function (input) {
-    var week = jWeekOfYear(this, this.localeData()._week.dow, this.localeData()._week.doy).week
-    return input == null ? week : this.add((input - week) * 7, 'd')
-}
+    var week = jWeekOfYear(this, this.localeData()._week.dow, this.localeData()._week.doy).week;
+    return input == null ? week : this.add((input - week) * 7, 'd');
+};
 
 jMoment.fn.jWeekYear = function (input) {
-    var year = jWeekOfYear(this, this.localeData()._week.dow, this.localeData()._week.doy).year
-    return input == null ? year : this.add(input - year, 'y')
-}
+    var year = jWeekOfYear(this, this.localeData()._week.dow, this.localeData()._week.doy).year;
+    return input == null ? year : this.add(input - year, 'y');
+};
 
 jMoment.fn.add = function (val, units) {
-    var temp
+    var temp;
     if (units !== null && !isNaN(+units)) {
-        temp = val
-        val = units
-        units = temp
+        temp = val;
+        val = units;
+        units = temp;
     }
-    units = normalizeUnits(units)
+    units = normalizeUnits(units);
     if (units === 'jyear') {
-        this.jYear(this.jYear() + val)
+        this.jYear(this.jYear() + val);
     } else if (units === 'jmonth') {
-        this.jMonth(this.jMonth() + val)
+        this.jMonth(this.jMonth() + val);
     } else {
-        moment.fn.add.call(this, val, units)
+        moment.fn.add.call(this, val, units);
     }
-    return this
-}
+    return this;
+};
 
 jMoment.fn.subtract = function (val, units) {
-    var temp
+    var temp;
     if (units !== null && !isNaN(+units)) {
-        temp = val
-        val = units
-        units = temp
+        temp = val;
+        val = units;
+        units = temp;
     }
-    units = normalizeUnits(units)
+    units = normalizeUnits(units);
     if (units === 'jyear') {
-        this.jYear(this.jYear() - val)
+        this.jYear(this.jYear() - val);
     } else if (units === 'jmonth') {
-        this.jMonth(this.jMonth() - val)
+        this.jMonth(this.jMonth() - val);
     } else {
-        moment.fn.subtract.call(this, val, units)
+        moment.fn.subtract.call(this, val, units);
     }
-    return this
-}
+    return this;
+};
 
 jMoment.fn.startOf = function (units) {
-    units = normalizeUnits(units)
+    units = normalizeUnits(units);
     if (units === 'jyear' || units === 'jmonth') {
         if (units === 'jyear') {
-            this.jMonth(0)
+            this.jMonth(0);
         }
-        this.jDate(1)
-        this.hours(0)
-        this.minutes(0)
-        this.seconds(0)
-        this.milliseconds(0)
-        return this
+        this.jDate(1);
+        this.hours(0);
+        this.minutes(0);
+        this.seconds(0);
+        this.milliseconds(0);
+        return this;
     } else {
-        return moment.fn.startOf.call(this, units)
+        return moment.fn.startOf.call(this, units);
     }
-}
+};
 
 jMoment.fn.endOf = function (units) {
-    units = normalizeUnits(units)
+    units = normalizeUnits(units);
     if (units === undefined || units === 'milisecond') {
-        return this
+        return this;
     }
-    return this.startOf(units).add(1, (units === 'isoweek' ? 'week' : units)).subtract(1, 'ms')
-}
+    return this.startOf(units).add(1, (units === 'isoweek' ? 'week' : units)).subtract(1, 'ms');
+};
 
 jMoment.fn.isSame = function (other, units) {
-    units = normalizeUnits(units)
+    units = normalizeUnits(units);
     if (units === 'jyear' || units === 'jmonth') {
-        return moment.fn.isSame.call(this.clone().startOf(units), other.clone().startOf(units))
+        return moment.fn.isSame.call(this.clone().startOf(units), other.clone().startOf(units));
     }
-    return moment.fn.isSame.call(this, other, units)
-}
+    return moment.fn.isSame.call(this, other, units);
+};
 
 jMoment.fn.clone = function () {
-    return jMoment(this)
-}
+    return jMoment(this);
+};
 
-jMoment.fn.jYears = jMoment.fn.jYear
-jMoment.fn.jMonths = jMoment.fn.jMonth
-jMoment.fn.jDates = jMoment.fn.jDate
-jMoment.fn.jWeeks = jMoment.fn.jWeek
+jMoment.fn.jYears = jMoment.fn.jYear;
+jMoment.fn.jMonths = jMoment.fn.jMonth;
+jMoment.fn.jDates = jMoment.fn.jDate;
+jMoment.fn.jWeeks = jMoment.fn.jWeek;
 
 /************************************
  jMoment Statics
  ************************************/
 
 jMoment.jDaysInMonth = function (year, month) {
-    year += div(month, 12)
-    month = mod(month, 12)
+    year += div(month, 12);
+    month = mod(month, 12);
     if (month < 0) {
-        month += 12
-        year -= 1
+        month += 12;
+        year -= 1;
     }
     if (month < 6) {
-        return 31
+        return 31;
     } else if (month < 11) {
-        return 30
+        return 30;
     } else if (jMoment.jIsLeapYear(year)) {
-        return 30
+        return 30;
     } else {
-        return 29
+        return 29;
     }
-}
+};
 
-jMoment.jIsLeapYear = jalaali.isLeapJalaaliYear
+jMoment.jIsLeapYear = jalaali.isLeapJalaaliYear;
 
 jMoment.loadPersian = function () {
     moment.locale('fa', {
@@ -800,25 +800,25 @@ jMoment.loadPersian = function () {
             , jMonthsShort: 'فرو_ارد_خرد_تیر_مرد_شهر_مهر_آبا_آذر_دی_بهم_اسف'.split('_')
         }
     );
-}
+};
 
 jMoment.jConvert =  { toJalaali: toJalaali
     , toGregorian: toGregorian
-}
+};
 
 /************************************
  Jalaali Conversion
  ************************************/
 
 function toJalaali(gy, gm, gd) {
-    var j = jalaali.toJalaali(gy, gm + 1, gd)
-    j.jm -= 1
+    var j = jalaali.toJalaali(gy, gm + 1, gd);
+    j.jm -= 1;
     return j
 }
 
 function toGregorian(jy, jm, jd) {
-    var g = jalaali.toGregorian(jy, jm + 1, jd)
-    g.gm -= 1
+    var g = jalaali.toGregorian(jy, jm + 1, jd);
+    g.gm -= 1;
     return g
 }
 
