@@ -21,7 +21,9 @@
   ],
   "main": "jalali-moment.js",
   "scripts": {
-    "test": "mocha --reporter spec --ui bdd --colors --check-leaks  test.js"
+    "test": "mocha --reporter spec --ui bdd --colors --check-leaks  test.js",
+    "build": "WEBPACK_ENV=build webpack",
+    "dev": "WEBPACK_ENV=dev webpack --progress --colors --watch"
   },
   "homepage": "https://github.com/fingerpich/jalali-moment",
   "bugs": {
@@ -34,7 +36,10 @@
   "devDependencies": {
     "chai": "^2.2.0",
     "eslint": "^0.18.0",
-    "mocha": "^2.2.1"
+    "mocha": "^2.2.1",
+    "path": "^0.12.7",
+    "uglifyjs-webpack-plugin": "^0.4.3",
+    "webpack": "^2.5.1"
   },
   "dependencies": {
     "jalaali-js": "^0.2.0",
