@@ -130,7 +130,34 @@ function isArray(input) {
 //   return diffs + lengthDiff
 // }
 
+function replaceJalaliFormat(units){
+    if(units.indexOf('YY'))
+        units = units.replace('YY','jYY');
+
+    if(units.indexOf('M'))
+        units = units.replace('M','jM');
+
+    if(units.indexOf('D'))
+        units = units.replace('D','jD');
+
+    if(units.indexOf('g'))
+        units = units.replace('g','jg');
+    
+    return units
+}
+function toJalaliFormat(units){
+    switch(units){
+        case 'year':return 'jYear';
+        case 'month':return 'jMonth';
+        case 'months':return 'jMonths';
+        case 'monthName':return 'jMonthsShort';
+        case 'monthsShort':return 'jMonthsShort';
+    }
+}
 function normalizeUnits(units) {
+    if(this.jalaliFlag){
+        units = toJalaliFormat(units);
+    }
     if (units) {
         var lowered = units.toLowerCase();
         units = unitAliases[lowered] || lowered
@@ -567,6 +594,9 @@ function fixFormat(format, _moment) {
 jMoment.fn.format = function (format) {
 
     if (format) {
+        if(this.jalaliFlag) {
+            format = replaceJalaliFormat(format);
+        }
         format = fixFormat(format, this);
 
         if (!formatFunctions[format]) {
@@ -577,6 +607,10 @@ jMoment.fn.format = function (format) {
     return moment.fn.format.call(this, format)
 };
 
+jMoment.fn.year = function (input) {
+    if (this.jalaliFlag) jMoment.fn.jYear.call(this,input);
+    else moment.fn.year.call(this, input);
+}
 jMoment.fn.jYear = function (input) {
     var lastDay
         , j
@@ -593,6 +627,10 @@ jMoment.fn.jYear = function (input) {
     }
 };
 
+jMoment.fn.month = function (input) {
+    if (this.jalaliFlag) jMoment.fn.jMonth.call(this,input);
+    else moment.fn.month.call(this, input);
+}
 jMoment.fn.jMonth = function (input) {
     var lastDay
         , j
@@ -620,6 +658,10 @@ jMoment.fn.jMonth = function (input) {
     }
 };
 
+jMoment.fn.date = function (input) {
+    if (this.jalaliFlag) jMoment.fn.jDate.call(this,input);
+    else moment.fn.date.call(this, input);
+}
 jMoment.fn.jDate = function (input) {
     var j
         , g;
@@ -634,16 +676,28 @@ jMoment.fn.jDate = function (input) {
     }
 };
 
+jMoment.fn.dayOfYear = function (input) {
+    if (this.jalaliFlag) jMoment.fn.jDayOfYear.call(this,input);
+    else moment.fn.dayOfYear.call(this, input);
+}
 jMoment.fn.jDayOfYear = function (input) {
     var dayOfYear = Math.round((jMoment(this).startOf('day') - jMoment(this).startOf('jYear')) / 864e5) + 1;
     return input == null ? dayOfYear : this.add(input - dayOfYear, 'd');
 };
 
+jMoment.fn.week = function (input) {
+    if (this.jalaliFlag) jMoment.fn.jWeek.call(this,input);
+    else moment.fn.week.call(this, input);
+}
 jMoment.fn.jWeek = function (input) {
     var week = jWeekOfYear(this, this.localeData()._week.dow, this.localeData()._week.doy).week;
     return input == null ? week : this.add((input - week) * 7, 'd');
 };
 
+jMoment.fn.weekYear = function (input) {
+    if (this.jalaliFlag) jMoment.fn.jWeekYear.call(this,input);
+    else moment.fn.weekYear.call(this, input);
+}
 jMoment.fn.jWeekYear = function (input) {
     var year = jWeekOfYear(this, this.localeData()._week.dow, this.localeData()._week.doy).year;
     return input == null ? year : this.add(input - year, 'y');
@@ -721,6 +775,10 @@ jMoment.fn.isSame = function (other, units) {
 jMoment.fn.clone = function () {
     return jMoment(this);
 };
+
+jMoment.fn.justUseJalaliMethod = function(){
+    this.jalaliFlag = true;
+}
 
 jMoment.fn.jYears = jMoment.fn.jYear;
 jMoment.fn.jMonths = jMoment.fn.jMonth;
