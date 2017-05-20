@@ -342,7 +342,9 @@ function getParseRegexForToken(token, config) {
             return new RegExp(token.replace('\\', ''))
     }
 }
-
+function isNull(variable) {
+    return variable === null || variable === undefined;
+}
 function addTimeToArrayFromToken(token, input, config) {
     var a
         , datePartArray = config._a;
@@ -350,12 +352,12 @@ function addTimeToArrayFromToken(token, input, config) {
     switch (token) {
         case 'jM':
         case 'jMM':
-            datePartArray[1] = input == null ? 0 : ~~input - 1;
+            datePartArray[1] = isNull(input)? 0 : ~~input - 1;
             break;
         case 'jMMM':
         case 'jMMMM':
             a = moment.localeData(config._l).jMonthsParse(input);
-            if (a != null)
+            if (!isNull(a))
                 datePartArray[1] = a;
             else
                 config._isValid = false;
@@ -364,7 +366,7 @@ function addTimeToArrayFromToken(token, input, config) {
         case 'jDD':
         case 'jDDD':
         case 'jDDDD':
-            if (input != null)
+            if (!isNull(input))
                 datePartArray[2] = ~~input;
             break;
         case 'jYY':
@@ -374,7 +376,7 @@ function addTimeToArrayFromToken(token, input, config) {
         case 'jYYYYY':
             datePartArray[0] = ~~input
     }
-    if (input == null)
+    if (isNull(input))
         config._isValid = false
 }
 
@@ -385,11 +387,11 @@ function dateFromArray(config) {
         , jm = config._a[1]
         , jd = config._a[2];
 
-    if ((jy == null) && (jm == null) && (jd == null))
+    if (isNull(jy) && isNull(jm) && isNull(jd))
         return [0, 0, 1];
-    jy = jy != null ? jy : 0;
-    jm = jm != null ? jm : 0;
-    jd = jd != null ? jd : 1;
+    jy = !isNull(jy) ? jy : 0;
+    jm = !isNull(jm) ? jm : 0;
+    jd = !isNull(jd) ? jd : 1;
     if (jd < 1 || jd > jMoment.jDaysInMonth(jy, jm) || jm < 0 || jm > 11)
         config._isValid = false;
     g = toGregorian(jy, jm, jd);
@@ -451,7 +453,7 @@ function makeDateFromStringAndArray(config, utc) {
         currentScore += tempMoment._jDiff;
         if (tempMoment._il)
             currentScore += tempMoment._il.length;
-        if (scoreToBeat == null || currentScore < scoreToBeat) {
+        if (isNull(scoreToBeat) || currentScore < scoreToBeat) {
             scoreToBeat = currentScore;
             bestMoment = tempMoment
         }
@@ -592,7 +594,6 @@ function fixFormat(format, _moment) {
 }
 
 jMoment.fn.format = function (format) {
-
     if (format) {
         if(this.jalaliFlag) {
             format = replaceJalaliFormat(format);
@@ -635,7 +636,7 @@ jMoment.fn.jMonth = function (input) {
     var lastDay
         , j
         , g;
-    if (input != null) {
+    if (isNull(input)) {
         if (typeof input === 'string') {
             input = this.lang().jMonthsParse(input);
             if (typeof input !== 'number')
@@ -682,7 +683,7 @@ jMoment.fn.dayOfYear = function (input) {
 }
 jMoment.fn.jDayOfYear = function (input) {
     var dayOfYear = Math.round((jMoment(this).startOf('day') - jMoment(this).startOf('jYear')) / 864e5) + 1;
-    return input == null ? dayOfYear : this.add(input - dayOfYear, 'd');
+    return isNull(input) ? dayOfYear : this.add(input - dayOfYear, 'd');
 };
 
 jMoment.fn.week = function (input) {
@@ -691,7 +692,7 @@ jMoment.fn.week = function (input) {
 }
 jMoment.fn.jWeek = function (input) {
     var week = jWeekOfYear(this, this.localeData()._week.dow, this.localeData()._week.doy).week;
-    return input == null ? week : this.add((input - week) * 7, 'd');
+    return isNull(input) ? week : this.add((input - week) * 7, 'd');
 };
 
 jMoment.fn.weekYear = function (input) {
@@ -700,7 +701,7 @@ jMoment.fn.weekYear = function (input) {
 }
 jMoment.fn.jWeekYear = function (input) {
     var year = jWeekOfYear(this, this.localeData()._week.dow, this.localeData()._week.doy).year;
-    return input == null ? year : this.add(input - year, 'y');
+    return isNull(input) ? year : this.add(input - year, 'y');
 };
 
 jMoment.fn.add = function (val, units) {
