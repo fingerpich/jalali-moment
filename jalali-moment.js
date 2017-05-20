@@ -598,7 +598,7 @@ jMoment.fn.jMonth = function (input) {
     var lastDay
         , j
         , g;
-    if (isNull(input)) {
+    if (!isNull(input)) {
         if (typeof input === 'string') {
             input = this.lang().jMonthsParse(input);
             if (typeof input !== 'number')
@@ -652,7 +652,7 @@ jMoment.fn.jWeekYear = function (input) {
 
 jMoment.fn.add = function (val, units) {
     var temp;
-    if (units !== null && !isNaN(+units)) {
+    if (!isNull(units) && !isNaN(+units)) {
         temp = val;
         val = units;
         units = temp;
@@ -670,7 +670,7 @@ jMoment.fn.add = function (val, units) {
 
 jMoment.fn.subtract = function (val, units) {
     var temp;
-    if (units !== null && !isNaN(+units)) {
+    if (!isNull(units) && !isNaN(+units)) {
         temp = val;
         val = units;
         units = temp;
