@@ -1,6 +1,6 @@
 {
   "name": "jalali-moment",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Jalaali (Jalali, Persian, Khorshidi, Shamsi) calendar system plugin for moment.js.",
   "author": {
     "name": "Mojtaba Zarei",
@@ -8,7 +8,7 @@
   },
   "license": "MIT",
   "keywords": [
-    "jalaali",
+    "date",
     "jalali",
     "typescript",
     "persian",
@@ -35,7 +35,7 @@
   },
   "devDependencies": {
     "chai": "^2.2.0",
-    "eslint": "^0.18.0",
+    "eslint": "^3.19.0",
     "mocha": "^2.2.1",
     "path": "^0.12.7",
     "uglifyjs-webpack-plugin": "^0.4.3",
