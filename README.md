@@ -25,6 +25,10 @@ Install via NPM
 npm install jalali-moment -S
 ```
 
+Install via bower
+```shell
+bower install jalali-moment --save
+```
 
 ### Node.js
 
@@ -63,7 +67,7 @@ let todayJalali = moment().format('jYYYY/jM/jD');
 
 ### Browser(es5)
 ```HTML
-<script src="thisRepo/dist/jalali-moment.js"></script>
+<script src="bower_components/jalali-moment/dist/jalali-moment.js"></script>
 <script>
   moment().format('jYYYY/jM/jD')
 </script>
