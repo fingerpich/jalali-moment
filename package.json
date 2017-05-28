@@ -34,16 +34,16 @@
     "url": "git://github.com/fingerpich/jalali-moment.git"
   },
   "devDependencies": {
-    "chai": "^2.2.0",
+    "chai": "^2.3.0",
     "eslint": "^3.19.0",
-    "mocha": "^2.2.1",
+    "mocha": "^2.5.3",
     "path": "^0.12.7",
     "uglifyjs-webpack-plugin": "^0.4.3",
-    "webpack": "^2.5.1"
+    "webpack": "^2.6.1"
   },
   "dependencies": {
     "jalaali-js": "^0.2.0",
-    "moment": "^2.12.0"
+    "moment": "^2.18.1"
   },
   "typings": "./jalali-moment.d.ts"
 }
