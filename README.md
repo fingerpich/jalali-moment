@@ -7,7 +7,7 @@ A Jalali (Jalali, Persian, Khorshidi, Shamsi) calendar system plugin for moment.
 [![NPM version][npm-version-image]][npm-url] 
 [![Package Quality][packageQuality-image]][packageQuality-url]
 [![dependencies Quality][dependencies-quality]][dependencies-quality-url]
-[![Codacy Badge][codeacy-quality]][codacy-quality-url]
+[![Codacy Badge][codacy-quality]][codacy-quality-url]
 [![Codacy Badge][codacy-coverage]][codacy-coverage-url]
 
 Jalali calendar is a solar calendar. It gains approximately 1 day on the Julian calendar every 128 years. [Read more on Wikipedia](http://en.wikipedia.org/wiki/Jalali_calendar).
