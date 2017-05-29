@@ -3,3 +3,5 @@ before_script:
   - npm install
 node_js:
   - '7'
+script:
+- npm run report-coverage
