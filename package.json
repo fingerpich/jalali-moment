@@ -23,7 +23,7 @@
   "scripts": {
     "report-coverage": "export CODACY_PROJECT_TOKEN=7f46b99d0c1e4e0e9f176d98d70f972c; istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/.bin/codacy-coverage && rm -rf ./coverage",
     "test": "mocha --reporter spec --ui bdd --colors --check-leaks  test.js",
-    "build": "WEBPACK_ENV=build webpack",
+    "build": "WEBPACK_ENV=build webpack;webpack --config webpack.browser.js",
     "dev": "WEBPACK_ENV=dev webpack --progress --colors --watch"
   },
   "homepage": "https://github.com/fingerpich/jalali-moment",

@@ -68,9 +68,12 @@ import * as moment from 'jalali-moment';
 let todayJalali = moment().format('jYYYY/jM/jD');
 ```
 
-### Browser(es5)
+### ES5
+
 ```HTML
-<script src="bower_components/jalali-moment/dist/jalali-moment.js"></script>
+<!--<script src="bower_components/jalali-moment/dist/jalali-moment.browser.js"></script>-->
+<!--<script src="node_modules/jalali-moment/dist/jalali-moment.browser.js"></script>-->
+<script src="thisRepository/jalali-moment/dist/jalali-moment.browser.js"></script>
 <script>
   moment().format('jYYYY/jM/jD')
 </script>
@@ -78,13 +81,14 @@ let todayJalali = moment().format('jYYYY/jM/jD');
 
 ### Plunker
 ```HTML
-<script src='https://unpkg.com/jalali-moment/dist/jalali-moment.js'></script>
+<script src='https://unpkg.com/jalali-moment/dist/jalali-moment.browser.js'></script>
 <script>
   moment().format('jYYYY/jM/jD')
 </script>
 ```
-[for example](https://embed.plnkr.co/Gggh1u/)
 
+### Plunker and Typescript
+You could use systemjs to import this library into your project like [this](https://embed.plnkr.co/Gggh1u/)
 
 ## API
 
