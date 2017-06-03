@@ -123,7 +123,6 @@ moment.loadPersian()
 ### jalali-angular-datepicker ( angular2 or more)
 
 A highly configurable date picker built for Angular 2 applications using `jalali-moment` is [fingerpich/jalali-angular-datepicker](https://github.com/fingerpich/jalali-angular-datepicker) created by [@Fingerpich](https://github.com/fingerpich).
-In this I needed a plugin on moment.js to have Jalali date so at first I had been using [moment-jalaali](https://github.com/jalaali/moment-jalaali) but I can't so I forked it and add some new feature to it.
 
 ## License
 
