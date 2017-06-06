@@ -7,6 +7,7 @@ A Jalali (Jalali, Persian, Khorshidi, Shamsi) calendar system plugin for moment.
 [![NPM version][npm-version-image]][npm-url] 
 [![Package Quality][packageQuality-image]][packageQuality-url]
 [![dependencies Quality][dependencies-quality]][dependencies-quality-url]
+[![dev dependencies Quality][dev-dependencies-quality]][dev-dependencies-quality-url]
 [![Codacy Badge][codacy-quality]][codacy-quality-url]
 [![Codacy Badge][codacy-coverage]][codacy-coverage-url]
 
@@ -123,7 +124,6 @@ moment.loadPersian()
 ### jalali-angular-datepicker ( angular2 or more)
 
 A highly configurable date picker built for Angular 2 applications using `jalali-moment` is [fingerpich/jalali-angular-datepicker](https://github.com/fingerpich/jalali-angular-datepicker) created by [@Fingerpich](https://github.com/fingerpich).
-In this I needed a plugin on moment.js to have Jalali date so at first I had been using [moment-jalaali](https://github.com/jalaali/moment-jalaali) but I can't so I forked it and add some new feature to it.
 
 ## License
 
@@ -142,7 +142,10 @@ MIT
 [packageQuality-url]: http://packagequality.com/#?package=jalali-moment
 
 [dependencies-quality]: https://david-dm.org/fingerpich/jalali-moment.svg
-[dependencies-quality-url]: https://github.com/fingerpich/jalali-moment
+[dependencies-quality-url]: https://david-dm.org/fingerpich/jalali-moment
+
+[dev-dependencies-quality]: https://david-dm.org/fingerpich/jalali-moment/dev-status.svg
+[dev-dependencies-quality-url]: https://david-dm.org/fingerpich/jalali-moment#info=devDependencies
 
 [codacy-quality]:https://api.codacy.com/project/badge/Grade/1aa5b7aadfc24238bdf825d58cb2cba1
 [codacy-quality-url]:https://www.codacy.com/app/zarei-bs/jalali-moment?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=fingerpich/jalali-moment&amp;utm_campaign=Badge_Grade
