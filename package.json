@@ -46,7 +46,6 @@
     "webpack": "^2.6.1"
   },
   "dependencies": {
-    "jalaali-js": "^0.2.0",
     "moment": "^2.18.1"
   },
   "typings": "./jalali-moment.d.ts"
