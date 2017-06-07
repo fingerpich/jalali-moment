@@ -665,6 +665,7 @@ declare namespace moment {
   export function jDaysInMonth(year:number, month:number) :Moment;
   export function jIsLeapYear(): boolean;
   export function loadPersian(): void;
+  export function unloadPersian(): void;
   export var jConvert:any;
 
   export function weekdays(): string[];

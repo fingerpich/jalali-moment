@@ -604,8 +604,19 @@ jMoment.fn.format = function (format) {
         }
         format = formatFunctions[format](this);
     }
-    return moment.fn.format.call(this, format);
+    var formatted = moment.fn.format.call(this, format);
+    if (moment.isPersian) {
+        formatted = formatted.replace(/\d/g, convertToPerianNumber);
+    }
+    return formatted;
 };
+function convertToPerianNumber(s) {
+    var map =[
+            "&\#1776;","&\#1777;","&\#1778;","&\#1779;","&\#1780;",
+            "&\#1781;","&\#1782;","&\#1783;","&\#1784;","&\#1785;"
+        ];
+    return map[parseInt(s)];
+}
 
 jMoment.fn.jYear = function (input) {
     var lastDay
@@ -782,7 +793,16 @@ jMoment.jDaysInMonth = function (year, month) {
 
 jMoment.jIsLeapYear = isLeapJalaliYear;
 
-jMoment.loadPersian = function () {
+jMoment.unloadPersian = function () {
+    moment.isPersian = false;
+    moment.locale(moment.prevLocale);
+};
+
+jMoment.loadPersian = function (makeNumberPersian) {
+    if (moment.locale()!=="fa") {
+        moment.prevLocale = moment.locale();
+    }
+    moment.isPersian = makeNumberPersian;
     moment.locale("fa", {
             months: ("ژانویه_فوریه_مارس_آوریل_مه_ژوئن_ژوئیه_اوت_سپتامبر_اکتبر_نوامبر_دسامبر").split("_")
             , monthsShort: ("ژانویه_فوریه_مارس_آوریل_مه_ژوئن_ژوئیه_اوت_سپتامبر_اکتبر_نوامبر_دسامبر").split("_")

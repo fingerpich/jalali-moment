@@ -113,10 +113,17 @@ moment('2013-8-25 16:40:00', 'YYYY-M-D HH:mm:ss').endOf('jMonth').format('jYYYY/
 moment('1981 5 17', 'YYYY jM D').format('YYYY/MM/DD'); // 1981/07/17
 ```
 
+#### Load Persian
 To add Persian language, use loadPersian method:
 
 ```js
-moment.loadPersian()
+moment().format('jYYYY/jMMMM/jD'); // 1367/Bahman/4
+moment.loadPersian();
+moment().format('jYYYY/jMMMM/jD'); // 1367/بهمن/4
+moment.loadPersian(true);
+moment().format('jYYYY/jMMMM/jD'); // ۱۳۶۷/بهمن/۴
+moment.unloadPersian();
+moment().format('jYYYY/jMMMM/jD'); // 1367/Bahman/4
 ```
 
 ## Related Projects

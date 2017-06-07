@@ -5,7 +5,15 @@
     <title>Title</title>
     <script src="dist/jalali-moment.browser.js"></script>
 </head>
-<body>
-    <script>document.write(moment().format('jYYYY/jM/jD'));</script>
+<body dir="rtl">
+    <script>
+//        moment.loadPersian();
+//        document.write(moment('1367/11/4', 'jYYYY/jM/jD').format('jYYYY/jMMMM/jD'));
+        moment.loadPersian(true);
+        document.write(moment('1367/11/4', 'jYYYY/jM/jD').format('jYYYY/jMMMM/jD'));
+//        moment.unloadPersian();
+//        document.write(moment('1367/11/4', 'jYYYY/jM/jD').format('jYYYY/jMMMM/jD'));
+
+    </script>
 </body>
 </html>

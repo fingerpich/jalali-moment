@@ -803,16 +803,14 @@ describe("moment", function() {
 
   describe(".loadPersian", function() {
     it("should load Persian lang", function() {
-      var ol = moment.locale()
-        , m;
       moment.loadPersian();
-      m = moment("1981-08-17");
+      var m = moment("1981-08-17");
       m.format("D MMMM YYYY").should.be.equal("17 اوت 1981");
       m.format("jD jMMMM jYYYY").should.be.equal("26 مرداد 1360");
       m.calendar().should.be.equal("1360/05/26");
       m.format("LLLL").should.be.equal("دوشنبه، 26 مرداد 1360 00:00");
       m.format("llll").should.be.equal("دوشنبه، 26 مرد 1360 00:00");
-      moment.locale(ol);
+      moment.unloadPersian();
     });
   });
 
