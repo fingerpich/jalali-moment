@@ -9,7 +9,7 @@ var moment = require("moment");
 
 var formattingTokens = /(\[[^\[]*\])|(\\)?j(Mo|MM?M?M?|Do|DDDo|DD?D?D?|w[o|w]?|YYYYY|YYYY|YY|gg(ggg?)?|)|(\\)?(Mo|MM?M?M?|Do|DDDo|DD?D?D?|ddd?d?|do?|w[o|w]?|W[o|W]?|YYYYY|YYYY|YY|gg(ggg?)?|GG(GGG?)?|e|E|a|A|hh?|HH?|mm?|ss?|SS?S?|X|zz?|ZZ?|.)/g
     , localFormattingTokens = /(\[[^\[]*\])|(\\)?(LT|LL?L?L?|l{1,4})/g
-
+    , persianMap ="۱۲۳۴۵۶۷۸۹۰".split("")
     , parseTokenOneOrTwoDigits = /\d\d?/
     , parseTokenOneToThreeDigits = /\d{1,3}/
     , parseTokenThreeDigits = /\d{3}/
@@ -610,12 +610,9 @@ jMoment.fn.format = function (format) {
     }
     return formatted;
 };
+
 function convertToPerianNumber(s) {
-    var map =[
-            "&\#1776;","&\#1777;","&\#1778;","&\#1779;","&\#1780;",
-            "&\#1781;","&\#1782;","&\#1783;","&\#1784;","&\#1785;"
-        ];
-    return map[parseInt(s)];
+    return persianMap[parseInt(s)];
 }
 
 jMoment.fn.jYear = function (input) {
