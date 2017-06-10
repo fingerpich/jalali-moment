@@ -123,7 +123,7 @@ declare namespace moment {
     weekdaysMin?: string[] | StandaloneFormatSpec | WeekdaySimpleFn;
 
     meridiemParse?: RegExp;
-    meridiem?: (hour: number, minute:number, isLower: boolean) => string;
+    meridiem?: (hour: number, minute: number, isLower: boolean) => string;
 
     isPM?: (input: string) => boolean;
 
@@ -655,18 +655,18 @@ declare namespace moment {
   export function monthsShort(format: string): string[];
   export function monthsShort(format: string, index: number): string;
 
-  export function jWeekOfYear(mom:Moment, firstDayOfWeek:number, firstDayOfWeekOfYear:number) :Moment;
-  export function jYear(input:number) :Moment;
-  export function jMonth(input:number) :Moment;
-  export function jDate(input:number) :Moment;
-  export function jDayOfYear(input:number) :Moment;
-  export function jWeek(input:number) :Moment;
-  export function jWeekYear(input:number) :Moment;
-  export function jDaysInMonth(year:number, month:number) :Moment;
+  export function jWeekOfYear(mom: Moment, firstDayOfWeek: number, firstDayOfWeekOfYear: number): Moment;
+  export function jYear(input: number): Moment;
+  export function jMonth(input: number): Moment;
+  export function jDate(input: number): Moment;
+  export function jDayOfYear(input: number): Moment;
+  export function jWeek(input: number): Moment;
+  export function jWeekYear(input: number): Moment;
+  export function jDaysInMonth(year: number, month: number): Moment;
   export function jIsLeapYear(): boolean;
-  export function loadPersian(): void;
+  export function loadPersian(convertNumbersToPersian: boolean): void;
   export function unloadPersian(): void;
-  export var jConvert:any;
+  export var jConvert: any;
 
   export function weekdays(): string[];
   export function weekdays(index: number): string;
