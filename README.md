@@ -53,14 +53,14 @@ add a jalali pipe
 })
 export class JalaliPipe implements PipeTransform {
   transform(value: any, args?: any): any {
-    let MomentDate=moment(value);
+    let MomentDate = moment(value);
     return MomentDate.format("jYYYY/jM/jD");
   }
 }
 ```
 and use it in component template
 ```HTML
- <div>loadedData.date|jalali</div>
+ <div>{{ loadedData.date | jalali }}</div>
 ```
 
 ### Typescript
@@ -76,7 +76,7 @@ let todayJalali = moment().format('jYYYY/jM/jD');
 <!--<script src="node_modules/jalali-moment/dist/jalali-moment.browser.js"></script>-->
 <script src="thisRepository/jalali-moment/dist/jalali-moment.browser.js"></script>
 <script>
-  moment().format('jYYYY/jM/jD')
+  moment().format('jYYYY/jM/jD');
 </script>
 ```
 
@@ -84,7 +84,7 @@ let todayJalali = moment().format('jYYYY/jM/jD');
 ```HTML
 <script src='https://unpkg.com/jalali-moment/dist/jalali-moment.browser.js'></script>
 <script>
-  moment().format('jYYYY/jM/jD')
+  moment().format('jYYYY/jM/jD');
 </script>
 ```
 
@@ -97,20 +97,24 @@ This plugin tries to mimic `momentjs` api. Basically, when you want to format or
 
 ```js
 const m = moment('1367/11/4', 'jYYYY/jM/jD');
-m.format('jYYYY/jM/jD [is] YYYY/M/D'); //1367/11/4 is 1989/1/24
-m.jYear(); //1367
-m.jMonth(); //10
-m.jDate(); //4
-m.jDayOfYear(); //310
-m.jWeek(); //45
-m.jWeekYear(); //1367
-moment.jIsLeapYear(m.jYear()); //false
+m.format('jYYYY/jM/jD [is] YYYY/M/D'); // 1367/11/4 is 1989/1/24
+m.jYear(); // 1367
+m.jMonth(); // 10
+m.jDate(); // 4
+m.jDayOfYear(); // 310
+m.jWeek(); // 45
+m.jWeekYear(); // 1367
+moment.jIsLeapYear(m.jYear()); // false
 
-moment('1392/6/3 16:40', 'jYYYY/jM/jD HH:mm').format('YYYY-M-D HH:mm:ss'); // 2013-8-25 16:40:00
+moment('1392/6/3 16:40', 'jYYYY/jM/jD HH:mm')
+    .format('YYYY-M-D HH:mm:ss'); // 2013-8-25 16:40:00
 
-moment('2013-8-25 16:40:00', 'YYYY-M-D HH:mm:ss').endOf('jMonth').format('jYYYY/jM/jD HH:mm:ss'); // 1392/6/31 23:59:59
+moment('2013-8-25 16:40:00', 'YYYY-M-D HH:mm:ss')
+    .endOf('jMonth')
+    .format('jYYYY/jM/jD HH:mm:ss'); // 1392/6/31 23:59:59
 
-moment('1981 5 17', 'YYYY jM D').format('YYYY/MM/DD'); // 1981/07/17
+moment('1981 5 17', 'YYYY jM D')
+    .format('YYYY/MM/DD'); // 1981/07/17
 ```
 
 #### Load Persian
