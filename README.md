@@ -98,13 +98,16 @@ This plugin tries to mimic `momentjs` api. Basically, when you want to format or
 ```js
 const m = moment('1367/11/4', 'jYYYY/jM/jD');
 m.format('jYYYY/jM/jD [is] YYYY/M/D'); // 1367/11/4 is 1989/1/24
-m.jYear(); // 1367
-m.jMonth(); // 10
-m.jDate(); // 4
 m.jDayOfYear(); // 310
 m.jWeek(); // 45
 m.jWeekYear(); // 1367
 moment.jIsLeapYear(m.jYear()); // false
+m.jYear(1368); // set jalali year
+m.jMonth(); // 10
+// jMonth Accepts numbers from 0 to 11. If the range is exceeded, it will bubble up to the year.
+m.jMonth(3); // set a jalali month
+m.jDate(10); // set a date
+m.format("jYYYY/jMM/jD"); // 1368/4/10
 
 moment('1392/6/3 16:40', 'jYYYY/jM/jD HH:mm')
     .format('YYYY-M-D HH:mm:ss'); // 2013-8-25 16:40:00
