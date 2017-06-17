@@ -1,6 +1,6 @@
 {
   "name": "jalali-moment",
-  "version": "1.2.4",
+  "version": "1.2.5",
   "description": "Jalali (Persian, Khorshidi, Shamsi) calendar system to use in javascript or typescript.",
   "author": {
     "name": "Mojtaba Zarei (Fingerpich)",
