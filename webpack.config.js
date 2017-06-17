@@ -13,6 +13,7 @@ module.exports = {
         // the type of the exported library
     },
     plugins: [
+        // new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /fa/),
         new UglifyJSPlugin()
     ]
 }
