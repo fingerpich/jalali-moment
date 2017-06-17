@@ -93,10 +93,10 @@ You could use systemjs to import this library into your project like [this](http
 
 ## API
 
-This plugin tries to mimic `momentjs` api. Basically, when you want to format or parse a string, just add a `j` to the format token like 'jYYYY' or 'jM'. For example:
+This plugin tries to mimic [moment.js](https://momentjs.com/) api. Basically, when you want to format or parse a string, just add a `j` to the format token like 'jYYYY' or 'jM'. For example:
 
 ```js
-const m = moment('1367/11/4', 'jYYYY/jM/jD');
+m = moment('1367/11/4', 'jYYYY/jM/jD');
 m.format('jYYYY/jM/jD [is] YYYY/M/D'); // 1367/11/4 is 1989/1/24
 m.jDayOfYear(); // 310
 m.jWeek(); // 45
@@ -108,6 +108,10 @@ m.jMonth(); // 10
 m.jMonth(3); // set a jalali month
 m.jDate(10); // set a date
 m.format("jYYYY/jMM/jD"); // 1368/4/10
+m.subtract(1, "jyear"); // add a Jalali Year
+m.format("jYYYY/jMM/jD"); // 1367/4/10
+m.add(2, "jmonth"); // add Jalali Month
+m.format("jYYYY/jMM/jD"); // 1367/6/10
 
 moment('1392/6/3 16:40', 'jYYYY/jM/jD HH:mm')
     .format('YYYY-M-D HH:mm:ss'); // 2013-8-25 16:40:00
@@ -119,6 +123,8 @@ moment('2013-8-25 16:40:00', 'YYYY-M-D HH:mm:ss')
 moment('1981 5 17', 'YYYY jM D')
     .format('YYYY/MM/DD'); // 1981/07/17
 ```
+
+for more information about api you could read [moment.js](https://momentjs.com/docs/).
 
 #### Load Persian
 To add Persian language, use loadPersian method:
