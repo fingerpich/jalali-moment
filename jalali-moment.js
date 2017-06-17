@@ -605,7 +605,7 @@ jMoment.fn.format = function (format) {
         format = formatFunctions[format](this);
     }
     var formatted = moment.fn.format.call(this, format);
-    if (moment.isPersian) {
+    if (moment.usePersianDigits) {
         formatted = formatted.replace(/\d/g, convertToPerianNumber);
     }
     return formatted;
@@ -791,15 +791,15 @@ jMoment.jDaysInMonth = function (year, month) {
 jMoment.jIsLeapYear = isLeapJalaliYear;
 
 jMoment.unloadPersian = function () {
-    moment.isPersian = false;
+    moment.usePersianDigits = false;
     moment.locale(moment.prevLocale);
 };
 
-jMoment.loadPersian = function (makeNumberPersian) {
+jMoment.loadPersian = function (usePersianDigits) {
     if (moment.locale()!=="fa") {
         moment.prevLocale = moment.locale();
     }
-    moment.isPersian = makeNumberPersian;
+    moment.usePersianDigits = usePersianDigits;
     moment.locale("fa", {
             months: ("ژانویه_فوریه_مارس_آوریل_مه_ژوئن_ژوئیه_اوت_سپتامبر_اکتبر_نوامبر_دسامبر").split("_")
             , monthsShort: ("ژانویه_فوریه_مارس_آوریل_مه_ژوئن_ژوئیه_اوت_سپتامبر_اکتبر_نوامبر_دسامبر").split("_")
