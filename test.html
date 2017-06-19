@@ -10,7 +10,8 @@
 //        moment.loadPersian();
 //        document.write(moment('1367/11/4', 'jYYYY/jM/jD').format('jYYYY/jMMMM/jD'));
         moment.loadPersian(true);
-        document.write(moment('1367/11/4', 'jYYYY/jM/jD').format('jYYYY/jMMMM/jD'));
+        moment.justUseJalaliMethod();
+        document.write(moment('1367-11-04').format('jYYYY/jMMMM/jD'));
 //        moment.unloadPersian();
 //        document.write(moment('1367/11/4', 'jYYYY/jM/jD').format('jYYYY/jMMMM/jD'));
 

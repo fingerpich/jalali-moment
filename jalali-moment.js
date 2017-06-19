@@ -131,32 +131,27 @@ function isArray(input) {
 //   return diffs + lengthDiff
 // }
 
-function replaceJalaliFormat(units){
-    if(units.indexOf('YY'))
-        units = units.replace('YY','jYY');
-
-    if(units.indexOf('M'))
-        units = units.replace('M','jM');
-
-    if(units.indexOf('D'))
-        units = units.replace('D','jD');
-
-    if(units.indexOf('g'))
-        units = units.replace('g','jg');
-    
-    return units
+function replaceJalaliFormat(units) {
+    for (var i = 0; i < units.length; i++) {
+        if(!i || (units[i-1] !== "j" && units[i-1] !== units[i])) {
+            if (units[i] === "Y" || units[i] === "M" || units[i] === "D" || units[i] === "g") {
+                units = units.slice(0, i) + "j" + units.slice(i);
+            }
+        }
+    }
+    return units;
 }
-function toJalaliFormat(units){
-    switch(units){
-        case 'year':return 'jYear';
-        case 'month':return 'jMonth';
-        case 'months':return 'jMonths';
-        case 'monthName':return 'jMonthsShort';
-        case 'monthsShort':return 'jMonthsShort';
+function toJalaliFormat(units) {
+    switch (units) {
+        case "year" : return "jYear";
+        case "month" : return "jMonth";
+        case "months" : return "jMonths";
+        case "monthName" : return "jMonthsShort";
+        case "monthsShort" : return "jMonthsShort";
     }
 }
 function normalizeUnits(units) {
-    if(this.jalaliFlag){
+    if(moment.justUseJalali){
         units = toJalaliFormat(units);
     }
     if (units) {
@@ -544,6 +539,32 @@ function makeMoment(input, format, lang, strict, utc) {
         lang = undefined;
     }
 
+    if(!format && moment.justUseJalali) {
+        if(/\d{4}\-\d{2}\-\d{2}/.test(input)) {
+            format = "jYYYY-jMM-jDD";
+        } else if (/\d{4}\-\d{2}\-\d{1}/.test(input)) {
+            format = "jYYYY-jMM-jD";
+        } else if (/\d{4}\-\d{1}\-\d{1}/.test(input)) {
+            format = "jYYYY-jM-jD";
+        } else if (/\d{4}\-\d{1}\-\d{2}/.test(input)) {
+            format = "jYYYY-jM-jDD";
+        } else if (/\d{4}\-W\d{2}\-\d{2}/.test(input)) {
+            format = "jYYYY-jW-jDD";
+        } else if (/\d{4}\-\d{3}/.test(input)) {
+            format = "jYYYY-jDDD";
+        } else if (/\d{8}/.test(input)) {
+            format = "jYYYYjMMjDD";
+        } else if (/\d{4}W\d{2}\d{1}/.test(input)) {
+            format = "jYYYYjWWjD";
+        } else if (/\d{4}W\d{2}/.test(input)) {
+            format = "jYYYYjWW";
+        } else if (/\d{4}\d{3}/.test(input)) {
+            format = "jYYYYjDDD";
+        }
+    }
+    if (format && moment.justUseJalali){
+        format = replaceJalaliFormat(format);
+    }
     if (format && typeof format === "string"){
         format = fixFormat(format, moment);
     }
@@ -624,7 +645,7 @@ function fixFormat(format, _moment) {
 
 jMoment.fn.format = function (format) {
     if (format) {
-        if(this.jalaliFlag) {
+        if(moment.justUseJalali) {
             format = replaceJalaliFormat(format);
         }
         format = fixFormat(format, this);
@@ -642,8 +663,8 @@ jMoment.fn.format = function (format) {
 };
 
 jMoment.fn.year = function (input) {
-    if (this.jalaliFlag) jMoment.fn.jYear.call(this,input);
-    else moment.fn.year.call(this, input);
+    if (input && moment.justUseJalali) return jMoment.fn.jYear.call(this,input);
+    else return moment.fn.year.call(this, input);
 };
 
 function convertToPerianNumber(s) {
@@ -667,9 +688,10 @@ jMoment.fn.jYear = function (input) {
 };
 
 jMoment.fn.month = function (input) {
-    if (this.jalaliFlag) jMoment.fn.jMonth.call(this,input);
-    else moment.fn.month.call(this, input);
-}
+    if (input && moment.justUseJalali) return jMoment.fn.jMonth.call(this,input);
+    else return moment.fn.month.call(this, input);
+};
+
 jMoment.fn.jMonth = function (input) {
     var lastDay
         , j
@@ -699,9 +721,10 @@ jMoment.fn.jMonth = function (input) {
 };
 
 jMoment.fn.date = function (input) {
-    if (this.jalaliFlag) jMoment.fn.jDate.call(this,input);
-    else moment.fn.date.call(this, input);
-}
+    if (input && moment.justUseJalali) return jMoment.fn.jDate.call(this,input);
+    else return moment.fn.date.call(this, input);
+};
+
 jMoment.fn.jDate = function (input) {
     var j
         , g;
@@ -717,27 +740,29 @@ jMoment.fn.jDate = function (input) {
 };
 
 jMoment.fn.dayOfYear = function (input) {
-    if (this.jalaliFlag) jMoment.fn.jDayOfYear.call(this,input);
-    else moment.fn.dayOfYear.call(this, input);
-}
+    if (input && moment.justUseJalali) return jMoment.fn.jDayOfYear.call(this,input);
+    else return moment.fn.dayOfYear.call(this, input);
+};
+
 jMoment.fn.jDayOfYear = function (input) {
     var dayOfYear = Math.round((jMoment(this).startOf("day") - jMoment(this).startOf("jYear")) / 864e5) + 1;
     return isNull(input) ? dayOfYear : this.add(input - dayOfYear, "d");
 };
 
 jMoment.fn.week = function (input) {
-    if (this.jalaliFlag) jMoment.fn.jWeek.call(this,input);
-    else moment.fn.week.call(this, input);
-}
+    if (input && moment.justUseJalali) return jMoment.fn.jWeek.call(this,input);
+    else return moment.fn.week.call(this, input);
+};
+
 jMoment.fn.jWeek = function (input) {
     var week = jWeekOfYear(this, this.localeData()._week.dow, this.localeData()._week.doy).week;
     return isNull(input) ? week : this.add((input - week) * 7, "d");
 };
 
 jMoment.fn.weekYear = function (input) {
-    if (this.jalaliFlag) jMoment.fn.jWeekYear.call(this,input);
-    else moment.fn.weekYear.call(this, input);
-}
+    if (input && moment.justUseJalali) return jMoment.fn.jWeekYear.call(this,input);
+    else return moment.fn.weekYear.call(this, input);
+};
 
 jMoment.fn.jWeekYear = function (input) {
     var year = jWeekOfYear(this, this.localeData()._week.dow, this.localeData()._week.doy).year;
@@ -817,9 +842,9 @@ jMoment.fn.clone = function () {
     return jMoment(this);
 };
 
-jMoment.fn.justUseJalaliMethod = function(){
-    this.jalaliFlag = true;
-}
+jMoment.justUseJalaliMethod = function (usePersianDigits) {
+    moment.justUseJalali = true;
+};
 
 jMoment.fn.jYears = jMoment.fn.jYear;
 jMoment.fn.jMonths = jMoment.fn.jMonth;
