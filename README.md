@@ -133,10 +133,27 @@ To add Persian language, use loadPersian method:
 moment().format('jYYYY/jMMMM/jD'); // 1367/Bahman/4
 moment.loadPersian();
 moment().format('jYYYY/jMMMM/jD'); // 1367/بهمن/4
-moment.loadPersian(true);
+moment.loadPersian(true); //use persian digits
 moment().format('jYYYY/jMMMM/jD'); // ۱۳۶۷/بهمن/۴
 moment.unloadPersian();
 moment().format('jYYYY/jMMMM/jD'); // 1367/Bahman/4
+```
+
+## Just use jalali calendar system
+We could use both calendar system concurrently but 
+sometimes we just need jalali system or we wouldn't like to change all moment.js methods and formats to work in jalali system.
+for example when you want to edit a datepicker (which is written by using moment.js) to work in jalali calendar system.  
+
+```js
+    moment().format('YYYY/MMMM/D'); // 1989/January/24
+    moment.useJalaliSystemPrimarily();
+    
+    moment().format('YYYY/MMMM/D'); // 1367/Bahman/4
+    moment().subtract(1,'year').format('YYYY/MMMM/D'); // 1366/bahman/4
+    moment().subtract(1,'month').format('YYYY/MMMM/D'); // 1367/dey/4
+    
+    moment.useJalaliSystemSecondary();
+    moment().format('YYYY/MMMM/D'); // 1989/January/24
 ```
 
 ## Related Projects

@@ -16465,8 +16465,11 @@ jMoment.fn.clone = function () {
     return jMoment(this);
 };
 
-jMoment.justUseJalaliMethod = function (usePersianDigits) {
+jMoment.useJalaliSystemPrimarily = function (calendarSystem) {
     moment.justUseJalali = true;
+};
+jMoment.useJalaliSystemSecondary = function (usePersianDigits) {
+    moment.justUseJalali = false;
 };
 
 jMoment.fn.jYears = jMoment.fn.jYear;

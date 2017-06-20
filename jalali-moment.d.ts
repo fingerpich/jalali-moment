@@ -665,6 +665,8 @@ declare namespace moment {
   export function jDaysInMonth(year: number, month: number): Moment;
   export function jIsLeapYear(): boolean;
   export function loadPersian(usePersianDigits?: boolean): void;
+  export function useJalaliSystemPrimarily(): void;
+  export function useJalaliSystemSecondary(): void;
   export function unloadPersian(): void;
   export var jConvert: any;
 
