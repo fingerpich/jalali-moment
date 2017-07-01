@@ -20,8 +20,8 @@ var formattingTokens = /(\[[^\[]*\])|(\\)?j(Mo|MM?M?M?|Do|DDDo|DD?D?D?|w[o|w]?|Y
     , parseTokenT = /T/i
     , parseTokenTimestampMs = /[\+\-]?\d+(\.\d{1,3})?/
 
-    , unitAliases =
-    { jm: "jmonth"
+    , unitAliases = {
+        jm: "jmonth"
         , jmonths: "jmonth"
         , jy: "jyear"
         , jyears: "jyear"
@@ -30,46 +30,46 @@ var formattingTokens = /(\[[^\[]*\])|(\\)?j(Mo|MM?M?M?|Do|DDDo|DD?D?D?|w[o|w]?|Y
     , formatFunctions = {}
 
     , ordinalizeTokens = "DDD w M D".split(" ")
-    , paddedTokens = "M D w".split(" ")
+    , paddedTokens = "M D w".split(" ");
 
-    , formatTokenFunctions =
-    { jM: function () {
+var formatTokenFunctions = {
+    jM: function () {
         return this.jMonth() + 1;
-    }
-        , jMMM: function (format) {
+    },
+    jMMM: function (format) {
         return this.localeData().jMonthsShort(this, format);
-    }
-        , jMMMM: function (format) {
+    },
+    jMMMM: function (format) {
         return this.localeData().jMonths(this, format);
-    }
-        , jD: function () {
+    },
+    jD: function () {
         return this.jDate();
-    }
-        , jDDD: function () {
+    },
+    jDDD: function () {
         return this.jDayOfYear();
-    }
-        , jw: function () {
+    },
+    jw: function () {
         return this.jWeek();
-    }
-        , jYY: function () {
+    },
+    jYY: function () {
         return leftZeroFill(this.jYear() % 100, 2);
-    }
-        , jYYYY: function () {
+    },
+    jYYYY: function () {
         return leftZeroFill(this.jYear(), 4);
-    }
-        , jYYYYY: function () {
+    },
+    jYYYYY: function () {
         return leftZeroFill(this.jYear(), 5);
-    }
-        , jgg: function () {
+    },
+    jgg: function () {
         return leftZeroFill(this.jWeekYear() % 100, 2);
-    }
-        , jgggg: function () {
+    },
+    jgggg: function () {
         return this.jWeekYear();
-    }
-        , jggggg: function () {
+    },
+    jggggg: function () {
         return leftZeroFill(this.jWeekYear(), 5);
     }
-    };
+};
 
 function padToken(func, count) {
     return function (a) {
@@ -108,6 +108,12 @@ function extend(a, b) {
     return a;
 }
 
+/**
+ * return a string which length is as much as you need
+ * @param {number} number input
+ * @param {number} targetLength expected length
+ * @example leftZeroFill(5,2) => 05
+ **/
 function leftZeroFill(number, targetLength) {
     var output = number + "";
     while (output.length < targetLength){
@@ -116,6 +122,10 @@ function leftZeroFill(number, targetLength) {
     return output;
 }
 
+/**
+ * determine object is array or not
+ * @param input
+ **/
 function isArray(input) {
     return Object.prototype.toString.call(input) === "[object Array]";
 }
@@ -131,17 +141,28 @@ function isArray(input) {
 //   return diffs + lengthDiff
 // }
 
-function replaceJalaliFormat(units) {
-    for (var i = 0; i < units.length; i++) {
-        if(!i || (units[i-1] !== "j" && units[i-1] !== units[i])) {
-            if (units[i] === "Y" || units[i] === "M" || units[i] === "D" || units[i] === "g") {
-                units = units.slice(0, i) + "j" + units.slice(i);
+/**
+ * Changes any moment Gregorian format to Jalali system format
+ * @param {string} format
+ * @example toJalaliFormat("YYYY/MMM/DD") => "jYYYY/jMMM/jDD"
+ **/
+function toJalaliFormat(format) {
+    for (var i = 0; i < format.length; i++) {
+        if(!i || (format[i-1] !== "j" && format[i-1] !== format[i])) {
+            if (format[i] === "Y" || format[i] === "M" || format[i] === "D" || format[i] === "g") {
+                format = format.slice(0, i) + "j" + format.slice(i);
             }
         }
     }
-    return units;
+    return format;
 }
-function toJalaliFormat(units) {
+
+/**
+ * Changes any moment Gregorian units to Jalali system units
+ * @param {string} units
+ * @example toJalaliUnit("YYYY/MMM/DD") => "jYYYY/jMMM/jDD"
+ **/
+function toJalaliUnit(units) {
     switch (units) {
         case "year" : return "jYear";
         case "month" : return "jMonth";
@@ -150,9 +171,14 @@ function toJalaliFormat(units) {
         case "monthsShort" : return "jMonthsShort";
     }
 }
+
+/**
+ * normalize units to be comparable
+ * @param {string} units
+ **/
 function normalizeUnits(units) {
     if(moment.justUseJalali){
-        units = toJalaliFormat(units);
+        units = toJalaliUnit(units);
     }
     if (units) {
         var lowered = units.toLowerCase();
@@ -563,7 +589,7 @@ function makeMoment(input, format, lang, strict, utc) {
         }
     }
     if (format && moment.justUseJalali){
-        format = replaceJalaliFormat(format);
+        format = toJalaliFormat(format);
     }
     if (format && typeof format === "string"){
         format = fixFormat(format, moment);
@@ -646,7 +672,7 @@ function fixFormat(format, _moment) {
 jMoment.fn.format = function (format) {
     if (format) {
         if(moment.justUseJalali) {
-            format = replaceJalaliFormat(format);
+            format = toJalaliFormat(format);
         }
         format = fixFormat(format, this);
 
