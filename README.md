@@ -1,6 +1,7 @@
 # jalali-moment
 
-A Jalali (Jalali, Persian, Khorshidi, Shamsi) calendar system plugin for moment.js. [DEMO](https://fingerpich.github.io/jalali-moment)
+It adds persian(jalali) calendar system to moment.js.
+[DEMO](https://fingerpich.github.io/jalali-moment)
 
 [![MIT License][license-image]][license-url]
 [![Build Status][travis-image]][travis-url]
@@ -13,13 +14,13 @@ A Jalali (Jalali, Persian, Khorshidi, Shamsi) calendar system plugin for moment.
 
 Jalali calendar is a solar calendar. It gains approximately 1 day on the Julian calendar every 128 years. [Read more on Wikipedia](http://en.wikipedia.org/wiki/Jalali_calendar).
 
-This plugin adds Jalali calendar support to [momentjs](http://momentjs.com) library.
+This plugin adds Jalali calendar support to [moment.js](http://momentjs.com) library.
 
 Calendar conversion is based on the [algorithm provided by Kazimierz M. Borkowski](http://www.astro.uni.torun.pl/~kb/Papers/EMP/PersianC-EMP.htm) and has a very good performance.
 
 ## Where to use it
 
-Like `momentjs`, `jalali-moment` works in browser and in Node.js.
+Like `moment.js`, `jalali-moment` works in browser and in Node.js.
 
 
 ### Install
@@ -157,6 +158,9 @@ for example when you want to edit a datepicker (which is written by using moment
 ```
 
 ## Related Projects
+
+### jalaali-moment
+A Jalaali (Jalali, Persian, Khorshidi, Shamsi) calendar system plugin for moment.js.
 
 ### jalali-angular-datepicker ( angular2 or more)
 
