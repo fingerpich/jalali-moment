@@ -1,6 +1,6 @@
 # jalali-moment
 
-It adds persian(jalali) calendar system to moment.js.
+It adds jalali (Persian, Khorshidi, Shamsi) calendar system to [moment.js](http://momentjs.com) library.
 [DEMO](https://fingerpich.github.io/jalali-moment)
 
 [![MIT License][license-image]][license-url]
@@ -12,37 +12,55 @@ It adds persian(jalali) calendar system to moment.js.
 [![Codacy Badge][codacy-quality]][codacy-quality-url]
 [![Codacy Badge][codacy-coverage]][codacy-coverage-url]
 
-Jalali calendar is a solar calendar. It gains approximately 1 day on the Julian calendar every 128 years. [Read more on Wikipedia](http://en.wikipedia.org/wiki/Jalali_calendar).
-
-This plugin adds Jalali calendar support to [moment.js](http://momentjs.com) library.
+jalali calendar is a solar calendar. It gains approximately 1 day on the Julian calendar every 128 years. [Read more on Wikipedia](http://en.wikipedia.org/wiki/Jalali_calendar).
 
 Calendar conversion is based on the [algorithm provided by Kazimierz M. Borkowski](http://www.astro.uni.torun.pl/~kb/Papers/EMP/PersianC-EMP.htm) and has a very good performance.
 
-## Where to use it
-
-Like `moment.js`, `jalali-moment` works in browser and in Node.js.
-
-
 ### Install
 
-Install via NPM
+Install via **npm**
 ```shell
 npm install jalali-moment -S
 ```
-
-Install via bower
+Install via **yarn**
+```shell
+yarn add jalali-moment
+```
+Install via **bower**
 ```shell
 bower install jalali-moment --save
 ```
 
-### Node.js
+## Using in Node.js
+
+install it via npm or yarn and following code will work
 
 ```js
 var moment = require('jalali-moment');
 moment().format('jYYYY/jM/jD');
 ```
 
-### Angular
+## Using in browser
+
+#### ES5
+
+```HTML
+<!--<script src="bower_components/jalali-moment/dist/jalali-moment.browser.js"></script>-->
+<!--<script src="node_modules/jalali-moment/dist/jalali-moment.browser.js"></script>-->
+<script src="thisRepositoryPath/dist/jalali-moment.browser.js"></script>
+<script>
+  moment().format('jYYYY/jM/jD');
+</script>
+```
+
+#### Typescript
+
+```ts
+import * as moment from 'jalali-moment';
+let todayJalali = moment().format('jYYYY/jM/jD');
+```
+
+#### Angular
 
 ```ts
 import * as moment from 'jalali-moment';
@@ -64,24 +82,10 @@ and use it in component template
  <div>{{ loadedData.date | jalali }}</div>
 ```
 
-### Typescript
-```ts
-import * as moment from 'jalali-moment';
-let todayJalali = moment().format('jYYYY/jM/jD');
-```
+## Using in Plunker
 
-### ES5
+####ES5
 
-```HTML
-<!--<script src="bower_components/jalali-moment/dist/jalali-moment.browser.js"></script>-->
-<!--<script src="node_modules/jalali-moment/dist/jalali-moment.browser.js"></script>-->
-<script src="thisRepository/jalali-moment/dist/jalali-moment.browser.js"></script>
-<script>
-  moment().format('jYYYY/jM/jD');
-</script>
-```
-
-### Plunker
 ```HTML
 <script src='https://unpkg.com/jalali-moment/dist/jalali-moment.browser.js'></script>
 <script>
@@ -89,14 +93,19 @@ let todayJalali = moment().format('jYYYY/jM/jD');
 </script>
 ```
 
-### Plunker and Typescript
+
+####Typescript or es6
+
 You could use systemjs to import this library into your project like [this](https://embed.plnkr.co/Gggh1u/)
 
-## API
+# API
 
-This plugin tries to mimic [moment.js](https://momentjs.com/) api. Basically, when you want to format or parse a string, just add a `j` to the format token like 'jYYYY' or 'jM'. For example:
+This plugin tries to mimic [moment.js](https://momentjs.com/) api.
+Basically, when you want to format or parse a string, 
+just add a `j` to the format token like 'jYYYY' or 'jM'. For example:
 
 ```js
+now = moment(); //get the current date and time,
 m = moment('1367/11/4', 'jYYYY/jM/jD');
 m.format('jYYYY/jM/jD [is] YYYY/M/D'); // 1367/11/4 is 1989/1/24
 m.jDayOfYear(); // 310
@@ -104,9 +113,8 @@ m.jWeek(); // 45
 m.jWeekYear(); // 1367
 moment.jIsLeapYear(m.jYear()); // false
 m.jYear(1368); // set jalali year
-m.jMonth(); // 10
-// jMonth Accepts numbers from 0 to 11. If the range is exceeded, it will bubble up to the year.
-m.jMonth(3); // set a jalali month
+//  If the range is exceeded, it will bubble up to the year.
+m.jMonth(3); // month will be 4 and m.format("M")=='4' , jMonth Accepts numbers from 0 to 11.
 m.jDate(10); // set a date
 m.format("jYYYY/jMM/jD"); // 1368/4/10
 m.subtract(1, "jyear"); // add a Jalali Year
@@ -125,7 +133,7 @@ moment('1981 5 17', 'YYYY jM D')
     .format('YYYY/MM/DD'); // 1981/07/17
 ```
 
-for more information about api you could read [moment.js](https://momentjs.com/docs/).
+all features are documented in [here](https://momentjs.com/docs/).
 
 #### Load Persian
 To add Persian language, use loadPersian method:
@@ -140,10 +148,10 @@ moment.unloadPersian();
 moment().format('jYYYY/jMMMM/jD'); // 1367/Bahman/4
 ```
 
-## Just use jalali calendar system
-We could use both calendar system concurrently but 
-sometimes we just need jalali system or we wouldn't like to change all moment.js methods and formats to work in jalali system.
-for example when you want to edit a datepicker (which is written by using moment.js) to work in jalali calendar system.  
+## Use jalali calendar system primarily
+This plugin adds Jalali calendar system to moment.js which is using gregorian calendar system 
+so we could use both calendar system concurrently but 
+you could use Jalali calendar as default system like the following code:  
 
 ```js
     moment().format('YYYY/MMMM/D'); // 1989/January/24
@@ -157,14 +165,17 @@ for example when you want to edit a datepicker (which is written by using moment
     moment().format('YYYY/MMMM/D'); // 1989/January/24
 ```
 
+For example:
+to make a datepicker work with jalali calendar system you could use this feature.
+
 ## Related Projects
 
-### jalaali-moment
-A Jalaali (Jalali, Persian, Khorshidi, Shamsi) calendar system plugin for moment.js.
+#### jalaali-moment
+A Jalaali calendar system plugin for moment.js.
 
-### jalali-angular-datepicker ( angular2 or more)
+#### jalali-angular-datepicker ( angular2 or more)
 
-A highly configurable date picker built for Angular 2 applications using `jalali-moment` is [fingerpich/jalali-angular-datepicker](https://github.com/fingerpich/jalali-angular-datepicker) created by [@Fingerpich](https://github.com/fingerpich).
+A highly configurable date picker built for Angular 4 or Angular 2 applications using `jalali-moment` is [fingerpich/jalali-angular-datepicker](https://github.com/fingerpich/jalali-angular-datepicker) created by [@Fingerpich](https://github.com/fingerpich).
 
 ## License
 
