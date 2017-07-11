@@ -197,7 +197,7 @@ MIT
 [dependencies-quality-url]: https://david-dm.org/fingerpich/jalali-moment
 
 [dev-dependencies-quality]: https://david-dm.org/fingerpich/jalali-moment/dev-status.svg
-[dev-dependencies-quality-url]: https://david-dm.org/fingerpich/jalali-moment#info=devDependencies
+[dev-dependencies-quality-url]: https://david-dm.org/fingerpich/jalali-moment?type=dev
 
 [codacy-quality]:https://api.codacy.com/project/badge/Grade/1aa5b7aadfc24238bdf825d58cb2cba1
 [codacy-quality-url]:https://www.codacy.com/app/zarei-bs/jalali-moment?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=fingerpich/jalali-moment&amp;utm_campaign=Badge_Grade
