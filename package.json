@@ -1,6 +1,6 @@
 {
   "name": "jalali-moment",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Jalali (Persian, Khorshidi, Shamsi) calendar system to use in javascript or typescript.",
   "author": {
     "name": "Mojtaba Zarei (Fingerpich)",
@@ -46,7 +46,6 @@
     "uglifyjs-webpack-plugin": "^0.4.6",
     "webpack": "^3.0.0"
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "typings": "./jalali-moment.d.ts"
 }
