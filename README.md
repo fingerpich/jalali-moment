@@ -33,7 +33,7 @@ bower install jalali-moment --save
 
 ## Using in Node.js
 
-install it via npm or yarn and following code will work
+Install it via npm or yarn then use it as the following code
 
 ```js
 var moment = require('jalali-moment');
@@ -60,12 +60,12 @@ import * as moment from 'jalali-moment';
 let todayJalali = moment().format('jYYYY/jM/jD');
 ```
 
-#### Angular
+#### Angular 2 or 4
 
 ```ts
 import * as moment from 'jalali-moment';
 ```
-add a jalali pipe
+Add a pipe
 ```ts
 @Pipe({
   name: 'jalali'
@@ -84,7 +84,7 @@ and use it in component template
 
 ## Using in Plunker
 
-####ES5
+#### ES5
 
 ```HTML
 <script src='https://unpkg.com/jalali-moment/dist/jalali-moment.browser.js'></script>
@@ -94,7 +94,7 @@ and use it in component template
 ```
 
 
-####Typescript or es6
+#### Typescript or es6
 
 You could use systemjs to import this library into your project like [this](https://embed.plnkr.co/Gggh1u/)
 
@@ -154,15 +154,15 @@ so we could use both calendar system concurrently but
 you could use Jalali calendar as default system like the following code:  
 
 ```js
-    moment().format('YYYY/MMMM/D'); // 1989/January/24
-    moment.useJalaliSystemPrimarily();
-    
-    moment().format('YYYY/MMMM/D'); // 1367/Bahman/4
-    moment().subtract(1,'year').format('YYYY/MMMM/D'); // 1366/bahman/4
-    moment().subtract(1,'month').format('YYYY/MMMM/D'); // 1367/dey/4
-    
-    moment.useJalaliSystemSecondary();
-    moment().format('YYYY/MMMM/D'); // 1989/January/24
+moment().format('YYYY/MMMM/D'); // 1989/January/24
+moment.useJalaliSystemPrimarily();
+
+moment().format('YYYY/MMMM/D'); // 1367/Bahman/4
+moment().subtract(1,'year').format('YYYY/MMMM/D'); // 1366/bahman/4
+moment().subtract(1,'month').format('YYYY/MMMM/D'); // 1367/dey/4
+
+moment.useJalaliSystemSecondary();
+moment().format('YYYY/MMMM/D'); // 1989/January/24
 ```
 
 For example:
@@ -170,12 +170,13 @@ to make a datepicker work with jalali calendar system you could use this feature
 
 ## Related Projects
 
-#### jalaali-moment
-A Jalaali calendar system plugin for moment.js.
-
 #### jalali-angular-datepicker ( angular2 or more)
 
 A highly configurable date picker built for Angular 4 or Angular 2 applications using `jalali-moment` is [fingerpich/jalali-angular-datepicker](https://github.com/fingerpich/jalali-angular-datepicker) created by [@Fingerpich](https://github.com/fingerpich).
+
+#### jalaali-moment
+
+A Jalaali calendar system plugin for moment.js is [jalaali-moment](https://github.com/jalaali/moment-jalaali).
 
 ## License
 
