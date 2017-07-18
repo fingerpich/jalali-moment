@@ -1,6 +1,7 @@
 # jalali-moment
 
-It adds jalali (Persian, Khorshidi, Shamsi) calendar system to [moment.js](http://momentjs.com) library.
+Display, parse, manipulate and validate jalali (Persian, Khorshidi, Shamsi) or Gregorian (Miladi) dates and times and also 
+convert Jalali (Persian, Khorshidi, Shamsi) date to Gregorian (Miladi) or vice versa in javascript or typescript.
 [DEMO](https://fingerpich.github.io/jalali-moment)
 
 [![MIT License][license-image]][license-url]
@@ -12,11 +13,15 @@ It adds jalali (Persian, Khorshidi, Shamsi) calendar system to [moment.js](http:
 [![Codacy Badge][codacy-quality]][codacy-quality-url]
 [![Codacy Badge][codacy-coverage]][codacy-coverage-url]
 
-jalali calendar is a solar calendar. It gains approximately 1 day on the Julian calendar every 128 years. [Read more on Wikipedia](http://en.wikipedia.org/wiki/Jalali_calendar).
+## Introduction
+
+Jalali calendar is a solar calendar system. It gains approximately 1 day on the Julian calendar every 128 years. [Read more on Wikipedia](http://en.wikipedia.org/wiki/Jalali_calendar).
 
 Calendar conversion is based on the [algorithm provided by Kazimierz M. Borkowski](http://www.astro.uni.torun.pl/~kb/Papers/EMP/PersianC-EMP.htm) and has a very good performance.
 
-### Install
+This plugin adds jalali (Persian, Khorshidi, Shamsi) calendar system to [moment.js](http://momentjs.com) library.
+
+## Install
 
 Install via **npm**
 ```shell
@@ -98,7 +103,7 @@ and use it in component template
 
 You could use systemjs to import this library into your project like [this](https://embed.plnkr.co/Gggh1u/)
 
-# API
+## API
 
 This plugin tries to mimic [moment.js](https://momentjs.com/) api.
 Basically, when you want to format or parse a string, 
@@ -106,12 +111,38 @@ just add a `j` to the format token like 'jYYYY' or 'jM'. For example:
 
 ```js
 now = moment(); //get the current date and time,
-m = moment('1367/11/4', 'jYYYY/jM/jD');
+```
+
+#### Parse
+
+Create a instance of moment from a string.[more](https://momentjs.com/docs/#/parsing/)
+```js
+m1 = moment('1367/11/4', 'jYYYY/jM/jD');// parse a jalali (persian) date
+m2 = moment('1989/1/24', 'YYYY/M/D');// parse a gregorian (miladi) date
+```
+
+#### Display
+
+Display moment instance as a string.[more](https://momentjs.com/docs/#/displaying/)
+```js
+m.format('jYYYY/jM/jD');// 1367/11/4 
+m.format('jMM'); // 11 display jalali month
+m.format('M'); // 1 display miladi month
+m.format('MM'); // 01 display month by two digit
+m.format('MMMM'); // January
+m.format('jMMMM'); // Bahman
+m.format('jDD'); // 04 display day by two digit
 m.format('jYYYY/jM/jD [is] YYYY/M/D'); // 1367/11/4 is 1989/1/24
 m.jDayOfYear(); // 310
 m.jWeek(); // 45
 m.jWeekYear(); // 1367
 moment.jIsLeapYear(m.jYear()); // false
+```
+
+#### manipulate
+
+There are a number of methods to modify date and time.[more](https://momentjs.com/docs/#/manipulating/)
+```js
 m.jYear(1368); // set jalali year
 //  If the range is exceeded, it will bubble up to the year.
 m.jMonth(3); // month will be 4 and m.format("M")=='4' , jMonth Accepts numbers from 0 to 11.
@@ -121,21 +152,24 @@ m.subtract(1, "jyear"); // add a Jalali Year
 m.format("jYYYY/jMM/jD"); // 1367/4/10
 m.add(2, "jmonth"); // add Jalali Month
 m.format("jYYYY/jMM/jD"); // 1367/6/10
+```
 
+#### Convert jalali (Shamsi) to gregorian (miladi) calendar system 
+```js
 moment('1392/6/3 16:40', 'jYYYY/jM/jD HH:mm')
     .format('YYYY-M-D HH:mm:ss'); // 2013-8-25 16:40:00
+```
 
+#### Modify and convert gregorian (miladi) to jalali (Shamsi)
+```js
 moment('2013-8-25 16:40:00', 'YYYY-M-D HH:mm:ss')
     .endOf('jMonth')
     .format('jYYYY/jM/jD HH:mm:ss'); // 1392/6/31 23:59:59
-
-moment('1981 5 17', 'YYYY jM D')
-    .format('YYYY/MM/DD'); // 1981/07/17
 ```
 
 all features are documented in [here](https://momentjs.com/docs/).
 
-#### Load Persian
+## Load Persian
 To add Persian language, use loadPersian method:
 
 ```js
