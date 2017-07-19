@@ -1,13 +1,15 @@
 {
   "name": "jalali-moment",
   "version": "2.0.2",
-  "description": "Jalali (Persian, Khorshidi, Shamsi) calendar system to use in javascript or typescript.",
+  "description": "Display, parse, manipulate ,validate and convert jalali (Persian, Khorshidi, Shamsi) date and time",
   "author": {
     "name": "Mojtaba Zarei (Fingerpich)",
     "email": "zarei.bs@gmail.com"
   },
   "license": "MIT",
   "keywords": [
+    "manipulate",
+    "validate",
     "jalali",
     "convert",
     "miladi",

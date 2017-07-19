@@ -115,13 +115,13 @@ now = moment(); //get the current date and time,
 
 #### Parse
 
-Create a instance of moment from a string.[more](https://momentjs.com/docs/#/parsing/)
+Create a instance of moment from a jalali or miladi date and time as string.[more](https://momentjs.com/docs/#/parsing/)
 ```js
-m1 = moment('1367/11/4', 'jYYYY/jM/jD');// parse a jalali (persian) date
-m2 = moment('1989/1/24', 'YYYY/M/D');// parse a gregorian (miladi) date
+m = moment('1367/11/4', 'jYYYY/jM/jD');// parse a jalali (persian) date
+m = moment('1989/1/24', 'YYYY/M/D');// parse a gregorian (miladi) date
 ```
 
-#### Display
+#### Display jalali or miladi date
 
 Display moment instance as a string.[more](https://momentjs.com/docs/#/displaying/)
 ```js
@@ -136,10 +136,9 @@ m.format('jYYYY/jM/jD [is] YYYY/M/D'); // 1367/11/4 is 1989/1/24
 m.jDayOfYear(); // 310
 m.jWeek(); // 45
 m.jWeekYear(); // 1367
-moment.jIsLeapYear(m.jYear()); // false
 ```
 
-#### manipulate
+#### Manipulate
 
 There are a number of methods to modify date and time.[more](https://momentjs.com/docs/#/manipulating/)
 ```js
@@ -152,6 +151,17 @@ m.subtract(1, "jyear"); // add a Jalali Year
 m.format("jYYYY/jMM/jD"); // 1367/4/10
 m.add(2, "jmonth"); // add Jalali Month
 m.format("jYYYY/jMM/jD"); // 1367/6/10
+```
+
+#### Validate
+
+Check a date and time.[more](https://momentjs.com/docs/#/query/)
+```js
+m = moment('1367/11/4', 'jYYYY/jM/jD');
+m.jIsLeapYear(); // false
+m.isLeapYear(); // false
+m.isSame('1989-01-01', 'year'); // true
+m.isSame(moment('1367-01-01','jYYYY-MM-DD'), 'jyear'); // true
 ```
 
 #### Convert jalali (Shamsi) to gregorian (miladi) calendar system 
