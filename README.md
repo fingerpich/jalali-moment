@@ -151,6 +151,8 @@ m.subtract(1, "jyear"); // add a Jalali Year
 m.format("jYYYY/jMM/jD"); // 1367/4/10
 m.add(2, "jmonth"); // add Jalali Month
 m.format("jYYYY/jMM/jD"); // 1367/6/10
+m.endOf('jMonth').format("jYYYY/jMM/jD"); // 1367/6/31
+m.startOf('jYear').format("jYYYY/jMM/jD"); // 1367/1/1
 ```
 
 #### Validate
@@ -173,7 +175,6 @@ moment('1392/6/3 16:40', 'jYYYY/jM/jD HH:mm')
 #### Modify and convert gregorian (miladi) to jalali (Shamsi)
 ```js
 moment('2013-8-25 16:40:00', 'YYYY-M-D HH:mm:ss')
-    .endOf('jMonth')
     .format('jYYYY/jM/jD HH:mm:ss'); // 1392/6/31 23:59:59
 ```
 
