@@ -872,6 +872,14 @@ jMoment.fn.isBefore = function (other, units) {
     return moment.fn.isBefore.call(this, other, units);
 };
 
+jMoment.fn.isAfter = function (other, units) {
+    units = normalizeUnits(units);
+    if (units === "jyear" || units === "jmonth") {
+        return moment.fn.isAfter.call(this.clone().startOf(units), other.clone().startOf(units));
+    }
+    return moment.fn.isAfter.call(this, other, units);
+};
+
 jMoment.fn.clone = function () {
     return jMoment(this);
 };
