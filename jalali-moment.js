@@ -9,7 +9,8 @@ var moment = require("moment");
 
 var formattingTokens = /(\[[^\[]*\])|(\\)?j(Mo|MM?M?M?|Do|DDDo|DD?D?D?|w[o|w]?|YYYYY|YYYY|YY|gg(ggg?)?|)|(\\)?(Mo|MM?M?M?|Do|DDDo|DD?D?D?|ddd?d?|do?|w[o|w]?|W[o|W]?|YYYYY|YYYY|YY|gg(ggg?)?|GG(GGG?)?|e|E|a|A|hh?|HH?|mm?|ss?|SS?S?|X|zz?|ZZ?|.)/g
     , localFormattingTokens = /(\[[^\[]*\])|(\\)?(LT|LL?L?L?|l{1,4})/g
-    , persianMap ="۰۱۲۳۴۵۶۷۸۹".split("")
+    , persianDigits = "۰۱۲۳۴۵۶۷۸۹"
+    , persianMap = persianDigits.split("")
     , parseTokenOneOrTwoDigits = /\d\d?/
     , parseTokenOneToThreeDigits = /\d{1,3}/
     , parseTokenThreeDigits = /\d{3}/
@@ -558,11 +559,28 @@ function jWeekOfYear(mom, firstDayOfWeek, firstDayOfWeekOfYear) {
  Top Level Functions
  ************************************/
 
+function hasPersianDigit(input){
+    return /[\u06F0-\u06F90]+/.test(input);
+}
+function convertToEnglishNumber(input){
+    return input.replace(/[\u06F0-\u06F90]/g, function(m){
+        return persianDigits.indexOf(m);
+    });
+}
+function convertToPersianNumber(input){
+    return input.replace(/\d/g,function(m){
+        return persianMap[parseInt(m)];
+    });
+}
+
 function makeMoment(input, format, lang, strict, utc) {
     if (typeof lang === "boolean") {
         utc = strict;
         strict = lang;
         lang = undefined;
+    }
+    if(hasPersianDigit(input)){
+        input = convertToEnglishNumber(input);
     }
 
     if(!format && moment.justUseJalali) {
@@ -683,7 +701,7 @@ jMoment.fn.format = function (format) {
     }
     var formatted = moment.fn.format.call(this, format);
     if (moment.usePersianDigits) {
-        formatted = formatted.replace(/\d/g, convertToPerianNumber);
+        formatted = convertToPersianNumber(formatted);
     }
     return formatted;
 };
@@ -693,9 +711,6 @@ jMoment.fn.year = function (input) {
     else return moment.fn.year.call(this, input);
 };
 
-function convertToPerianNumber(s) {
-    return persianMap[parseInt(s)];
-}
 
 jMoment.fn.jYear = function (input) {
     var lastDay
