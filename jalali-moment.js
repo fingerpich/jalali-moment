@@ -579,11 +579,13 @@ function makeMoment(input, format, lang, strict, utc) {
         strict = lang;
         lang = undefined;
     }
+    var itsJalaliDate = moment.justUseJalali;
     if(hasPersianDigit(input)){
         input = convertToEnglishNumber(input);
+        itsJalaliDate = true;
     }
 
-    if(!format && moment.justUseJalali) {
+    if(!format && itsJalaliDate) {
         if(/\d{4}\-\d{2}\-\d{2}/.test(input)) {
             format = "jYYYY-jMM-jDD";
         } else if (/\d{4}\-\d{2}\-\d{1}/.test(input)) {
@@ -606,7 +608,7 @@ function makeMoment(input, format, lang, strict, utc) {
             format = "jYYYYjDDD";
         }
     }
-    if (format && moment.justUseJalali){
+    if (format && itsJalaliDate){
         format = toJalaliFormat(format);
     }
     if (format && typeof format === "string"){
@@ -937,7 +939,7 @@ jMoment.jIsLeapYear = isLeapJalaliYear;
 
 jMoment.unloadPersian = function () {
     moment.usePersianDigits = false;
-    moment.locale(moment.prevLocale);
+    moment.updateLocale(moment.prevLocale);
 };
 
 jMoment.loadPersian = function (usePersianDigits) {
