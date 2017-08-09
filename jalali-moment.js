@@ -560,7 +560,13 @@ function jWeekOfYear(mom, firstDayOfWeek, firstDayOfWeekOfYear) {
  ************************************/
 
 function hasPersianDigit(input){
-    return /[\u06F0-\u06F90]+/.test(input);
+    if(typeof input === "string") {
+        for (var i = 0; i < 10; i++) {
+            if (input.indexOf(persianMap[i]) > -1) return true;
+        }
+    }
+    return false;
+    // return /[\u06F0-\u06F90]+/.test(input);
 }
 function convertToEnglishNumber(input){
     return input.replace(/[\u06F0-\u06F90]/g, function(m){
