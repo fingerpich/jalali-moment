@@ -227,7 +227,7 @@ extend(getPrototypeOf(moment.localeData()),
         , "Ordibehesht"
         , "Khordaad"
         , "Tir"
-        , "Amordaad"
+        , "Mordaad"
         , "Shahrivar"
         , "Mehr"
         , "Aabaan"

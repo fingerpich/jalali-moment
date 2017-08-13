@@ -47,7 +47,7 @@ describe("moment", function() {
     it("should parse when only Jalaali month string is in the format", function() {
       var m = moment("1981 Amo 17", "YYYY jMMM D");
       m.format("YYYY-MM-DD").should.be.equal("1981-07-17");
-      m = moment("1981 Amordaad 17", "YYYY jMMMM D");
+      m = moment("1981 Mordaad 17", "YYYY jMMMM D");
       m.format("YYYY-MM-DD").should.be.equal("1981-07-17");
     });
 
@@ -167,7 +167,7 @@ describe("moment", function() {
 
     it("should format with jMMMM", function() {
       var m = moment("1981-08-17");
-      m.format("jMMMM").should.be.equal("Amordaad");
+      m.format("jMMMM").should.be.equal("Mordaad");
     });
 
     it("should format with jDo", function() {
@@ -256,11 +256,11 @@ describe("moment", function() {
       m.format("LT").should.be.equal("12:00 AM");
       m.format("L").should.be.equal("1360/05/26");
       m.format("l").should.be.equal("1360/5/26");
-      m.format("LL").should.be.equal("26 Amordaad 1360");
+      m.format("LL").should.be.equal("26 Mordaad 1360");
       m.format("ll").should.be.equal("26 Amo 1360");
-      m.format("LLL").should.be.equal("26 Amordaad 1360 12:00 AM");
+      m.format("LLL").should.be.equal("26 Mordaad 1360 12:00 AM");
       m.format("lll").should.be.equal("26 Amo 1360 12:00 AM");
-      m.format("LLLL").should.be.equal("Monday, 26 Amordaad 1360 12:00 AM");
+      m.format("LLLL").should.be.equal("Monday, 26 Mordaad 1360 12:00 AM");
       m.format("llll").should.be.equal("Mon, 26 Amo 1360 12:00 AM");
     });
   });
@@ -598,7 +598,7 @@ describe("moment", function() {
       moment("1981-08-17", gf).isValid().should.be.equal(true);
       moment("1981-08-31", gf).isValid().should.be.equal(true);
       moment("1981-09-31", gf).isValid().should.be.equal(false);
-      moment("1360 mordaad 26", "jYYYY jMMMM jD").isValid().should.be.equal(false);
+      moment("1360 Mordaad 26", "jYYYY jMMMM jD").isValid().should.be.equal(true);
       moment("1360/05/26", jf).isValid().should.be.equal(true);
       moment("1360/05/31", jf).isValid().should.be.equal(true);
       moment("1360/07/30", jf).isValid().should.be.equal(true);
