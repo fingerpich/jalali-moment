@@ -902,9 +902,15 @@ jMoment.fn.isAfter = function (other, units) {
     }
     return moment.fn.isAfter.call(this, other, units);
 };
-
 jMoment.fn.clone = function () {
     return jMoment(this);
+};
+
+jMoment.fn.loadPersian = function (usePersianDigits) {
+    jMoment.loadPersian(usePersianDigits);
+    var persianClone = jMoment(this);
+    jMoment.unloadPersian();
+    return persianClone;
 };
 
 jMoment.useJalaliSystemPrimarily = function (calendarSystem) {
