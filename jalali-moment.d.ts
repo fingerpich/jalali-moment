@@ -428,6 +428,8 @@ declare namespace moment {
 
     clone(): Moment;
 
+    loadPersian(): Moment;
+
     /**
      * @return Unix timestamp in milliseconds
      */

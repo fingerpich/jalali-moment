@@ -708,7 +708,7 @@ jMoment.fn.format = function (format) {
         format = formatFunctions[format](this);
     }
     var formatted = moment.fn.format.call(this, format);
-    if (moment.usePersianDigits) {
+    if (moment.usePersianDigits || this.usePersianDigits) {
         formatted = convertToPersianNumber(formatted);
     }
     return formatted;
@@ -906,8 +906,13 @@ jMoment.fn.clone = function () {
     return jMoment(this);
 };
 
-jMoment.fn.itsJalaliDate = function (format) {
+jMoment.fn.doAsJalali = function (formatAsPersianDate) {
     this.isJalali = true;
+    if(formatAsPersianDate) {
+        this.locale("fa");
+        this.usePersianDigits = true;
+    }
+    return this;
 };
 
 jMoment.fn.formatPersian = function (format) {

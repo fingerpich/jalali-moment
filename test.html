@@ -11,6 +11,8 @@
 //        document.write(moment('1367/11/4', 'jYYYY/jM/jD').format('jYYYY/jMMMM/jD'));
 //        moment.loadPersian(true);
 document.write(moment().format('YYYY/MMMM/D')+"<br>"); // 1989/January/24
+document.write(moment().formatPersian('jYYYY/jMMMM/jDD', true)+"<br>");
+document.write(moment().doAsJalali(true).format('YYYY/MMMM/DD')+"<br>");
 moment.useJalaliSystemPrimarily();
 document.write(moment().format('YYYY/MMMM/D')+"<br>"); // 1367/Bahman/4
 document.write(moment().subtract(1,'year').format('YYYY/MMMM/D')+"<br>"); // 1367/Bahman/4
