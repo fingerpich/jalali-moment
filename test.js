@@ -805,6 +805,7 @@ describe("moment", function() {
     it("should load Persian lang", function() {
       moment.loadPersian();
       var m = moment("1981-08-17");
+      console.log(m.format("D MMMM YYYY"))
       m.format("D MMMM YYYY").should.be.equal("17 اوت 1981");
       m.format("jD jMMMM jYYYY").should.be.equal("26 مرداد 1360");
       m.calendar().should.be.equal("1360/05/26");

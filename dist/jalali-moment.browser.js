@@ -16212,6 +16212,7 @@ function makeMoment(input, format, lang, strict, utc) {
     }
 
     if(!format && itsJalaliDate) {
+        input = input.replace("/","-");
         if(/\d{4}\-\d{2}\-\d{2}/.test(input)) {
             format = "jYYYY-jMM-jDD";
         } else if (/\d{4}\-\d{2}\-\d{1}/.test(input)) {
@@ -16647,6 +16648,7 @@ jMoment.loadPersian = function (usePersianDigits) {
     if (moment.locale()!=="fa") {
         moment.prevLocale = moment.locale();
     }
+    moment.locale("fa");
     moment.usePersianDigits = usePersianDigits;
 };
 
