@@ -670,6 +670,8 @@ declare namespace moment {
   export function useJalaliSystemPrimarily(): void;
   export function useJalaliSystemSecondary(): void;
   export function unloadPersian(): void;
+  export function doAsJalali(formatAsPersianDate: boolean): void;
+  export function formatPersian(format: string): string;
   export var jConvert: any;
 
   export function weekdays(): string[];
