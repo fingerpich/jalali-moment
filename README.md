@@ -197,8 +197,17 @@ moment().format('jYYYY/jMMMM/jD'); // 1367/Bahman/4
 ## Use jalali calendar system primarily
 This plugin adds Jalali calendar system to moment.js which is using gregorian calendar system 
 so we could use both calendar system concurrently but 
-you could use Jalali calendar as default system like the following code:  
+you can use Jalali calendar as default system.
 
+### Set it for an instance
+```js
+m.doAsJalali(true);
+m.subtract(1,'year').format('YYYY/MMMM/D'); // ۱۳۶۷/بهمن/۰۴
+m.doAsGregorian();
+```
+as you see you don't need to change `YYYY` to `jYYYY` or use `jyear` instead of `year`
+
+### Set it globally for all moment instances
 ```js
 moment().format('YYYY/MMMM/D'); // 1989/January/24
 moment.useJalaliSystemPrimarily();
@@ -211,8 +220,8 @@ moment.useJalaliSystemSecondary();
 moment().format('YYYY/MMMM/D'); // 1989/January/24
 ```
 
-For example:
-to make a datepicker work with jalali calendar system you could use this feature.
+### An example usage:
+To make a datePicker work with jalali(shamsi) calendar system you could use this ability.
 
 ## Related Projects
 
