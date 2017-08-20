@@ -48,6 +48,8 @@
     "uglifyjs-webpack-plugin": "^0.4.6",
     "webpack": "^3.0.0"
   },
-  "dependencies": {},
+  "dependencies": {
+    "moment": "^2.18.1"
+  },
   "typings": "./jalali-moment.d.ts"
 }
