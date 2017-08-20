@@ -916,6 +916,13 @@ jMoment.fn.doAsJalali = function (formatAsPersianDate) {
     return this;
 };
 
+jMoment.fn.doAsGregorian = function () {
+    this.isJalali = false;
+    this.locale("en");
+    this.usePersianDigits = false;
+    return this;
+};
+
 jMoment.fn.formatPersian = function (format) {
     var prevLocale = this.locale();
     var globalState = moment.usePersianDigits;
