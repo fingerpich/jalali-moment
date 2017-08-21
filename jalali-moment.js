@@ -938,10 +938,10 @@ jMoment.fn.formatPersian = function (format) {
     return formated;
 };
 
-jMoment.useJalaliSystemPrimarily = function (calendarSystem) {
+jMoment.useJalaliSystemPrimarily = function () {
     moment.justUseJalali = true;
 };
-jMoment.useJalaliSystemSecondary = function (usePersianDigits) {
+jMoment.useJalaliSystemSecondary = function () {
     moment.justUseJalali = false;
 };
 
@@ -950,6 +950,25 @@ jMoment.fn.jMonths = jMoment.fn.jMonth;
 jMoment.fn.jDates = jMoment.fn.jDate;
 jMoment.fn.jWeeks = jMoment.fn.jWeek;
 
+jMoment.fn.daysInMonth = function() {
+    if (moment.justUseJalali || this.isJalali) {
+        return this.jDaysInMonth();
+    }
+    return moment.fn.daysInMonth.call(this);
+};
+jMoment.fn.jDaysInMonth = function () {
+    var month = this.jMonth();
+    var year = this.jYear();
+    if (month < 6) {
+        return 31;
+    } else if (month < 11) {
+        return 30;
+    } else if (jMoment.jIsLeapYear(year)) {
+        return 30;
+    } else {
+        return 29;
+    }
+};
 /************************************
  jMoment Statics
  ************************************/
@@ -1027,7 +1046,7 @@ jMoment.defineFaLocale = function(){
         , jMonths: ("فروردین_اردیبهشت_خرداد_تیر_مرداد_شهریور_مهر_آبان_آذر_دی_بهمن_اسفند").split("_")
         , jMonthsShort: "فرو_ارد_خرد_تیر_مرد_شهر_مهر_آبا_آذر_دی_بهم_اسف".split("_")
     });
-}
+};
 jMoment.defineFaLocale();
 moment.locale("en");
 
