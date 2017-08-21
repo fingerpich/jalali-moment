@@ -16536,6 +16536,13 @@ jMoment.fn.doAsJalali = function (formatAsPersianDate) {
     return this;
 };
 
+jMoment.fn.doAsGregorian = function () {
+    this.isJalali = false;
+    this.locale("en");
+    this.usePersianDigits = false;
+    return this;
+};
+
 jMoment.fn.formatPersian = function (format) {
     var prevLocale = this.locale();
     var globalState = moment.usePersianDigits;
@@ -16551,10 +16558,10 @@ jMoment.fn.formatPersian = function (format) {
     return formated;
 };
 
-jMoment.useJalaliSystemPrimarily = function (calendarSystem) {
+jMoment.useJalaliSystemPrimarily = function () {
     moment.justUseJalali = true;
 };
-jMoment.useJalaliSystemSecondary = function (usePersianDigits) {
+jMoment.useJalaliSystemSecondary = function () {
     moment.justUseJalali = false;
 };
 
@@ -16563,6 +16570,36 @@ jMoment.fn.jMonths = jMoment.fn.jMonth;
 jMoment.fn.jDates = jMoment.fn.jDate;
 jMoment.fn.jWeeks = jMoment.fn.jWeek;
 
+jMoment.fn.daysInMonth = function() {
+    if (moment.justUseJalali || this.isJalali) {
+        return this.jDaysInMonth();
+    }
+    return moment.fn.daysInMonth.call(this);
+};
+jMoment.fn.jDaysInMonth = function () {
+    var month = this.jMonth();
+    var year = this.jYear();
+    if (month < 6) {
+        return 31;
+    } else if (month < 11) {
+        return 30;
+    } else if (jMoment.jIsLeapYear(year)) {
+        return 30;
+    } else {
+        return 29;
+    }
+};
+
+jMoment.fn.isLeapYear = function() {
+    if (moment.justUseJalali || this.isJalali) {
+        return this.jIsLeapYear();
+    }
+    return moment.fn.isLeapYear.call(this);
+};
+jMoment.fn.jIsLeapYear = function () {
+    var year = this.jYear();
+    return isLeapJalaliYear(year);
+};
 /************************************
  jMoment Statics
  ************************************/
@@ -16589,7 +16626,7 @@ jMoment.jIsLeapYear = isLeapJalaliYear;
 
 jMoment.unloadPersian = function () {
     moment.usePersianDigits = false;
-    moment.updateLocale(moment.prevLocale);
+    moment.locale(moment.prevLocale);
 };
 
 jMoment.defineFaLocale = function(){
@@ -16640,7 +16677,7 @@ jMoment.defineFaLocale = function(){
         , jMonths: ("فروردین_اردیبهشت_خرداد_تیر_مرداد_شهریور_مهر_آبان_آذر_دی_بهمن_اسفند").split("_")
         , jMonthsShort: "فرو_ارد_خرد_تیر_مرد_شهر_مهر_آبا_آذر_دی_بهم_اسف".split("_")
     });
-}
+};
 jMoment.defineFaLocale();
 moment.locale("en");
 
@@ -16709,16 +16746,6 @@ function convertToGregorian(jy, jm, jd) {
 function isLeapJalaliYear(jy) {
     return jalCal(jy).leap === 0;
 }
-
-/*
- Number of days in a given month in a Jalali year.
- */
-// function jalaliMonthLength(jy, jm) {
-//     if (jm <= 6) return 31;
-//     if (jm <= 11) return 30;
-//     if (isLeapJalaliYear(jy)) return 30;
-//     return 29;
-// }
 
 /*
  This function determines if the Jalali (Persian) year is

@@ -1128,16 +1128,6 @@ function isLeapJalaliYear(jy) {
 }
 
 /*
- Number of days in a given month in a Jalali year.
- */
-// function jalaliMonthLength(jy, jm) {
-//     if (jm <= 6) return 31;
-//     if (jm <= 11) return 30;
-//     if (isLeapJalaliYear(jy)) return 30;
-//     return 29;
-// }
-
-/*
  This function determines if the Jalali (Persian) year is
  leap (366-day long) or is the common year (365 days), and
  finds the day in March (Gregorian calendar) of the first
