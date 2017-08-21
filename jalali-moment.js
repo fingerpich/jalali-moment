@@ -969,6 +969,17 @@ jMoment.fn.jDaysInMonth = function () {
         return 29;
     }
 };
+
+jMoment.fn.isLeapYear = function() {
+    if (moment.justUseJalali || this.isJalali) {
+        return this.jIsLeapYear();
+    }
+    return moment.fn.isLeapYear.call(this);
+};
+jMoment.fn.jIsLeapYear = function () {
+    var year = this.jYear();
+    return isLeapJalaliYear(year);
+};
 /************************************
  jMoment Statics
  ************************************/
