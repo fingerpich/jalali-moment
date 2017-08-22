@@ -484,6 +484,8 @@ declare namespace moment {
     months(): number;
     day(d: number|string): Moment;
     day(): number;
+    jDay(d: number|string): Moment;
+    jDay(): number;
     days(d: number|string): Moment;
     days(): number;
     date(d: number): Moment;

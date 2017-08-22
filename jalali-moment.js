@@ -788,6 +788,13 @@ jMoment.fn.jDate = function (input) {
         return toJalali(this.year(), this.month(), this.date()).jd;
     }
 };
+jMoment.fn.jDay = function (input) {
+    if (typeof input === "number") {
+        return moment.fn.day.call(this, input);
+    } else {
+        return (moment.day() + 1) % 7;
+    }
+};
 
 jMoment.fn.dayOfYear = function (input) {
     if (input && (moment.justUseJalali || this.isJalali)) return jMoment.fn.jDayOfYear.call(this,input);
@@ -857,6 +864,9 @@ jMoment.fn.subtract = function (val, units) {
 
 jMoment.fn.startOf = function (units) {
     units = normalizeUnits(units);
+    if( units === 'jweek'){
+        return this.jWeek(this.jWeek());
+    }
     if (units === "jyear" || units === "jmonth") {
         if (units === "jyear") {
             this.jMonth(0);
