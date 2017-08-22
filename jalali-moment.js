@@ -591,7 +591,7 @@ function makeMoment(input, format, lang, strict, utc) {
         itsJalaliDate = true;
     }
 
-    if(!format && itsJalaliDate) {
+    if(input && !format && itsJalaliDate) {
         input = input.replace("/","-");
         if(/\d{4}\-\d{2}\-\d{2}/.test(input)) {
             format = "jYYYY-jMM-jDD";
@@ -788,11 +788,12 @@ jMoment.fn.jDate = function (input) {
         return toJalali(this.year(), this.month(), this.date()).jd;
     }
 };
+// TODO: write test
 jMoment.fn.jDay = function (input) {
     if (typeof input === "number") {
         return moment.fn.day.call(this, input);
     } else {
-        return (moment.day() + 1) % 7;
+        return (moment.fn.day.call(this) + 1) % 7;
     }
 };
 

@@ -16211,7 +16211,7 @@ function makeMoment(input, format, lang, strict, utc) {
         itsJalaliDate = true;
     }
 
-    if(!format && itsJalaliDate) {
+    if(input && !format && itsJalaliDate) {
         input = input.replace("/","-");
         if(/\d{4}\-\d{2}\-\d{2}/.test(input)) {
             format = "jYYYY-jMM-jDD";
@@ -16408,6 +16408,13 @@ jMoment.fn.jDate = function (input) {
         return toJalali(this.year(), this.month(), this.date()).jd;
     }
 };
+jMoment.fn.jDay = function (input) {
+    if (typeof input === "number") {
+        return moment.fn.day.call(this, input);
+    } else {
+        return (moment.fn.day.call(this) + 1) % 7;
+    }
+};
 
 jMoment.fn.dayOfYear = function (input) {
     if (input && (moment.justUseJalali || this.isJalali)) return jMoment.fn.jDayOfYear.call(this,input);
@@ -16436,7 +16443,7 @@ jMoment.fn.weekYear = function (input) {
 
 jMoment.fn.jWeekYear = function (input) {
     var year = jWeekOfYear(this, this.localeData()._week.dow, this.localeData()._week.doy).year;
-    return isNull(input) ? year : this.add(input - year, "y");
+    return isNull(input) ? year : this.add(input - year, "jyear");
 };
 
 jMoment.fn.add = function (val, units) {
@@ -16477,6 +16484,9 @@ jMoment.fn.subtract = function (val, units) {
 
 jMoment.fn.startOf = function (units) {
     units = normalizeUnits(units);
+    if( units === 'jweek'){
+        return this.jWeek(this.jWeek());
+    }
     if (units === "jyear" || units === "jmonth") {
         if (units === "jyear") {
             this.jMonth(0);
