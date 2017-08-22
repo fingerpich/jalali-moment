@@ -816,7 +816,7 @@ jMoment.fn.weekYear = function (input) {
 
 jMoment.fn.jWeekYear = function (input) {
     var year = jWeekOfYear(this, this.localeData()._week.dow, this.localeData()._week.doy).year;
-    return isNull(input) ? year : this.add(input - year, "y");
+    return isNull(input) ? year : this.add(input - year, "jyear");
 };
 
 jMoment.fn.add = function (val, units) {

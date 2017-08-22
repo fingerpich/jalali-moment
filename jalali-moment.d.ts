@@ -428,8 +428,6 @@ declare namespace moment {
 
     clone(): Moment;
 
-    loadPersian(): Moment;
-
     /**
      * @return Unix timestamp in milliseconds
      */
@@ -458,6 +456,8 @@ declare namespace moment {
 
     year(y: number): Moment;
     year(): number;
+    jYear(y: number): Moment;
+    jYear():number;
     /**
      * @deprecated use year(y)
      */
@@ -471,7 +471,9 @@ declare namespace moment {
     quarters(): number;
     quarters(q: number): Moment;
     month(M: number|string): Moment;
+    jMonth(M: number|string): Moment;
     month(): number;
+    jMonth(): number;
     /**
      * @deprecated use month(M)
      */
@@ -485,15 +487,26 @@ declare namespace moment {
     days(d: number|string): Moment;
     days(): number;
     date(d: number): Moment;
+    jDate(d: number): Moment;
     date(): number;
+    jDate(): number;
     /**
      * @deprecated use date(d)
      */
     dates(d: number): Moment;
     /**
+     * @deprecated use jDate(d)
+     */
+    jDates(d: number): Moment;
+    /**
      * @deprecated use date()
      */
     dates(): number;
+    /**
+     * @deprecated use jDate()
+     */
+    jDates():number;
+
     hour(h: number): Moment;
     hour(): number;
     hours(h: number): Moment;
@@ -511,25 +524,34 @@ declare namespace moment {
     milliseconds(ms: number): Moment;
     milliseconds(): number;
     weekday(): number;
+    //TODO:jweekday
     weekday(d: number): Moment;
     isoWeekday(): number;
     isoWeekday(d: number|string): Moment;
     weekYear(): number;
+    jWeekYear(): number;
     weekYear(d: number): Moment;
+    jWeekYear(d: number): Moment;
     isoWeekYear(): number;
     isoWeekYear(d: number): Moment;
     week(): number;
+    jWeek(): number;
     week(d: number): Moment;
+    jWeek(d: number): Moment;
     weeks(): number;
+    jWeeks(): number;//TODO:check it
     weeks(d: number): Moment;
     isoWeek(): number;
     isoWeek(d: number): Moment;
     isoWeeks(): number;
     isoWeeks(d: number): Moment;
     weeksInYear(): number;
+    //TODO : jWeeksInYear
     isoWeeksInYear(): number;
     dayOfYear(): number;
+    jDayOfYear(): number;
     dayOfYear(d: number): Moment;
+    jDayOfYear(d: number): Moment;
 
     from(inp: MomentInput, suffix?: boolean): string;
     to(inp: MomentInput, suffix?: boolean): string;
@@ -546,6 +568,7 @@ declare namespace moment {
     unix(): number;
 
     isLeapYear(): boolean;
+    jIsLeapYear(): boolean;
     /**
      * @deprecated in favor of utcOffset
      */
@@ -555,6 +578,7 @@ declare namespace moment {
     utcOffset(b: number|string, keepLocalTime?: boolean): Moment;
     isUtcOffset(): boolean;
     daysInMonth(): number;
+    jDaysInMonth(): number;
     isDST(): boolean;
 
     zoneAbbr(): string;
@@ -566,6 +590,10 @@ declare namespace moment {
     isSameOrAfter(inp?: MomentInput, granularity?: unitOfTime.StartOf): boolean;
     isSameOrBefore(inp?: MomentInput, granularity?: unitOfTime.StartOf): boolean;
     isBetween(a: MomentInput, b: MomentInput, granularity?: unitOfTime.StartOf, inclusivity?: "()" | "[)" | "(]" | "[]"): boolean;
+
+    doAsGregorian(): Moment;
+    doAsJalali(formatAsPersianDate: boolean): Moment;
+    formatPersian(format: string): string;
 
     /**
      * @deprecated as of 2.8.0, use locale
@@ -657,22 +685,13 @@ declare namespace moment {
   export function monthsShort(format: string): string[];
   export function monthsShort(format: string, index: number): string;
 
-  export function jWeekOfYear(mom: Moment, firstDayOfWeek: number, firstDayOfWeekOfYear: number): Moment;
-  export function jYear(input: number): Moment;
-  export function jMonth(input: number): Moment;
-  export function jDate(input: number): Moment;
-  export function jDayOfYear(input: number): Moment;
-  export function jWeek(input: number): Moment;
-  export function jWeekYear(input: number): Moment;
-  export function jDaysInMonth(year: number, month: number): Moment;
-  export function jIsLeapYear(): boolean;
+  export function jWeekOfYear(mom: Moment, firstDayOfWeek: number, firstDayOfWeekOfYear: number): MomentInput;
+  export function jDaysInMonth(jMear: number, jMonth: number): number;
+  export function jIsLeapYear(jYear): boolean;
   export function loadPersian(usePersianDigits?: boolean): void;
+  export function unloadPersian(): void;
   export function useJalaliSystemPrimarily(): void;
   export function useJalaliSystemSecondary(): void;
-  export function unloadPersian(): void;
-  export function doAsGregorian(): void;
-  export function doAsJalali(formatAsPersianDate: boolean): void;
-  export function formatPersian(format: string): string;
   export var jConvert: any;
 
   export function weekdays(): string[];
