@@ -15805,6 +15805,8 @@ function normalizeUnits(units) {
         var lowered = units.toLowerCase();
         units = unitAliases[lowered] || lowered;
     }
+    if (units === "jday") units = "day";
+    else if (units === "jd") units = "d";
     return units;
 }
 
@@ -16408,6 +16410,7 @@ jMoment.fn.jDate = function (input) {
         return toJalali(this.year(), this.month(), this.date()).jd;
     }
 };
+// TODO: write test
 jMoment.fn.jDay = function (input) {
     if (typeof input === "number") {
         return moment.fn.day.call(this, input);

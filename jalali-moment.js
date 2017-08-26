@@ -185,6 +185,9 @@ function normalizeUnits(units) {
         var lowered = units.toLowerCase();
         units = unitAliases[lowered] || lowered;
     }
+    // TODO : add unit test
+    if (units === "jday") units = "day";
+    else if (units === "jd") units = "d";
     return units;
 }
 
