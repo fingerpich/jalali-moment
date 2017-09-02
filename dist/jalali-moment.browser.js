@@ -15751,17 +15751,6 @@ function isArray(input) {
     return Object.prototype.toString.call(input) === "[object Array]";
 }
 
-// function compareArrays(array1, array2) {
-//   var len = Math.min(array1.length, array2.length)
-//     , lengthDiff = Math.abs(array1.length - array2.length)
-//     , diffs = 0
-//     , i
-//   for (i = 0; i < len; i += 1)
-//     if (~~array1[i] !== ~~array2[i])
-//       diffs += 1
-//   return diffs + lengthDiff
-// }
-
 /**
  * Changes any moment Gregorian format to Jalali system format
  * @param {string} format
@@ -15805,20 +15794,28 @@ function normalizeUnits(units) {
         var lowered = units.toLowerCase();
         units = unitAliases[lowered] || lowered;
     }
+    // TODO : add unit test
     if (units === "jday") units = "day";
     else if (units === "jd") units = "d";
     return units;
 }
 
-function setDate(m, year, month, date) {
-    var d = m._d;
-    if (m._isUTC) {
+/**
+ * set a gregorian date to moment object
+ * @param {string} momentInstance
+ * @param {string} year in gregorian system
+ * @param {string} month in gregorian system
+ * @param {string} day in gregorian system
+ **/
+function setDate(momentInstance, year, month, day) {
+    var d = momentInstance._d;
+    if (momentInstance._isUTC) {
         /*eslint-disable new-cap*/
-        m._d = new Date(Date.UTC(year, month, date,
+        momentInstance._d = new Date(Date.UTC(year, month, day,
             d.getUTCHours(), d.getUTCMinutes(), d.getUTCSeconds(), d.getUTCMilliseconds()));
         /*eslint-enable new-cap*/
     } else {
-        m._d = new Date(year, month, date,
+        momentInstance._d = new Date(year, month, day,
             d.getHours(), d.getMinutes(), d.getSeconds(), d.getMilliseconds());
     }
 }
@@ -16546,6 +16543,12 @@ jMoment.fn.doAsJalali = function (formatAsPersianDate) {
         this.locale("fa");
         this.usePersianDigits = true;
     }
+    return this;
+};
+
+jMoment.fn.loadPersian = function (usePersianDigits) {
+    this.locale("fa");
+    this.usePersianDigits = usePersianDigits;
     return this;
 };
 

@@ -608,6 +608,7 @@ declare namespace moment {
 
     locale(): string;
     locale(locale: LocaleSpecifier): Moment;
+    loadPersian(usePersianDigits: boolean): Moment;
 
     localeData(): Locale;
 
