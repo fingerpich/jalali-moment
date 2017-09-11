@@ -311,6 +311,19 @@ describe("moment", function() {
         });
     });
 
+    describe("#jDay", function() {
+        it("should return Jalaali week day name", function() {
+            var m = moment("1989-01-24");
+            m.jDay().should.be.equal(3);
+        });
+
+        it("should set Jalaali month", function() {
+            var m = moment("1989-01-24");
+            m.jDay(5);
+            m.format("jYYYY/jM/jD").should.be.equal("1367/11/6");
+        });
+    });
+
     describe("#jDate", function() {
         it("should return Jalaali date", function() {
             var m = moment("1981-08-17");

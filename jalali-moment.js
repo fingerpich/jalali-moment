@@ -787,10 +787,10 @@ jMoment.fn.jDate = function (input) {
         return toJalali(this.year(), this.month(), this.date()).jd;
     }
 };
-// TODO: write test
+
 jMoment.fn.jDay = function (input) {
     if (typeof input === "number") {
-        return moment.fn.day.call(this, input);
+        return moment.fn.day.call(this, input - 1);
     } else {
         return (moment.fn.day.call(this) + 1) % 7;
     }
