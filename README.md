@@ -167,6 +167,8 @@ m.isSame('1989-01-01', 'year'); // true
 m.isSame(moment('1367-01-01','jYYYY-MM-DD'), 'jyear'); // true
 m.isBefore(moment('1367-01-01','jYYYY-MM-DD'), 'jyear'); // false
 m.isAfter(moment('1367-01-01','jYYYY-MM-DD'), 'jyear'); // false
+m.isValid(); // true
+moment('1396/7/31','jYYYY/jM/jD').isValid(); // false
 ```
 
 #### Convert persian(Jalali , Shamsi, khorshidi) to gregorian (miladi) calendar system 
