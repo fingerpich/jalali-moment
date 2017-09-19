@@ -88,22 +88,6 @@ and use it in component template
  <div>{{ loadedData.date | jalali }}</div>
 ```
 
-## Using in Plunker
-
-#### ES5
-
-```HTML
-<script src='https://unpkg.com/jalali-moment/dist/jalali-moment.browser.js'></script>
-<script>
-  moment().format('jYYYY/jM/jD');
-</script>
-```
-
-
-#### Typescript or es6
-
-You could use systemjs to import this library into your project like [this](https://embed.plnkr.co/Gggh1u/)
-
 ## API
 
 This plugin tries to mimic [moment.js](https://momentjs.com/) api.
@@ -170,6 +154,7 @@ m.isAfter(moment('1367-01-01','jYYYY-MM-DD'), 'jyear'); // false
 m.isValid(); // true
 moment('1396/7/31','jYYYY/jM/jD').isValid(); // false
 ```
+[validation demo in plunker](https://plnkr.co/caWsmd)
 
 #### Convert persian(Jalali , Shamsi, khorshidi) to gregorian (miladi) calendar system 
 ```js
@@ -224,6 +209,22 @@ moment().format('YYYY/MMMM/D'); // 1989/January/24
 
 ### An example usage:
 To make a datePicker work with jalali(shamsi) calendar system you could use this ability.
+
+## Using in Plunker
+
+#### ES5
+
+```HTML
+<script src='https://unpkg.com/jalali-moment/dist/jalali-moment.browser.js'></script>
+<script>
+  moment().format('jYYYY/jM/jD');
+</script>
+```
+[es5 demo in plunker](https://plnkr.co/caWsmd)
+
+#### Typescript or es6
+
+You could use systemjs to import this library into your project like [this](https://embed.plnkr.co/Gggh1u/)
 
 ## Related Projects
 
