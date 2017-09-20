@@ -21,9 +21,14 @@ declare namespace moment {
     set(config: Object): void;
 
     months(): string[];
+    jMonths(): string[];
+
     months(m: Moment, format?: string): string;
+    jMonths(m: Moment): string;
     monthsShort(): string[];
+    jMonthsShort():string[];
     monthsShort(m: Moment, format?: string): string;
+    jMonthsParse(monthName: string): number;
     monthsParse(monthName: string, format: string, strict: boolean): number;
     monthsRegex(strict: boolean): RegExp;
     monthsShortRegex(strict: boolean): RegExp;

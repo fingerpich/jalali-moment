@@ -15856,7 +15856,11 @@ extend(getPrototypeOf(moment.localeData()),
         , "Esfand"
     ]
         , jMonths: function (m) {
-        return this._jMonths[m.jMonth()];
+            if (m) {
+                return this._jMonths[m.jMonth()];
+            } else {
+                return this._jMonths;
+            }
     }
 
         , _jMonthsShort:  [ "Far"
@@ -15873,7 +15877,11 @@ extend(getPrototypeOf(moment.localeData()),
         , "Esf"
     ]
         , jMonthsShort: function (m) {
-        return this._jMonthsShort[m.jMonth()];
+        if (m) {
+            return this._jMonthsShort[m.jMonth()];
+        } else {
+            return this._jMonthsShort;
+        }
     }
 
         , jMonthsParse: function (monthName) {
@@ -16407,7 +16415,7 @@ jMoment.fn.jDate = function (input) {
         return toJalali(this.year(), this.month(), this.date()).jd;
     }
 };
-// TODO: write test
+
 jMoment.fn.jDay = function (input) {
     if (typeof input === "number") {
         return moment.fn.day.call(this, input - 1);
