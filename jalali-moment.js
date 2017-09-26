@@ -416,7 +416,7 @@ function addTimeToArrayFromToken(token, input, config) {
         case "jYYYYY":
             datePartArray[0] = ~~input;
     }
-    if (isNull(input)){
+    if (isNull(input)) {
         config._isValid = false;
     }
 }
@@ -660,7 +660,7 @@ function makeMoment(input, format, lang, strict, utc) {
     else{
         m = moment(input, format, lang, strict);
     }
-    if (config._isValid === false){
+    if (config._isValid === false || (input._isAMomentObject && !input._isValid)){
         m._isValid = false;
     }
     m._jDiff = config._jDiff || 0;

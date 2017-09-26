@@ -914,5 +914,10 @@ describe("moment", function() {
             m2.isSame(m4, "jday").should.be.equal(false);
             m3.isSame(m4, "jday").should.be.equal(false);
         });
+        it("clone of an invalid date is invalid", function () {
+            var m1 = moment("hello","jYYYY/jMM/jDD");
+            m1.isValid().should.be.equal(false);
+            m1.clone().isValid().should.be.equal(false);
+        });
     });
 });
