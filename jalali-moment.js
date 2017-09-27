@@ -660,7 +660,7 @@ function makeMoment(input, format, lang, strict, utc) {
     else{
         m = moment(input, format, lang, strict);
     }
-    if (config._isValid === false || (input._isAMomentObject && !input._isValid)){
+    if (config._isValid === false || (input && input._isAMomentObject && !input._isValid)){
         m._isValid = false;
     }
     m._jDiff = config._jDiff || 0;
