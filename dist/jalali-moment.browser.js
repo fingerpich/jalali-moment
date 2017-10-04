@@ -16547,12 +16547,12 @@ jMoment.fn.clone = function () {
 
 jMoment.fn.doAsJalali = function (formatAsPersianDate) {
     this.isJalali = true;
-    if(formatAsPersianDate) {
-        this.locale("fa");
-        this.usePersianDigits = true;
-    }
     return this;
 };
+jMoment.fn.usePersianDigitsFormats = function () {
+    this.usePersianDigits = true;
+    return this;
+}
 
 jMoment.fn.loadPersian = function (usePersianDigits) {
     this.locale("fa");
@@ -16562,7 +16562,6 @@ jMoment.fn.loadPersian = function (usePersianDigits) {
 
 jMoment.fn.doAsGregorian = function () {
     this.isJalali = false;
-    this.locale("en");
     this.usePersianDigits = false;
     return this;
 };
@@ -16627,6 +16626,29 @@ jMoment.fn.jIsLeapYear = function () {
 /************************************
  jMoment Statics
  ************************************/
+jMoment.fn.locale = function(locale) {
+    if (moment.changeCalendarSystemByItsLocale) {
+        if (locale === "fa") {
+            this.doAsJalali(true);
+        } else {
+            this.doAsGregorian();
+        }
+    }
+    return moment.fn.locale.call(this, locale);
+};
+jMoment.locale = function(locale) {
+    if (moment.changeCalendarSystemByItsLocale) {
+        if (locale === "fa") {
+            this.useJalaliSystemPrimarily();
+        } else {
+            this.useJalaliSystemSecondary();
+        }
+    }
+    return moment.locale.call(this, locale);
+};
+jMoment.changeCalendarSystemUponLocale= function () {
+    moment.changeCalendarSystemByItsLocale = true;
+}
 
 jMoment.jDaysInMonth = function (year, month) {
     year += div(month, 12);

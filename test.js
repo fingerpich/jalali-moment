@@ -650,6 +650,11 @@ describe("moment", function() {
             m.format("jYY/jM/jD").should.be.equal("61/5/30");
             c.format("jYY/jM/jD").should.be.equal("60/5/26");
         });
+        it("clone of an invalid date is invalid", function () {
+            var m1 = moment("hello","jYYYY/jMM/jDD");
+            m1.isValid().should.be.equal(false);
+            m1.clone().isValid().should.be.equal(false);
+        });
     });
 
     describe("#add", function () {
@@ -818,7 +823,6 @@ describe("moment", function() {
         it("should load Persian lang", function() {
             moment.loadPersian();
             var m = moment("1981-08-17");
-            console.log(m.format("D MMMM YYYY"))
             m.format("D MMMM YYYY").should.be.equal("17 اوت 1981");
             m.format("jD jMMMM jYYYY").should.be.equal("26 مرداد 1360");
             m.calendar().should.be.equal("1360/05/26");
@@ -834,7 +838,6 @@ describe("moment", function() {
             moment.unix(unix).format("jYYYY/jM/jD").should.be.equal("1360/5/26");
         });
     });
-
     describe("#isSame", function () {
         it("should work correctly for same year", function () {
             var m1 = moment("2016-02-04");
@@ -914,10 +917,15 @@ describe("moment", function() {
             m2.isSame(m4, "jday").should.be.equal(false);
             m3.isSame(m4, "jday").should.be.equal(false);
         });
-        it("clone of an invalid date is invalid", function () {
-            var m1 = moment("hello","jYYYY/jMM/jDD");
-            m1.isValid().should.be.equal(false);
-            m1.clone().isValid().should.be.equal(false);
+    });
+    describe("#switch calendar systems", function (){
+        it("test changeSystemByItsLocale ", function () {
+            var m1 = moment("1367/11/04","jYYYY/jMM/jDD");
+            moment.changeCalendarSystemUponLocale();
+            m1.locale('fa');
+            m1.format('YYYY/MM/DD').should.be.equal('1367/11/04');
+            m1.locale('en');
+            m1.format('YYYY/MM/DD').should.be.equal('1989/01/24');
         });
     });
 });
