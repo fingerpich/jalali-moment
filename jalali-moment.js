@@ -925,8 +925,9 @@ jMoment.fn.clone = function () {
     return jMoment(this);
 };
 
-jMoment.fn.doAsJalali = function (formatAsPersianDate) {
+jMoment.fn.doAsJalali = function (usePersianDigits) {
     this.isJalali = true;
+    this.usingFaDigits = usePersianDigits;
     return this;
 };
 
