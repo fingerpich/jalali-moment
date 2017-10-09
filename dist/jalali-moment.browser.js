@@ -16492,7 +16492,7 @@ jMoment.fn.subtract = function (val, units) {
 
 jMoment.fn.startOf = function (units) {
     units = normalizeUnits(units);
-    if( units === 'jweek'){
+    if( units === "jweek"){
         return this.jWeek(this.jWeek());
     }
     if (units === "jyear" || units === "jmonth") {
@@ -16545,38 +16545,41 @@ jMoment.fn.clone = function () {
     return jMoment(this);
 };
 
-jMoment.fn.doAsJalali = function (formatAsPersianDate) {
+jMoment.fn.doAsJalali = function (usePersianDigits) {
     this.isJalali = true;
+    this.usingFaDigits = usePersianDigits;
     return this;
 };
-jMoment.fn.usePersianDigitsFormats = function () {
-    this.usePersianDigits = true;
-    return this;
-}
 
+/**
+ * @deprecated substitude with m.locale('fa')
+ */
 jMoment.fn.loadPersian = function (usePersianDigits) {
     this.locale("fa");
-    this.usePersianDigits = usePersianDigits;
+    this.usingFaDigits = usePersianDigits;
     return this;
 };
 
 jMoment.fn.doAsGregorian = function () {
     this.isJalali = false;
-    this.usePersianDigits = false;
+    this.usingFaDigits = false;
     return this;
 };
 
+/**
+ * @deprecated you could substitude with m.locale('fa')
+ */
 jMoment.fn.formatPersian = function (format) {
     var prevLocale = this.locale();
-    var globalState = moment.usePersianDigits;
+    var globalState = moment.usingFaDigits;
 
     this.locale("fa");
-    moment.usePersianDigits = true;
+    moment.usingFaDigits = true;
 
     this.format(format);
     var formated = this.format(format);
 
-    moment.usePersianDigits = globalState;
+    moment.usingFaDigits = globalState;
     this.locale(prevLocale);
     return formated;
 };
@@ -16648,7 +16651,7 @@ jMoment.locale = function(locale) {
 };
 jMoment.changeCalendarSystemUponLocale= function () {
     moment.changeCalendarSystemByItsLocale = true;
-}
+};
 
 jMoment.jDaysInMonth = function (year, month) {
     year += div(month, 12);
@@ -16670,13 +16673,15 @@ jMoment.jDaysInMonth = function (year, month) {
 
 jMoment.jIsLeapYear = isLeapJalaliYear;
 
+/**
+ * @deprecated substitude with moment.locale('en');
+ */
 jMoment.unloadPersian = function () {
-    moment.usePersianDigits = false;
+    moment.usingFaDigits = false;
     moment.locale(moment.prevLocale);
 };
 
-jMoment.defineFaLocale = function(){
-    moment.defineLocale("fa", {
+moment.defineLocale("fa", {
         months: ("ژانویه_فوریه_مارس_آوریل_مه_ژوئن_ژوئیه_اوت_سپتامبر_اکتبر_نوامبر_دسامبر").split("_")
         , monthsShort: ("ژانویه_فوریه_مارس_آوریل_مه_ژوئن_ژوئیه_اوت_سپتامبر_اکتبر_نوامبر_دسامبر").split("_")
         , weekdays: ("یک\u200cشنبه_دوشنبه_سه\u200cشنبه_چهارشنبه_پنج\u200cشنبه_آدینه_شنبه").split("_")
@@ -16723,16 +16728,17 @@ jMoment.defineFaLocale = function(){
         , jMonths: ("فروردین_اردیبهشت_خرداد_تیر_مرداد_شهریور_مهر_آبان_آذر_دی_بهمن_اسفند").split("_")
         , jMonthsShort: "فرو_ارد_خرد_تیر_مرد_شهر_مهر_آبا_آذر_دی_بهم_اسف".split("_")
     });
-};
-jMoment.defineFaLocale();
 moment.locale("en");
 
+/**
+ * @deprecated substitude with moment.locale('fa')
+ */
 jMoment.loadPersian = function (usePersianDigits) {
     if (moment.locale()!=="fa") {
         moment.prevLocale = moment.locale();
     }
     moment.locale("fa");
-    moment.usePersianDigits = usePersianDigits;
+    moment.usingFaDigits = usePersianDigits;
 };
 
 jMoment.jConvert =  { toJalali: toJalali
