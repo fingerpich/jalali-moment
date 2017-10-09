@@ -1060,8 +1060,7 @@ jMoment.unloadPersian = function () {
     moment.locale(moment.prevLocale);
 };
 
-jMoment.defineFaLocale = function(){
-    moment.defineLocale("fa", {
+moment.defineLocale("fa", {
         months: ("ژانویه_فوریه_مارس_آوریل_مه_ژوئن_ژوئیه_اوت_سپتامبر_اکتبر_نوامبر_دسامبر").split("_")
         , monthsShort: ("ژانویه_فوریه_مارس_آوریل_مه_ژوئن_ژوئیه_اوت_سپتامبر_اکتبر_نوامبر_دسامبر").split("_")
         , weekdays: ("یک\u200cشنبه_دوشنبه_سه\u200cشنبه_چهارشنبه_پنج\u200cشنبه_آدینه_شنبه").split("_")
@@ -1108,8 +1107,6 @@ jMoment.defineFaLocale = function(){
         , jMonths: ("فروردین_اردیبهشت_خرداد_تیر_مرداد_شهریور_مهر_آبان_آذر_دی_بهمن_اسفند").split("_")
         , jMonthsShort: "فرو_ارد_خرد_تیر_مرد_شهر_مهر_آبا_آذر_دی_بهم_اسف".split("_")
     });
-};
-jMoment.defineFaLocale();
 moment.locale("en");
 
 /**
