@@ -386,7 +386,13 @@ describe("moment", function() {
 
     describe("#jWeek", function() {
         it("should return Jalaali week of year", function() {
-            var m = moment("1981-08-17");
+            var m = moment("1396/01/04","jYYYY/jMM/jDD");
+            m.format("jYY/jM/jD").should.be.equal("96/1/4");
+            m.jWeek().should.be.equal(1);
+            m = moment("1396/01/05","jYYYY/jMM/jDD");
+            m.format("jYY/jM/jD").should.be.equal("96/1/5");
+            m.jWeek().should.be.equal(2);
+            m = moment("1981-08-17");
             m.jWeek().should.be.equal(22);
             m.jDayOfYear(1);
             m.format("jYY/jM/jD").should.be.equal("60/1/1");
