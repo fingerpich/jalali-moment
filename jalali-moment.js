@@ -726,8 +726,6 @@ jMoment.fn.year = function (input) {
     if (input && (moment.justUseJalali || this.isJalali)) return jMoment.fn.jYear.call(this,input);
     else return moment.fn.year.call(this, input);
 };
-
-
 jMoment.fn.jYear = function (input) {
     var lastDay
         , j
@@ -748,7 +746,6 @@ jMoment.fn.month = function (input) {
     if (input && (moment.justUseJalali || this.isJalali)) return jMoment.fn.jMonth.call(this,input);
     else return moment.fn.month.call(this, input);
 };
-
 jMoment.fn.jMonth = function (input) {
     var lastDay
         , j
@@ -781,7 +778,6 @@ jMoment.fn.date = function (input) {
     if (input && (moment.justUseJalali || this.isJalali)) return jMoment.fn.jDate.call(this,input);
     else return moment.fn.date.call(this, input);
 };
-
 jMoment.fn.jDate = function (input) {
     var j
         , g;
@@ -808,7 +804,6 @@ jMoment.fn.dayOfYear = function (input) {
     if (input && (moment.justUseJalali || this.isJalali)) return jMoment.fn.jDayOfYear.call(this,input);
     else return moment.fn.dayOfYear.call(this, input);
 };
-
 jMoment.fn.jDayOfYear = function (input) {
     var dayOfYear = Math.round((jMoment(this).startOf("day") - jMoment(this).startOf("jYear")) / 864e5) + 1;
     return isNull(input) ? dayOfYear : this.add(input - dayOfYear, "d");
@@ -818,7 +813,6 @@ jMoment.fn.week = function (input) {
     if (input && (moment.justUseJalali || this.isJalali)) return jMoment.fn.jWeek.call(this,input);
     else return moment.fn.week.call(this, input);
 };
-
 jMoment.fn.jWeek = function (input) {
     var week = jWeekOfYear(this, this.localeData()._week.dow, this.localeData()._week.doy).week;
     return isNull(input) ? week : this.add((input - week) * 7, "d");
@@ -828,7 +822,6 @@ jMoment.fn.weekYear = function (input) {
     if (input && (moment.justUseJalali || this.isJalali)) return jMoment.fn.jWeekYear.call(this,input);
     else return moment.fn.weekYear.call(this, input);
 };
-
 jMoment.fn.jWeekYear = function (input) {
     var year = jWeekOfYear(this, this.localeData()._week.dow, this.localeData()._week.doy).year;
     return isNull(input) ? year : this.add(input - year, "jyear");
@@ -921,6 +914,7 @@ jMoment.fn.isAfter = function (other, units) {
     }
     return moment.fn.isAfter.call(this, other, units);
 };
+
 jMoment.fn.clone = function () {
     return jMoment(this);
 };
@@ -930,6 +924,11 @@ jMoment.fn.doAsJalali = function (usePersianDigits) {
     this.usingFaDigits = usePersianDigits;
     return this;
 };
+jMoment.fn.doAsGregorian = function () {
+    this.isJalali = false;
+    this.usingFaDigits = false;
+    return this;
+};
 
 /**
  * @deprecated substitude with m.locale('fa')
@@ -937,12 +936,6 @@ jMoment.fn.doAsJalali = function (usePersianDigits) {
 jMoment.fn.loadPersian = function (usePersianDigits) {
     this.locale("fa");
     this.usingFaDigits = usePersianDigits;
-    return this;
-};
-
-jMoment.fn.doAsGregorian = function () {
-    this.isJalali = false;
-    this.usingFaDigits = false;
     return this;
 };
 
@@ -962,13 +955,6 @@ jMoment.fn.formatPersian = function (format) {
     moment.usingFaDigits = globalState;
     this.locale(prevLocale);
     return formated;
-};
-
-jMoment.useJalaliSystemPrimarily = function () {
-    moment.justUseJalali = true;
-};
-jMoment.useJalaliSystemSecondary = function () {
-    moment.justUseJalali = false;
 };
 
 jMoment.fn.jYears = jMoment.fn.jYear;
@@ -1006,9 +992,6 @@ jMoment.fn.jIsLeapYear = function () {
     var year = this.jYear();
     return isLeapJalaliYear(year);
 };
-/************************************
- jMoment Statics
- ************************************/
 jMoment.fn.locale = function(locale) {
     if (moment.changeCalendarSystemByItsLocale) {
         if (locale === "fa") {
@@ -1019,6 +1002,9 @@ jMoment.fn.locale = function(locale) {
     }
     return moment.fn.locale.call(this, locale);
 };
+/************************************
+ jMoment Statics
+ ************************************/
 jMoment.locale = function(locale) {
     if (moment.changeCalendarSystemByItsLocale) {
         if (locale === "fa") {
@@ -1029,8 +1015,19 @@ jMoment.locale = function(locale) {
     }
     return moment.locale.call(this, locale);
 };
-jMoment.changeCalendarSystemUponLocale= function () {
+
+jMoment.bindCalendarSystemAndLocale = function () {
     moment.changeCalendarSystemByItsLocale = true;
+};
+jMoment.unBindCalendarSystemAndLocale = function () {
+    moment.changeCalendarSystemByItsLocale = false;
+};
+
+jMoment.useJalaliSystemPrimarily = function () {
+    moment.justUseJalali = true;
+};
+jMoment.useJalaliSystemSecondary = function () {
+    moment.justUseJalali = false;
 };
 
 jMoment.jDaysInMonth = function (year, month) {

@@ -208,7 +208,9 @@ moment().format('YYYY/MMMM/D'); // 1989/January/24
 ```
 
 ### Change calendar system on changing its locale
-moment.changeSystemByItsLocale();
+```js
+moment.bindCalendarSystemAndLocale();
+```
 
 ### An example usage:
 To make a datePicker work with jalali(shamsi) calendar system you could use this ability.
