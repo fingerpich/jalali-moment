@@ -927,7 +927,7 @@ describe("moment", function() {
     describe("#switch calendar systems", function (){
         it("test changeSystemByItsLocale ", function () {
             var m1 = moment("1367/11/04","jYYYY/jMM/jDD");
-            moment.changeCalendarSystemUponLocale();
+            moment.bindCalendarSystemAndLocale();
             m1.locale('fa');
             m1.format('YYYY/MM/DD').should.be.equal('1367/11/04');
             m1.locale('en');
