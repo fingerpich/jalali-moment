@@ -939,24 +939,6 @@ jMoment.fn.loadPersian = function (usePersianDigits) {
     return this;
 };
 
-/**
- * @deprecated you could substitude with m.locale('fa')
- */
-jMoment.fn.formatPersian = function (format) {
-    var prevLocale = this.locale();
-    var globalState = moment.usingFaDigits;
-
-    this.locale("fa");
-    moment.usingFaDigits = true;
-
-    this.format(format);
-    var formated = this.format(format);
-
-    moment.usingFaDigits = globalState;
-    this.locale(prevLocale);
-    return formated;
-};
-
 jMoment.fn.jYears = jMoment.fn.jYear;
 jMoment.fn.jMonths = jMoment.fn.jMonth;
 jMoment.fn.jDates = jMoment.fn.jDate;
