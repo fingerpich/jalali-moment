@@ -600,7 +600,6 @@ declare namespace moment {
 
     doAsGregorian(): Moment;
     doAsJalali(formatAsPersianDate: boolean): Moment;
-    formatPersian(format: string): string;
 
     /**
      * @deprecated as of 2.8.0, use locale
@@ -613,7 +612,6 @@ declare namespace moment {
 
     locale(): string;
     locale(locale: LocaleSpecifier): Moment;
-    loadPersian(usePersianDigits: boolean): Moment;
 
     localeData(): Locale;
 
@@ -696,8 +694,6 @@ declare namespace moment {
   export function jWeekOfYear(mom: Moment, firstDayOfWeek: number, firstDayOfWeekOfYear: number): MomentInput;
   export function jDaysInMonth(jMear: number, jMonth: number): number;
   export function jIsLeapYear(jYear): boolean;
-  export function loadPersian(usePersianDigits?: boolean): void;
-  export function unloadPersian(): void;
   export function useJalaliSystemPrimarily(): void;
   export function useJalaliSystemSecondary(): void;
   export var jConvert: any;

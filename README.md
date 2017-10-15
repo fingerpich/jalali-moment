@@ -168,19 +168,6 @@ moment('2013-8-25 16:40:00', 'YYYY-M-D HH:mm:ss')
     .format('jYYYY/jM/jD HH:mm:ss'); // 1392/6/31 23:59:59
 ```
 
-## Load Persian
-To add Persian language, use loadPersian method:
-
-```js
-moment().format('jYYYY/jMMMM/jD'); // 1367/Bahman/4
-moment.loadPersian();
-moment().format('jYYYY/jMMMM/jD'); // 1367/بهمن/4
-moment.loadPersian(true); //use persian digits
-moment().format('jYYYY/jMMMM/jD'); // ۱۳۶۷/بهمن/۴
-moment.unloadPersian();
-moment().format('jYYYY/jMMMM/jD'); // 1367/Bahman/4
-```
-
 ## Use jalali calendar system primarily
 This plugin adds Jalali calendar system to moment.js which is using gregorian calendar system 
 so we could use both calendar system concurrently but 
