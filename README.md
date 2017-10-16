@@ -175,7 +175,7 @@ you can use Jalali calendar as default system.
 
 ### Set it for an instance
 ```js
-m.doAsJalali(true);
+m.doAsJalali();
 m.subtract(1,'year').format('YYYY/MMMM/D'); // ۱۳۶۷/بهمن/۰۴
 m.doAsGregorian();
 ```

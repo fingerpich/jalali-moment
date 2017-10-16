@@ -566,26 +566,6 @@ function jWeekOfYear(mom, firstDayOfWeek, firstDayOfWeekOfYear) {
  Top Level Functions
  ************************************/
 
-function hasPersianDigit(input){
-    if(typeof input === "string") {
-        for (var i = 0; i < 10; i++) {
-            if (input.indexOf(persianMap[i]) > -1) return true;
-        }
-    }
-    return false;
-    // return /[\u06F0-\u06F90]+/.test(input);
-}
-function convertToEnglishNumber(input){
-    return input.replace(/[\u06F0-\u06F90]/g, function(m){
-        return persianDigits.indexOf(m);
-    });
-}
-function convertToPersianNumber(input){
-    return input.replace(/\d/g,function(m){
-        return persianMap[parseInt(m)];
-    });
-}
-
 function makeMoment(input, format, lang, strict, utc) {
     if (typeof lang === "boolean") {
         utc = strict;
@@ -593,11 +573,6 @@ function makeMoment(input, format, lang, strict, utc) {
         lang = undefined;
     }
     var itsJalaliDate = (moment.justUseJalali || this.isJalali);
-    if(hasPersianDigit(input)){
-        input = convertToEnglishNumber(input);
-        itsJalaliDate = true;
-    }
-
     if(input && !format && itsJalaliDate) {
         input = input.replace("/","-");
         if(/\d{4}\-\d{2}\-\d{2}/.test(input)) {
@@ -716,9 +691,6 @@ jMoment.fn.format = function (format) {
         format = formatFunctions[format](this);
     }
     var formatted = moment.fn.format.call(this, format);
-    if (moment.usePersianDigits || this.usePersianDigits) {
-        formatted = convertToPersianNumber(formatted);
-    }
     return formatted;
 };
 
@@ -919,14 +891,12 @@ jMoment.fn.clone = function () {
     return jMoment(this);
 };
 
-jMoment.fn.doAsJalali = function (usePersianDigits) {
+jMoment.fn.doAsJalali = function () {
     this.isJalali = true;
-    this.usingFaDigits = usePersianDigits;
     return this;
 };
 jMoment.fn.doAsGregorian = function () {
     this.isJalali = false;
-    this.usingFaDigits = false;
     return this;
 };
 
@@ -1070,6 +1040,7 @@ moment.defineLocale("fa", {
         , jMonths: ("فروردین_اردیبهشت_خرداد_تیر_مرداد_شهریور_مهر_آبان_آذر_دی_بهمن_اسفند").split("_")
         , jMonthsShort: "فرو_ارد_خرد_تیر_مرد_شهر_مهر_آبا_آذر_دی_بهم_اسف".split("_")
     });
+// jMoment.bindCalendarSystemAndLocale();
 moment.locale("en");
 
 jMoment.jConvert =  { toJalali: toJalali

@@ -599,7 +599,6 @@ declare namespace moment {
     isBetween(a: MomentInput, b: MomentInput, granularity?: unitOfTime.StartOf, inclusivity?: "()" | "[)" | "(]" | "[]"): boolean;
 
     doAsGregorian(): Moment;
-    doAsJalali(formatAsPersianDate: boolean): Moment;
 
     /**
      * @deprecated as of 2.8.0, use locale
