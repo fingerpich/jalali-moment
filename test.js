@@ -912,9 +912,16 @@ describe("moment", function() {
         });
     });
     describe("#switch calendar systems", function (){
+        it("change locale globally should change the whole instances system", function () {
+            moment.locale('fa');
+            var m1 = moment("1367/11/04","YYYY/MM/DD");
+            m1.locale('fa');
+            m1.format('YYYY/MM/DD').should.be.equal('1367/11/04');
+            m1.locale('en');
+            m1.format('YYYY/MM/DD').should.be.equal('1989/01/24');
+        });
         it("test changeSystemByItsLocale ", function () {
             var m1 = moment("1367/11/04","jYYYY/jMM/jDD");
-            moment.bindCalendarSystemAndLocale();
             m1.locale('fa');
             m1.format('YYYY/MM/DD').should.be.equal('1367/11/04');
             m1.locale('en');
