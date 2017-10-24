@@ -22,6 +22,3 @@
     - [بررسی تاریخ جلالی (شمسی خورشیدی](https://github.com/fingerpich/jalali-moment#validate)
     - [تبدیل تاریخ میلادی به تاریخ جلالی (شمسی خورشیدی](https://github.com/fingerpich/jalali-moment#convert-gregorian-miladi-to-jalali-shamsi-persian)
     - [تبدیل تاریخ جلالی (شمسی خورشیدی) به میلادی](https://github.com/fingerpich/jalali-moment#convert-persianjalali--shamsi-khorshidi-to-gregorian-miladi-calendar-system)
-  - [نمایش تاریخ به زبان فارسی](https://github.com/fingerpich/jalali-moment/)
-  - [استفاده از سیستم تاریخ جلالی (شمسی یا خورشیدی) به عنوان سیستم اصلی برای کتابخانه](https://github.com/fingerpich/jalali-moment/)
-  

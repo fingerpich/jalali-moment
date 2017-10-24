@@ -920,6 +920,7 @@ describe("moment", function() {
         it("change locale globally should change the whole instances system", function () {
             moment.locale('fa');
             var m1 = moment("1367/11/04","YYYY/MM/DD");
+
             m1.format('YYYY/MM/DD').should.be.equal('1367/11/04');
             m1.locale('en');
             m1.format('YYYY/MM/DD').should.be.equal('1989/01/24');
@@ -932,4 +933,5 @@ describe("moment", function() {
             m1.format('YYYY/MM/DD').should.be.equal('1989/01/24');
         });
     });
+    //TODO: var m1 = moment("1367/11/04");
 });
