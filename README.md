@@ -14,7 +14,7 @@ Read this in other languages: [فارسی](./README.fa.md)
 [![Codacy Badge][codacy-quality]][codacy-quality-url]
 [![Codacy Badge][codacy-coverage]][codacy-coverage-url]
 
-
+## How to use
 - [Install](https://github.com/fingerpich/jalali-moment/Document#install)
 - How to use jalali moment in
     - [node.js](https://github.com/fingerpich/jalali-moment/Document#Using-in-Node.js)
@@ -27,12 +27,12 @@ Read this in other languages: [فارسی](./README.fa.md)
     This plugin provide using jalali and gregorian calendar system together 
     on [momentjs](https://momentjs.com/docs/) api.
     
-    ```locale('fa')``` it will use jalali calendar system
+    ```.locale('fa');``` it will use jalali calendar system
     
-    ```locale('any other locale')``` it will use gregorian calendar system
+    ```.locale('any other locale');``` it will use gregorian calendar system
     - [Parse](https://github.com/fingerpich/jalali-moment/Document#parse)
         ```js
-        moment.locale('fa');
+        moment.locale('fa'); // set fa locale for all new moment instances
         var m1 = moment("1367/11/04","YYYY/MM/DD");
         ```
     - [Display](https://github.com/fingerpich/jalali-moment/Document#display-jalali-or-miladi-date)
@@ -50,16 +50,13 @@ Read this in other languages: [فارسی](./README.fa.md)
     - [jalali to Gregorian](https://github.com/fingerpich/jalali-moment/Document#convert-persianjalali--shamsi-khorshidi-to-gregorian-miladi-calendar-system)
         ```js
         moment('1367/11/04', 'YYYY/MM/DD').locale('en').format('YYYY/MM/DD'); // 1989/01/24
+        //set en locale just for this instance  
         ```
     - [Gregorian to jalali](https://github.com/fingerpich/jalali-moment/Document#convert-gregorian-miladi-to-jalali-shamsi-persian)
         ```js
         moment.locale('en');
         moment('1989/01/24').locale('fa').format('YYYY/MM/DD'); // 1367/11/04
         ```
-
-## License
-
-MIT
 
 [license-image]: http://img.shields.io/badge/license-MIT-blue.svg?style=flat
 [license-url]: LICENSE
