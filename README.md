@@ -15,14 +15,14 @@ Read this in other languages: [فارسی](./README.fa.md)
 [![Codacy Badge][codacy-coverage]][codacy-coverage-url]
 
 ## How to use
-- [Install](https://github.com/fingerpich/jalali-moment/Document#install)
+- [Install](./Document.md#install)
 - How to use jalali moment in
-    - [node.js](https://github.com/fingerpich/jalali-moment/Document#Using-in-Node.js)
-    - [typescript](https://github.com/fingerpich/jalali-moment/Document#typescript)
-    - [angular](https://github.com/fingerpich/jalali-moment/Document#Angular-2-or-4)
-    - [es5](https://github.com/fingerpich/jalali-moment/Document#es5)
-    - [plunker](https://github.com/fingerpich/jalali-moment/Document#Using-in-Plunker)
-- [API](https://github.com/fingerpich/jalali-moment/Document#api)
+    - [node.js](./Document.md#Using-in-Node.js)
+    - [typescript](./Document.md#typescript)
+    - [angular](./Document.md#Angular-2-or-4)
+    - [es5](./Document.md#es5)
+    - [plunker](./Document.md#Using-in-Plunker)
+- [API](./Document.md#api)
     
     This plugin provide using jalali and gregorian calendar system together 
     on [momentjs](https://momentjs.com/docs/) api.
@@ -30,29 +30,29 @@ Read this in other languages: [فارسی](./README.fa.md)
     ```.locale('fa');``` it will use jalali calendar system
     
     ```.locale('any other locale');``` it will use gregorian calendar system
-    - [Parse](https://github.com/fingerpich/jalali-moment/Document#parse)
+    - [Parse](./Document.md#parse)
         ```js
         moment.locale('fa'); // set fa locale for all new moment instances
         var m1 = moment("1367/11/04","YYYY/MM/DD");
         ```
-    - [Display](https://github.com/fingerpich/jalali-moment/Document#display-jalali-or-miladi-date)
+    - [Display](./Document.md#display-jalali-or-miladi-date)
         ```js
          m1.format("YYYY/MM/DD"); // 1367/11/04
         ```
-    - [Manipulate](https://github.com/fingerpich/jalali-moment/Document#manipulate)
+    - [Manipulate](./Document.md#manipulate)
         ```js
         m1.add(1, "day").format("YYYY/MM/DD"); // 1367/11/05
         ```
-    - [Validate](https://github.com/fingerpich/jalali-moment/Document#validate)
+    - [Validate](./Document.md#validate)
         ```js
         m1.isValid(); // true
         ```
-    - [jalali to Gregorian](https://github.com/fingerpich/jalali-moment/Document#convert-persianjalali--shamsi-khorshidi-to-gregorian-miladi-calendar-system)
+    - [jalali to Gregorian](./Document.md#convert-persianjalali--shamsi-khorshidi-to-gregorian-miladi-calendar-system)
         ```js
         moment('1367/11/04', 'YYYY/MM/DD').locale('en').format('YYYY/MM/DD'); // 1989/01/24
         //set en locale just for this instance  
         ```
-    - [Gregorian to jalali](https://github.com/fingerpich/jalali-moment/Document#convert-gregorian-miladi-to-jalali-shamsi-persian)
+    - [Gregorian to jalali](./Document.md#convert-gregorian-miladi-to-jalali-shamsi-persian)
         ```js
         moment.locale('en');
         moment('1989/01/24').locale('fa').format('YYYY/MM/DD'); // 1367/11/04
