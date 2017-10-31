@@ -241,6 +241,11 @@ A highly configurable date picker built for Angular 4 or Angular 2 applications 
 
 A Jalaali calendar system plugin for moment.js is [jalaali-moment](https://github.com/jalaali/moment-jalaali).
 
+
+#### aurelia-time
+
+Contains a set of value converters for [Aurelia](http://aurelia.io), one which uses jalali-moment.
+
 ## License
 
 MIT
