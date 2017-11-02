@@ -72,6 +72,51 @@ and use it in component template
  <div>{{ loadedData.date | jalali }}</div>
 ```
 
+#### Aurelia
+
+You can create a value converters like following:
+
+``` typescript
+import { valueConverter } from 'aurelia-framework';
+var moment = require('jalali-moment');
+
+
+@valueConverter("date")
+export class DateValueConverter {
+  toView(value: string, format: string = "YYYY/MM/DD", locale: string = "en") {
+    if (!value)
+      return null;
+
+    if (locale === "fa") {
+      let m = moment(value);
+      m.doAsJalali(true);
+      m.loadPersian();
+      let result = m.format(format);
+      m.doAsGregorian();
+      return result;
+    }
+
+    let m2 = moment(value).locale(locale);
+    return m2.format(format);
+  }
+}
+```
+
+then use this value converter in your ```html``` files:
+
+```html
+<require from="path_to_your_date_value_converter"></require>
+
+<h1 style="direction:ltr">
+    <span>
+        ${myDate|date:myFormat:options.locale}
+    </span>
+</h1>
+```
+
+also, for aurelia developers, there is a plugin, [aurelia-time](https://github.com/shahabganji/aurelia-time), in which there are value converters for jalali-moment and other time and date libraries.
+
+
 ## API
 
 This plugin tries to mimic [moment.js](https://momentjs.com/) api.
