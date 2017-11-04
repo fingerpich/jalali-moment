@@ -17,11 +17,11 @@ Read this in other languages: [فارسی](./README.fa.md)
 ## How to use
 - [Install](./Document.md#install)
 - How to use jalali moment in
-    - [node.js](./Document.md#Using-in-Node.js)
+    - [node.js](./Document.md#using-in-node.js)
     - [typescript](./Document.md#typescript)
-    - [angular](./Document.md#Angular-2-or-4)
+    - [angular](./Document.md#angular-2-or-4)
     - [es5](./Document.md#es5)
-    - [plunker](./Document.md#Using-in-Plunker)
+    - [plunker](./Document.md#using-in-plunker)
 - [API](./Document.md#api)
     
     This plugin provide using jalali and gregorian calendar system together 
