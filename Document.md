@@ -87,15 +87,6 @@ export class DateValueConverter {
     if (!value)
       return null;
 
-    if (locale === "fa") {
-      let m = moment(value);
-      m.doAsJalali(true);
-      m.loadPersian();
-      let result = m.format(format);
-      m.doAsGregorian();
-      return result;
-    }
-
     let m2 = moment(value).locale(locale);
     return m2.format(format);
   }
