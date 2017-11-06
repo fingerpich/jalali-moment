@@ -14,49 +14,50 @@ Read this in other languages: [فارسی](./README.fa.md)
 [![Codacy Badge][codacy-quality]][codacy-quality-url]
 [![Codacy Badge][codacy-coverage]][codacy-coverage-url]
 
-## How to use
+## How to
 - [Install](./Document.md#install)
-- How to use jalali moment in
-    - [node.js](./Document.md#using-in-node.js)
-    - [typescript](./Document.md#typescript)
-    - [angular](./Document.md#angular-2-or-4)
-    - [es5](./Document.md#es5)
-    - [plunker](./Document.md#using-in-plunker)
-- [API](./Document.md#api)
+- Use jalali moment in
+    - [Node.js](./Document.md#using-in-nodejs)
+    - [Typescript](./Document.md#typescript)
+    - [Angular](./Document.md#angular-2-or-4)
+    - [Aurelia](./Document.md#aurelia)
+    - [Es5](./Document.md#es5)
+    - [Plunker](./Document.md#using-in-plunker)
+- [Use API](./Document.md#api)
     
-    This plugin provide using jalali and gregorian calendar system together 
+    This plugin provides using jalali and gregorian calendar system together
     on [momentjs](https://momentjs.com/docs/) api.
-    
+
     ```.locale('fa');``` it will use jalali calendar system
-    
+
     ```.locale('any other locale');``` it will use gregorian calendar system
-    - [Parse](./Document.md#parse)
-        ```js
-        moment.locale('fa'); // set fa locale for all new moment instances
-        var m1 = moment("1367/11/04","YYYY/MM/DD");
-        ```
-    - [Display](./Document.md#display-jalali-or-miladi-date)
-        ```js
-         m1.format("YYYY/MM/DD"); // 1367/11/04
-        ```
-    - [Manipulate](./Document.md#manipulate)
-        ```js
-        m1.add(1, "day").format("YYYY/MM/DD"); // 1367/11/05
-        ```
-    - [Validate](./Document.md#validate)
-        ```js
-        m1.isValid(); // true
-        ```
-    - [jalali to Gregorian](./Document.md#convert-persianjalali--shamsi-khorshidi-to-gregorian-miladi-calendar-system)
-        ```js
-        moment('1367/11/04', 'YYYY/MM/DD').locale('en').format('YYYY/MM/DD'); // 1989/01/24
-        //set en locale just for this instance  
-        ```
-    - [Gregorian to jalali](./Document.md#convert-gregorian-miladi-to-jalali-shamsi-persian)
-        ```js
-        moment.locale('en');
-        moment('1989/01/24').locale('fa').format('YYYY/MM/DD'); // 1367/11/04
-        ```
+
+#### Usage
+
+  - [Parse](./Document.md#parse)
+    ```js
+    moment.locale('fa'); // set fa locale for all new moment instances
+    var m1 = moment("1367/11/04","YYYY/MM/DD");
+    ```
+  - [Display](./Document.md#display-jalali-or-miladi-date)
+    ```js
+     m1.format("YYYY/MM/DD"); // 1367/11/04
+    ```
+  - [Manipulate](./Document.md#manipulate)
+    ```js
+    m1.add(1, "day").format("YYYY/MM/DD"); // 1367/11/05
+    ```
+  - [Validate](./Document.md#validate)
+    ```js
+    m1.isSame(m1.clone()); // true
+    ```
+  - [Convert](./Document.md#convert-persianjalali--shamsi-khorshidi-to-gregorian-miladi-calendar-system)
+    ```js
+    moment('1367/11/04', 'YYYY/MM/DD').locale('en').format('YYYY/MM/DD'); // 1989/01/24
+    moment.locale('en');
+    moment('1989/01/24').locale('fa').format('YYYY/MM/DD'); // 1367/11/04
+    //set en locale just for this instance
+    ```
 
 [license-image]: http://img.shields.io/badge/license-MIT-blue.svg?style=flat
 [license-url]: LICENSE

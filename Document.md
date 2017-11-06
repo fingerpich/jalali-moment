@@ -88,13 +88,15 @@ Create a instance of moment from a Jalali (Persian) or Miladi date and time as s
 ```js
 m = moment('1367/11/4', 'jYYYY/jM/jD');// parse a jalali (persian) date
 m = moment('1989/1/24', 'YYYY/M/D');// parse a gregorian (miladi) date
+moment.locale('fa');
+m = moment('1367/11/4', 'YYYY/M/D');// parse a jalali (persian) date
 ```
 
 #### Display jalali or miladi date
 
 Display moment instance as a string.[more](https://momentjs.com/docs/#/displaying/)
 ```js
-m.format('jYYYY/jM/jD');// 1367/11/4 
+m.format('jYYYY/jM/jD');// 1367/11/4
 m.format('jMM'); // 11 display jalali month
 m.format('M'); // 1 display miladi month
 m.format('MM'); // 01 display month by two digit
