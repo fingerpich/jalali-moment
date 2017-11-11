@@ -28,7 +28,7 @@
     "test": "mocha --reporter spec --ui bdd --colors --check-leaks  test.js",
     "build": "WEBPACK_ENV=build webpack;webpack --config webpack.browser.js",
     "dev": "WEBPACK_ENV=dev webpack --progress --colors --watch",
-    "publish": "mkdir pkg;cp -r ./* ./pkg; cp Document.md ./pkg/README.md; cd ./pkg;npm run build",
+    "publish": "mkdir -p pkg;cp -r ./* ./pkg; cp Document.md ./pkg/README.md; cd ./pkg;npm run build",
     "postPublish": "npm publish pkg;rm -rf pkg"
   },
   "homepage": "https://github.com/fingerpich/jalali-moment",
