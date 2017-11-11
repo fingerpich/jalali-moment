@@ -15,15 +15,15 @@ Read this in other languages: [فارسی](./README.fa.md)
 [![Codacy Badge][codacy-coverage]][codacy-coverage-url]
 
 ## Table Of Content
-- [Install](#install)
+- [Install](README.md#install)
 - Use jalali moment in
-    - [Node.js](#using-in-nodejs)
-    - [Typescript](#typescript)
-    - [Angular](#angular-2-or-4)
-    - [Aurelia](#aurelia)
-    - [Es5](#es5)
-    - [Plunker](#using-in-plunker)
-- [Use API](#api)
+    - [Node.js](README.md#using-in-nodejs)
+    - [Typescript](README.md#typescript)
+    - [Angular](README.md#angular-2-or-4)
+    - [Aurelia](README.md#aurelia)
+    - [Es5](README.md#es5)
+    - [Plunker](README.md#using-in-plunker)
+- [Use API](README.md#api)
 
     This plugin provides using jalali and gregorian calendar system together
     on [momentjs](https://momentjs.com/docs/) api.
@@ -34,24 +34,24 @@ Read this in other languages: [فارسی](./README.fa.md)
 
 #### Usage
 
-  - [Parse](#parse)
+  - [Parse](README.md#parse)
     ```js
     moment.locale('fa'); // set fa locale for all new moment instances
     var m1 = moment("1367/11/04","YYYY/MM/DD");
     ```
-  - [Display](#display-jalali-or-miladi-date)
+  - [Display](README.md#display-jalali-or-miladi-date)
     ```js
      m1.format("YYYY/MM/DD"); // 1367/11/04
     ```
-  - [Manipulate](#manipulate)
+  - [Manipulate](README.md#manipulate)
     ```js
     m1.add(1, "day").format("YYYY/MM/DD"); // 1367/11/05
     ```
-  - [Validate](#validate)
+  - [Validate](README.md#validate)
     ```js
     m1.isSame(m1.clone()); // true
     ```
-  - [Convert](#convert-persianjalali--shamsi-khorshidi-to-gregorian-miladi-calendar-system)
+  - [Convert](README.md#convert-persianjalali--shamsi-khorshidi-to-gregorian-miladi-calendar-system)
     ```js
     moment('1367/11/04', 'YYYY/MM/DD').locale('en').format('YYYY/MM/DD'); // 1989/01/24
     moment.locale('en');
