@@ -58,3 +58,28 @@ Read this in other languages: [فارسی](./README.fa.md)
     moment('1989/01/24').locale('fa').format('YYYY/MM/DD'); // 1367/11/04
     //set en locale just for this instance
     ```
+
+
+[license-image]: http://img.shields.io/badge/license-MIT-blue.svg?style=flat
+[license-url]: LICENSE
+
+[npm-url]: https://npmjs.org/package/jalali-moment
+[npm-version-image]: http://img.shields.io/npm/v/jalali-moment.svg?style=flat
+
+[travis-url]: https://travis-ci.org/fingerpich/jalali-moment
+[travis-image]: https://travis-ci.org/fingerpich/jalali-moment.png?branch=master
+
+[packageQuality-image]: http://npm.packagequality.com/shield/jalali-moment.svg
+[packageQuality-url]: http://packagequality.com/#?package=jalali-moment
+
+[dependencies-quality]: https://david-dm.org/fingerpich/jalali-moment.svg
+[dependencies-quality-url]: https://david-dm.org/fingerpich/jalali-moment
+
+[dev-dependencies-quality]: https://david-dm.org/fingerpich/jalali-moment/dev-status.svg
+[dev-dependencies-quality-url]: https://david-dm.org/fingerpich/jalali-moment?type=dev
+
+[codacy-quality]:https://api.codacy.com/project/badge/Grade/1aa5b7aadfc24238bdf825d58cb2cba1
+[codacy-quality-url]:https://www.codacy.com/app/zarei-bs/jalali-moment?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=fingerpich/jalali-moment&amp;utm_campaign=Badge_Grade
+
+[codacy-coverage]:https://api.codacy.com/project/badge/Coverage/1aa5b7aadfc24238bdf825d58cb2cba1
+[codacy-coverage-url]:https://www.codacy.com/app/zarei-bs/jalali-moment?utm_source=github.com&utm_medium=referral&utm_content=fingerpich/jalali-moment&utm_campaign=Badge_Coverage
