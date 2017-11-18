@@ -2,41 +2,113 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Jalali Moment</title>
+    <title>Jalali Moment demo</title>
     <style>
-        .center {
-            text-align: center;
-        }
-        .install {
-            max-width: 600px;
-            margin: auto;
-            padding: 10px;
-            color: #fff;
-            background: #4a4a4a;
+        body{
+            text-align:center;
+            color:#333;
         }
         a{
-            color: #ddf;
+            color:#07f;
+            text-decoration:none;
+        }
+        button, input{
+            padding:15px;
+            text-align:center;
         }
     </style>
+    <script src="https://unpkg.com/jalali-moment/dist/jalali-moment.browser.js"></script>
 </head>
 <body>
+    <h1 class="center">Jalali Moment</h1>
+    <div class="center"><small>A Jalali (Jalali, Persian, Khorshidi, Shamsi) calendar system plugin for moment.js.</small></div>
+    <div class="install">
+    <h4>Installation</h4>
+    <code>npm install jalali-moment --save</code><br>
+    <code>bower install jalali-moment --save</code>
+    </div>
+
+    <h2>Validate shamsi date(تعیین صحت تاریخ شمسی)</h2>
+    <p>شما می توانید با این کتابخانه صحت و درستی اینکه یک رشته یک تاریخ شمسی است یا خیر است را تشخیص دهید.</p>
+    <input id="ShamsiInput" placeHolder="YYYY/M/D" value="1370/03/16">
+    <button id="validateShamsi">to shamsi</button>
+    <span id="ValidationOutput"></span>
+
+    <h2>Convert gregorian(miladi) to jalali(shamsi)</h2>
+    <p>این کتابخانه میتواند برای تبدیل تاریخ میلادی به شمسی استفاده شود.</p>
+    <input id="gregorianInput" placeHolder="YYYY/MM/D" value="1989/1/24">
+    <button id="convertToJalali">to jalali</button>
+    <span id="jalaliOutput"></span>
+
+    <h2>Convert jalali(shamsi) to gregorian(miladi) </h2>
+    <p>این کتابخانه میتواند برای تبدیل تاریخ شمسی به میلادی استفاده شود.</p>
+    <input id="jalaliInput" placeHolder="YYYY/M/D" value="1370/03/16">
+    <button id="convertToGregorian">Validate</button>
+    <span id="gregorianOutput"></span>
+
     <script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
             m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
         })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
         ga('create', 'UA-98265042-4', 'auto');
         ga('send', 'pageview');
+
+        document.getElementById("convertToJalali").addEventListener("click", function(){
+            var output="";
+            try{
+                var input = document.getElementById("gregorianInput").value;
+                var m = moment(input);
+                if(m.isValid()){
+                    m.doAsJalali(true);
+                    output = m.format('ddd') + ' ' + m.format("YYYY/MMMM/DD");
+                } else {
+                    output = "it is not valid date";
+                }
+            }
+            catch(e){
+                output="input is not a date";
+            }
+            document.getElementById("jalaliOutput").innerText = output;
+        });
+
+
+
+        document.getElementById("convertToGregorian").addEventListener("click", function(){
+            var output="";
+            try{
+                var input = document.getElementById("jalaliInput").value;
+                var m = moment(input, "jYYYY/jMM/jDD");
+                if (m.isValid()){
+                    output = m.format("YYYY/MM/D");
+                } else {
+                    output = "input is not a jalali date"
+                }
+            }
+            catch(e){
+                output="input is not a date";
+            }
+            document.getElementById("gregorianOutput").innerText = output
+        });
+
+        document.getElementById("validateShamsi").addEventListener("click", function(){
+            var output="";
+            try{
+                var input = document.getElementById("jalaliInput").value;
+                var m = moment(input);
+                if(m.isValid()){
+                    output = "معتبر است";
+                } else {
+                    output = "معتبر نیست";
+                }
+            }
+            catch(e){
+                output = "معتبر نیست";
+            }
+            document.getElementById("ValidationOutput").innerText = output;
+        });
     </script>
-    <h1 class="center">Jalali Moment</h1>
-    <div class="center"><small>A Jalali (Jalali, Persian, Khorshidi, Shamsi) calendar system plugin for moment.js.</small></div>
-    <div class="install">
-    <h4>Installation ways</h4>
-    <code>git clone <a href="https://github.com/fingerpich/jalali-moment">https://github.com/fingerpich/jalali-moment</a></code><br>
-    <code>npm install jalali-moment --save</code><br>
-    <code>bower install jalali-moment --save</code>
-    </div>
-    <iframe style="height: 1245px;margin: 30px auto;width:100%;" src="https://plnkr.co/Gggh1u/?show=angulike.js,html,preview" frameborder="0"></iframe>
+
 </body>
 </html>

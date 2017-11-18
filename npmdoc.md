@@ -15,7 +15,7 @@ Read this in other languages: [فارسی](./README.fa.md)
 [![Codacy Badge][codacy-coverage]][codacy-coverage-url]
 
 ## How to
-- [Install](#install)
+- [Install](https://github.com/fingerpich/jalali-moment#install)
 - Use jalali moment in
     - [Node.js](https://github.com/fingerpich/jalali-moment#using-in-nodejs)
     - [Typescript](https://github.com/fingerpich/jalali-moment#typescript)
