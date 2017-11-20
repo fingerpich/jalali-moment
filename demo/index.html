@@ -20,31 +20,36 @@
     <script src="https://unpkg.com/jalali-moment/dist/jalali-moment.browser.js"></script>
 </head>
 <body>
-    <h1 class="center">Jalali Moment</h1>
-    <div class="center"><small>A Jalali (Jalali, Persian, Khorshidi, Shamsi) calendar system plugin for moment.js.</small></div>
-    <div class="install">
-    <h4>Installation</h4>
-    <code>npm install jalali-moment --save</code><br>
-    <code>bower install jalali-moment --save</code>
-    </div>
+    <h1 class="center"><a href="https://github.com/fingerpich/jalali-moment">Jalali Moment</a> Demo</h1>
+    <p class="center">A Jalali (Jalali, Persian, Khorshidi, Shamsi) calendar system plugin for moment.js.</p>
 
-    <h2>Validate shamsi date(تعیین صحت تاریخ شمسی)</h2>
-    <p>شما می توانید با این کتابخانه صحت و درستی اینکه یک رشته یک تاریخ شمسی است یا خیر است را تشخیص دهید.</p>
-    <input id="ShamsiInput" placeHolder="YYYY/M/D" value="1370/03/16">
-    <button id="validateShamsi">to shamsi</button>
-    <span id="ValidationOutput"></span>
+    <section>
+        <h3><a href="https://github.com/fingerpich/jalali-moment#validate">Validate</a> shamsi date(تعیین صحت تاریخ شمسی)</h3>
+        <p>این کتابخانه برای تشخیص صحت یک تاریخ شمسی یا میلادی و همچنین مقایسه بین تاریخ ها کمک میکند.</p>
+        <input id="ShamsiInput" placeHolder="YYYY/M/D" value="1370/03/16">
+        <button id="validateShamsi">to shamsi</button>
+        <span id="ValidationOutput"></span>
+    </section>
 
-    <h2>Convert gregorian(miladi) to jalali(shamsi)</h2>
-    <p>این کتابخانه میتواند برای تبدیل تاریخ میلادی به شمسی استفاده شود.</p>
-    <input id="gregorianInput" placeHolder="YYYY/MM/D" value="1989/1/24">
-    <button id="convertToJalali">to jalali</button>
-    <span id="jalaliOutput"></span>
+    <section>
+        <h3>Convert gregorian(miladi) to jalali(shamsi)</h3>
+        <p>این کتابخانه میتواند برای تبدیل
+            <a href="https://github.com/fingerpich/jalali-moment#convert-gregorian-miladi-to-jalali-shamsi-persian">        تاریخ میلادی به شمسی</a>
+            استفاده شود.</p>
+        <input id="gregorianInput" placeHolder="YYYY/MM/D" value="1989/1/24">
+        <button id="convertToJalali">to jalali</button>
+        <span id="jalaliOutput"></span>
+    </section>
 
-    <h2>Convert jalali(shamsi) to gregorian(miladi) </h2>
-    <p>این کتابخانه میتواند برای تبدیل تاریخ شمسی به میلادی استفاده شود.</p>
-    <input id="jalaliInput" placeHolder="YYYY/M/D" value="1370/03/16">
-    <button id="convertToGregorian">Validate</button>
-    <span id="gregorianOutput"></span>
+    <section>
+        <h3>Convert jalali(shamsi) to gregorian(miladi) </h3>
+        <p>این کتابخانه میتواند برای تبدیل
+            <a href="https://github.com/fingerpich/jalali-moment#convert-persianjalali--shamsi-khorshidi-to-gregorian-miladi-calendar-system">تاریخ شمسی به میلادی</a>
+            استفاده شود.</p>
+        <input id="jalaliInput" placeHolder="YYYY/M/D" value="1370/03/16">
+        <button id="convertToGregorian">Validate</button>
+        <span id="gregorianOutput"></span>
+    </section>
 
     <script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
