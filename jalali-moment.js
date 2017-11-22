@@ -158,6 +158,7 @@ function toJalaliUnit(units) {
         case "monthName" : return "jMonthsShort";
         case "monthsShort" : return "jMonthsShort";
     }
+    return units;
 }
 
 /**
@@ -571,7 +572,7 @@ function makeMoment(input, format, lang, strict, utc) {
         lang = undefined;
     }
     var itsJalaliDate = (isJalali(this));
-    if(input && !format && itsJalaliDate) {
+    if(input && (typeof input === 'string') && !format && itsJalaliDate) {
         input = input.replace("/","-");
         if(/\d{4}\-\d{2}\-\d{2}/.test(input)) {
             format = "jYYYY-jMM-jDD";
