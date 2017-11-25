@@ -643,6 +643,9 @@ function makeMoment(input, format, lang, strict, utc) {
     if (strict && jm.isValid()) {
         jm._isValid = jm.format(origFormat) === origInput;
     }
+    if (input && input.calSystem) {
+        jm.calSystem = input.calSystem;
+    }
     return jm;
 }
 
