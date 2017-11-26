@@ -29,7 +29,8 @@
     "build": "WEBPACK_ENV=build webpack;webpack --config webpack.browser.js",
     "dev": "WEBPACK_ENV=dev webpack --progress --colors --watch",
     "publish": "mkdir -p pkg;cp -r ./* ./pkg; cp npmdoc.md ./pkg/README.md; cd ./pkg;npm run build",
-    "postPublish": "npm publish pkg;rm -rf pkg"
+    "postPublish": "npm publish pkg;rm -rf pkg",
+    "lint": "eslint jalali-moment.js && eslint test.js"
   },
   "homepage": "https://github.com/fingerpich/jalali-moment",
   "bugs": {

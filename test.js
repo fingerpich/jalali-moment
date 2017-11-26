@@ -914,45 +914,45 @@ describe("moment", function() {
     describe("#switch calendar systems", function (){
         it("gregorian is default system", function () {
             var m1 = moment("1989/01/24","YYYY/MM/DD");
-            m1.format('jYYYY/jMM/jDD').should.be.equal('1367/11/04');
-            m1.format('YYYY/MM/DD').should.be.equal('1989/01/24');
+            m1.format("jYYYY/jMM/jDD").should.be.equal("1367/11/04");
+            m1.format("YYYY/MM/DD").should.be.equal("1989/01/24");
         });
         it("change locale globally should change the whole instances system", function () {
-            moment.locale('fa');
+            moment.locale("fa");
             var m1 = moment("1367/11/04","YYYY/MM/DD");
 
-            m1.format('YYYY/MM/DD').should.be.equal('1367/11/04');
-            m1.locale('en');
-            m1.format('YYYY/MM/DD').should.be.equal('1989/01/24');
+            m1.format("YYYY/MM/DD").should.be.equal("1367/11/04");
+            m1.locale("en");
+            m1.format("YYYY/MM/DD").should.be.equal("1989/01/24");
         });
         it("test changeSystemByItsLocale ", function () {
             var m1 = moment("1367/11/04","jYYYY/jMM/jDD");
-            m1.locale('fa');
-            m1.format('YYYY/MM/DD').should.be.equal('1367/11/04');
-            m1.locale('en');
-            m1.format('YYYY/MM/DD').should.be.equal('1989/01/24');
+            m1.locale("fa");
+            m1.format("YYYY/MM/DD").should.be.equal("1367/11/04");
+            m1.locale("en");
+            m1.format("YYYY/MM/DD").should.be.equal("1989/01/24");
         });
     });
     describe("#clone should not affect on calendar system", function () {
-        it("change locale globally should change the whole instances system", function () {
-            moment.locale('en');
+        it("instance locale and clone", function () {
+            moment.locale("en");
             var m1 = moment("1367/11/04","jYYYY/jMM/jDD");
-            m1.locale('fa');
-            m1.format('YYYY/MM/DD').should.be.equal('1367/11/04');
+            m1.locale("fa");
+            m1.format("YYYY/MM/DD").should.be.equal("1367/11/04");
             var m2 = m1.clone();
-            m2.subtract(1, 'day');
-            m2.format('YYYY/MM/DD').should.be.equal('1367/11/03');
-            m2.subtract(1, 'day');
-            m2.clone().format('YYYY/MM/DD').should.be.equal('1367/11/02');
+            m2.subtract(1, "day");
+            m2.format("YYYY/MM/DD").should.be.equal("1367/11/03");
+            m2.subtract(1, "day");
+            m2.clone().format("YYYY/MM/DD").should.be.equal("1367/11/02");
         });
-        it("change locale globally should change the whole instances system", function () {
-            moment.locale('fa');
+        it("global locale and clone", function () {
+            moment.locale("fa");
             var m1 = moment("1367/11/04","YYYY/MM/DD");
-            m1.format('YYYY/MM/DD').should.be.equal('1367/11/04');
+            m1.format("YYYY/MM/DD").should.be.equal("1367/11/04");
             var m2 = m1.clone();
-            m2.format('YYYY/MM/DD').should.be.equal('1367/11/04');
-            m2.subtract(1, 'day');
-            m2.clone().format('YYYY/MM/DD').should.be.equal('1367/11/03');
+            m2.format("YYYY/MM/DD").should.be.equal("1367/11/04");
+            m2.subtract(1, "day");
+            m2.clone().format("YYYY/MM/DD").should.be.equal("1367/11/03");
         });
     });
     //TODO: var m1 = moment("1367/11/04");
