@@ -26,6 +26,12 @@ describe("moment", function() {
             m.format("YYYY-MM-DD hh:mm:ss").should.be.equal("1981-08-17 07:10:20");
             m.milliseconds().should.be.equal(0);
         });
+        it("parse persian dates", function () {
+            moment.locale("fa");
+            var m1 = moment("1367/11/04");
+            m1.format("YYYY/MM/DD").should.be.equal("1367/11/04");
+            moment.locale("en");
+        });
 
         it("should parse correctly when input is only time", function() {
             var m = moment("07:10:20", "hh:mm:ss");
@@ -262,6 +268,17 @@ describe("moment", function() {
             m.format("lll").should.be.equal("26 Amo 1360 12:00 AM");
             m.format("LLLL").should.be.equal("Monday, 26 Mordaad 1360 12:00 AM");
             m.format("llll").should.be.equal("Mon, 26 Amo 1360 12:00 AM");
+        });
+
+        it("should format another", function() {
+            var m = moment("1981-08-17");
+            m.format("Z").should.be.equal("+03:30");
+            m.format("X").should.be.equal("366841800");
+            m.format("dddd").should.be.equal("Monday");
+            m.format("YYYYY").should.be.equal("01981");
+            m.format("DDDD").should.be.equal("229");
+            m.format("jDDD").should.be.equal("150");
+            m.format("jYYYYY").should.be.equal("01360");
         });
     });
 

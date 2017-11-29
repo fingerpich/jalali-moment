@@ -573,7 +573,7 @@ function makeMoment(input, format, lang, strict, utc) {
     }
     var itsJalaliDate = (isJalali(this));
     if(input && (typeof input === "string") && !format && itsJalaliDate) {
-        input = input.replace("/","-");
+        input = input.replace(/\//g,"-");
         if(/\d{4}\-\d{2}\-\d{2}/.test(input)) {
             format = "jYYYY-jMM-jDD";
         } else if (/\d{4}\-\d{2}\-\d{1}/.test(input)) {
