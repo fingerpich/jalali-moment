@@ -705,14 +705,14 @@ jMoment.fn.jYear = function (input) {
         , j
         , g;
     if (typeof input === "number") {
-        j = toJalali(this.year(), this.month(), this.date());
+        j = getJalaliOf(this);
         lastDay = Math.min(j.jd, jMoment.jDaysInMonth(input, j.jm));
         g = toGregorian(input, j.jm, lastDay);
         setDate(this, g.gy, g.gm, g.gd);
         moment.updateOffset(this);
         return this;
     } else {
-        return toJalali(this.year(), this.month(), this.date()).jy;
+        return getJalaliOf(this).jy;
     }
 };
 
@@ -731,7 +731,7 @@ jMoment.fn.jMonth = function (input) {
                 return this;
             }
         }
-        j = toJalali(this.year(), this.month(), this.date());
+        j = getJalaliOf(this);
         lastDay = Math.min(j.jd, jMoment.jDaysInMonth(j.jy, input));
         this.jYear(j.jy + div(input, 12));
         input = mod(input, 12);
@@ -744,7 +744,7 @@ jMoment.fn.jMonth = function (input) {
         moment.updateOffset(this);
         return this;
     } else {
-        return toJalali(this.year(), this.month(), this.date()).jm;
+        return getJalaliOf(this).jm;
     }
 };
 
@@ -752,17 +752,21 @@ jMoment.fn.date = function (input) {
     if (input && isJalali(this)) return jMoment.fn.jDate.call(this,input);
     else return moment.fn.date.call(this, input);
 };
+function getJalaliOf (momentObj) {
+    var time = moment.fn.format.call(momentObj, "YYYY-MM-DD").split("-");
+    return toJalali(+time[0], +time[1] - 1, +time[2]);
+}
 jMoment.fn.jDate = function (input) {
     var j
         , g;
     if (typeof input === "number") {
-        j = toJalali(this.year(), this.month(), this.date());
+        j = getJalaliOf(this);
         g = toGregorian(j.jy, j.jm, input);
         setDate(this, g.gy, g.gm, g.gd);
         moment.updateOffset(this);
         return this;
     } else {
-        return toJalali(this.year(), this.month(), this.date()).jd;
+        return getJalaliOf(this).jd;
     }
 };
 
