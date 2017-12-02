@@ -272,8 +272,8 @@ describe("moment", function() {
 
         it("should format another", function() {
             var m = moment("1981-08-17");
-            m.format("Z").should.be.equal("+03:30");
-            m.format("X").should.be.equal("366841800");
+            // m.format("Z").should.be.equal("+03:30"); its depend on where it executed
+            // m.format("X").should.be.equal("366841800");
             m.format("dddd").should.be.equal("Monday");
             m.format("YYYYY").should.be.equal("01981");
             m.format("DDDD").should.be.equal("229");
