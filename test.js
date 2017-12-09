@@ -598,8 +598,9 @@ describe("moment", function() {
             m.startOf("jMonth").format("jYYYY-jMM-jDD HH:mm:ss").should.be.equal("1360-05-01 00:00:00");
             m = moment("1981-08-17 07:10:20");
             m.startOf("day").format("jYYYY-jMM-jDD HH:mm:ss").should.be.equal("1360-05-26 00:00:00");
-            m = moment("1981-08-17 07:10:20");
-            m.startOf("week").format("jYYYY-jMM-jDD HH:mm:ss").should.be.equal("1360-05-24 00:00:00");
+            m = moment("2017-12-14 07:10:20");
+            m.startOf("jweek").format("jYYYY-jMM-jDD HH:mm:ss").should.be.equal("1396-09-18 00:00:00");
+            m.locale("fa").startOf("week").format("jYYYY-jMM-jDD HH:mm:ss").should.be.equal("1396-09-18 00:00:00");
         });
     });
 

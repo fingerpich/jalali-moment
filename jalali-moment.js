@@ -847,7 +847,7 @@ jMoment.fn.subtract = function (val, units) {
 jMoment.fn.startOf = function (units) {
     units = normalizeUnits(units);
     if( units === "jweek"){
-        return this.jWeek(this.jWeek());
+        return this.startOf("day").subtract(this.jDay() , "day");
     }
     if (units === "jyear" || units === "jmonth") {
         if (units === "jyear") {
