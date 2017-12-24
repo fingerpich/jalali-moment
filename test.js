@@ -973,5 +973,15 @@ describe("moment", function() {
             m2.clone().format("YYYY/MM/DD").should.be.equal("1367/11/03");
         });
     });
-    //TODO: var m1 = moment("1367/11/04");
+    describe("#add or subtract when global locale is not as we expected", function () {
+        it("instance locale and clone", function () {
+            moment.locale("en");
+
+            var m1 = moment("1395/12/30","jYYYY/jMM/jDD").locale("fa");
+            m1.format("YYYY/MM/DD").should.be.equal("1395/12/30");
+
+            m1.subtract(1, "month");
+            m1.format("YYYY/MM/DD").should.be.equal("1395/11/30");
+        });
+    });
 });

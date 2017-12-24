@@ -165,8 +165,8 @@ function toJalaliUnit(units) {
  * normalize units to be comparable
  * @param {string} units
  **/
-function normalizeUnits(units) {
-    if(isJalali(this)){
+function normalizeUnits(units, momentObj) {
+    if (isJalali(momentObj)) {
         units = toJalaliUnit(units);
     }
     if (units) {
@@ -815,7 +815,7 @@ jMoment.fn.add = function (val, units) {
         val = units;
         units = temp;
     }
-    units = normalizeUnits(units);
+    units = normalizeUnits(units, this);
     if (units === "jyear") {
         this.jYear(this.jYear() + val);
     } else if (units === "jmonth") {
@@ -833,7 +833,7 @@ jMoment.fn.subtract = function (val, units) {
         val = units;
         units = temp;
     }
-    units = normalizeUnits(units);
+    units = normalizeUnits(units, this);
     if (units === "jyear") {
         this.jYear(this.jYear() - val);
     } else if (units === "jmonth") {
@@ -845,7 +845,7 @@ jMoment.fn.subtract = function (val, units) {
 };
 
 jMoment.fn.startOf = function (units) {
-    units = normalizeUnits(units);
+    units = normalizeUnits(units, this);
     if( units === "jweek"){
         return this.startOf("day").subtract(this.jDay() , "day");
     }
@@ -865,7 +865,7 @@ jMoment.fn.startOf = function (units) {
 };
 
 jMoment.fn.endOf = function (units) {
-    units = normalizeUnits(units);
+    units = normalizeUnits(units, this);
     if (units === undefined || units === "milisecond") {
         return this;
     }
@@ -873,7 +873,7 @@ jMoment.fn.endOf = function (units) {
 };
 
 jMoment.fn.isSame = function (other, units) {
-    units = normalizeUnits(units);
+    units = normalizeUnits(units, this);
     if (units === "jyear" || units === "jmonth") {
         return moment.fn.isSame.call(this.clone().startOf(units), other.clone().startOf(units));
     }
@@ -881,7 +881,7 @@ jMoment.fn.isSame = function (other, units) {
 };
 
 jMoment.fn.isBefore = function (other, units) {
-    units = normalizeUnits(units);
+    units = normalizeUnits(units, this);
     if (units === "jyear" || units === "jmonth") {
         return moment.fn.isBefore.call(this.clone().startOf(units), other.clone().startOf(units));
     }
@@ -889,7 +889,7 @@ jMoment.fn.isBefore = function (other, units) {
 };
 
 jMoment.fn.isAfter = function (other, units) {
-    units = normalizeUnits(units);
+    units = normalizeUnits(units, this);
     if (units === "jyear" || units === "jmonth") {
         return moment.fn.isAfter.call(this.clone().startOf(units), other.clone().startOf(units));
     }
