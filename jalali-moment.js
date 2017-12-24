@@ -945,7 +945,7 @@ jMoment.fn.jIsLeapYear = function () {
     return isLeapJalaliYear(year);
 };
 jMoment.fn.locale = function(locale) {
-    if (moment.changeCalendarSystemByItsLocale) {
+    if (locale && moment.changeCalendarSystemByItsLocale) {
         if (locale === "fa") {
             this.doAsJalali();
         } else {
@@ -958,7 +958,7 @@ jMoment.fn.locale = function(locale) {
  jMoment Statics
  ************************************/
 jMoment.locale = function(locale) {
-    if (moment.changeCalendarSystemByItsLocale) {
+    if (locale && moment.changeCalendarSystemByItsLocale) {
         if (locale === "fa") {
             this.useJalaliSystemPrimarily();
         } else {
