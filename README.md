@@ -21,6 +21,7 @@ Read this in other languages: [فارسی](./README.fa.md)
     - [Typescript](#typescript)
     - [Angular](#angular-2-or-4)
     - [Aurelia](#aurelia)
+    - [Vue](#vue)
     - [Es5](#es5)
     - [Plunker](#using-in-plunker)
 - [Use API](#api)
@@ -166,6 +167,13 @@ then use this value converter in your ```html``` files:
 
 also, for aurelia developers, there is a plugin, [aurelia-time](https://github.com/shahabganji/aurelia-time), in which there are value converters for jalali-moment and other time and date libraries.
 
+#### Vue
+
+Use [vue-jalali-moment](https://github.com/fingerpich/vue-jalali-moment) library
+
+```html
+<span>{{ someDate | moment("dddd, MMMM Do YYYY") }}</span>
+```
 
 ## API
 

@@ -21,6 +21,7 @@ Read this in other languages: [فارسی](./README.fa.md)
     - [Typescript](https://github.com/fingerpich/jalali-moment#typescript)
     - [Angular](https://github.com/fingerpich/jalali-moment#angular-2-or-4)
     - [Aurelia](https://github.com/fingerpich/jalali-moment#aurelia)
+    - [Vue](https://github.com/fingerpich/jalali-moment#vue)
     - [Es5](https://github.com/fingerpich/jalali-moment#es5)
     - [Plunker](https://github.com/fingerpich/jalali-moment#using-in-plunker)
 - [Use API](https://github.com/fingerpich/jalali-moment#api)
@@ -34,26 +35,27 @@ Read this in other languages: [فارسی](./README.fa.md)
 
 #### Usage
 
-  - [Parse](https://github.com/fingerpich/jalali-moment#parse)
+  - [Parse](#parse)
     ```js
     moment.locale('fa'); // set fa locale for all new moment instances
-    var m1 = moment("1367/11/04","YYYY/MM/DD");
+    var m1 = moment("1367/11/04");
     ```
-  - [Display](https://github.com/fingerpich/jalali-moment#display-jalali-or-miladi-date)
+  - [Display](#display-jalali-or-miladi-date)
     ```js
      m1.format("YYYY/MM/DD"); // 1367/11/04
     ```
-  - [Manipulate](https://github.com/fingerpich/jalali-moment#manipulate)
+  - [Manipulate](#manipulate)
     ```js
     m1.add(1, "day").format("YYYY/MM/DD"); // 1367/11/05
     ```
-  - [Validate](https://github.com/fingerpich/jalali-moment#validate)
+  - [Validate](#validate)
     ```js
     m1.isSame(m1.clone()); // true
     ```
-  - [Convert](https://github.com/fingerpich/jalali-moment#convert-persianjalali--shamsi-khorshidi-to-gregorian-miladi-calendar-system)
+  - [Convert](#convert-persianjalali--shamsi-khorshidi-to-gregorian-miladi-calendar-system)
     ```js
-    moment('1367/11/04', 'YYYY/MM/DD').locale('en').format('YYYY/MM/DD'); // 1989/01/24
+    moment.locale('fa');
+    moment('1367/11/04').locale('en').format('YYYY/MM/DD'); // 1989/01/24
     moment.locale('en');
     moment('1989/01/24').locale('fa').format('YYYY/MM/DD'); // 1367/11/04
     //set en locale just for this instance
