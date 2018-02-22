@@ -21,6 +21,7 @@ Read this in other languages: [فارسی](./README.fa.md)
     - [Typescript](#typescript)
     - [Angular](#angular-2-or-4)
     - [Aurelia](#aurelia)
+    - [Vue](#vue)
     - [Es5](#es5)
     - [Plunker](#using-in-plunker)
 - [Use API](#api)
@@ -37,7 +38,7 @@ Read this in other languages: [فارسی](./README.fa.md)
   - [Parse](#parse)
     ```js
     moment.locale('fa'); // set fa locale for all new moment instances
-    var m1 = moment("1367/11/04","YYYY/MM/DD");
+    var m1 = moment("1367/11/04");
     ```
   - [Display](#display-jalali-or-miladi-date)
     ```js
@@ -53,7 +54,8 @@ Read this in other languages: [فارسی](./README.fa.md)
     ```
   - [Convert](#convert-persianjalali--shamsi-khorshidi-to-gregorian-miladi-calendar-system)
     ```js
-    moment('1367/11/04', 'YYYY/MM/DD').locale('en').format('YYYY/MM/DD'); // 1989/01/24
+    moment.locale('fa');
+    moment('1367/11/04').locale('en').format('YYYY/MM/DD'); // 1989/01/24
     moment.locale('en');
     moment('1989/01/24').locale('fa').format('YYYY/MM/DD'); // 1367/11/04
     //set en locale just for this instance
@@ -88,7 +90,7 @@ Install it via npm or yarn then use it as the following code
 
 ```js
 var moment = require('jalali-moment');
-moment().format('jYYYY/jM/jD');
+moment().locale('fa').format('YYYY/M/D');
 ```
 
 ## Using in browser
@@ -100,7 +102,7 @@ moment().format('jYYYY/jM/jD');
 <!--<script src="node_modules/jalali-moment/dist/jalali-moment.browser.js"></script>-->
 <script src="thisRepositoryPath/dist/jalali-moment.browser.js"></script>
 <script>
-  moment().format('jYYYY/jM/jD');
+  moment().locale('fa').format('YYYY/M/D');
 </script>
 ```
 
@@ -108,7 +110,7 @@ moment().format('jYYYY/jM/jD');
 
 ```ts
 import * as moment from 'jalali-moment';
-let todayJalali = moment().format('jYYYY/jM/jD');
+let todayJalali = moment().locale('fa').format('YYYY/M/D');
 ```
 
 #### Angular 2 or 4
@@ -124,7 +126,7 @@ Add a pipe
 export class JalaliPipe implements PipeTransform {
   transform(value: any, args?: any): any {
     let MomentDate = moment(value);
-    return MomentDate.format("jYYYY/jM/jD");
+    return MomentDate.locale('fa').format("YYYY/M/D");
   }
 }
 ```
@@ -145,11 +147,8 @@ var moment = require('jalali-moment');
 @valueConverter("date")
 export class DateValueConverter {
   toView(value: string, format: string = "YYYY/MM/DD", locale: string = "en") {
-    if (!value)
-      return null;
-
-    let m2 = moment(value).locale(locale);
-    return m2.format(format);
+    if (!value) return null;
+    return moment(value).locale(locale).format(format);
   }
 }
 ```
@@ -168,6 +167,13 @@ then use this value converter in your ```html``` files:
 
 also, for aurelia developers, there is a plugin, [aurelia-time](https://github.com/shahabganji/aurelia-time), in which there are value converters for jalali-moment and other time and date libraries.
 
+#### Vue
+
+Use [vue-jalali-moment](https://github.com/fingerpich/vue-jalali-moment) library
+
+```html
+<span>{{ someDate | moment("dddd, MMMM Do YYYY") }}</span>
+```
 
 ## API
 
@@ -185,25 +191,30 @@ Create a instance of moment from a Jalali (Persian) or Miladi date and time as s
 ```js
 m = moment('1367/11/4', 'jYYYY/jM/jD');// parse a jalali (persian) date
 m = moment('1989/1/24', 'YYYY/M/D');// parse a gregorian (miladi) date
+
+m = moment('1989/1/24');// parse a gregorian date
 moment.locale('fa');
-m = moment('1367/11/4', 'YYYY/M/D');// parse a jalali (persian) date
+m = moment('1367/11/04');// parse a jalali (persian) date
 ```
 
 #### Display jalali or miladi date
 
 Display moment instance as a string.[more](https://momentjs.com/docs/#/displaying/)
 ```js
-m.format('jYYYY/jM/jD');// 1367/11/4
-m.format('jMM'); // 11 display jalali month
+moment.locale('en'); // default locale is en
+m = moment('1989/1/24');
+m.locale('fa'); // change locale for this moment instance
+m.format('YYYY/M/D');// 1367/11/4
+m.format('MM'); // 11 display jalali month
+m.format('MMMM'); // Bahman
+m.format('DD'); // 04 display day by two digit
+m.format('DDD'); // 310 display day of year
+m.format('w'); // 45 display week of year
+m.locale('en');
 m.format('M'); // 1 display miladi month
 m.format('MM'); // 01 display month by two digit
 m.format('MMMM'); // January
-m.format('jMMMM'); // Bahman
-m.format('jDD'); // 04 display day by two digit
 m.format('jYYYY/jM/jD [is] YYYY/M/D'); // 1367/11/4 is 1989/1/24
-m.jDayOfYear(); // 310
-m.jWeek(); // 45
-m.jWeekYear(); // 1367
 ```
 
 #### Manipulate
@@ -230,10 +241,10 @@ Check a date and time.[more](https://momentjs.com/docs/#/query/)
 m = moment('1367/11/4', 'jYYYY/jM/jD');
 m.jIsLeapYear(); // false
 m.isLeapYear(); // false
-m.isSame('1989-01-01', 'year'); // true
-m.isSame(moment('1367-01-01','jYYYY-MM-DD'), 'jyear'); // true
-m.isBefore(moment('1367-01-01','jYYYY-MM-DD'), 'jyear'); // false
-m.isAfter(moment('1367-01-01','jYYYY-MM-DD'), 'jyear'); // false
+m.isSame(moment('1989-01-01','YYYY-MM-DD'), 'year'); // true
+m.isSame(moment('1367-01-01','jYYYY-jMM-jDD'), 'year'); // true
+m.isBefore(moment('1367-01-01','jYYYY-jMM-jDD'), 'month'); // false
+m.isAfter(moment('1367-01-01','jYYYY-jMM-jDD'), 'jyear'); // false
 m.isValid(); // true
 moment('1396/7/31','jYYYY/jM/jD').isValid(); // false
 ```

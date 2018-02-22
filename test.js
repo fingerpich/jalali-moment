@@ -598,8 +598,9 @@ describe("moment", function() {
             m.startOf("jMonth").format("jYYYY-jMM-jDD HH:mm:ss").should.be.equal("1360-05-01 00:00:00");
             m = moment("1981-08-17 07:10:20");
             m.startOf("day").format("jYYYY-jMM-jDD HH:mm:ss").should.be.equal("1360-05-26 00:00:00");
-            m = moment("1981-08-17 07:10:20");
-            m.startOf("week").format("jYYYY-jMM-jDD HH:mm:ss").should.be.equal("1360-05-24 00:00:00");
+            m = moment("2017-12-14 07:10:20");
+            m.startOf("jweek").format("jYYYY-jMM-jDD HH:mm:ss").should.be.equal("1396-09-18 00:00:00");
+            m.locale("fa").startOf("week").format("jYYYY-jMM-jDD HH:mm:ss").should.be.equal("1396-09-18 00:00:00");
         });
     });
 
@@ -972,5 +973,15 @@ describe("moment", function() {
             m2.clone().format("YYYY/MM/DD").should.be.equal("1367/11/03");
         });
     });
-    //TODO: var m1 = moment("1367/11/04");
+    describe("#add or subtract when global locale is not as we expected", function () {
+        it("instance locale and clone", function () {
+            moment.locale("en");
+
+            var m1 = moment("1395/12/30","jYYYY/jMM/jDD").locale("fa");
+            m1.format("YYYY/MM/DD").should.be.equal("1395/12/30");
+
+            m1.subtract(1, "month");
+            m1.format("YYYY/MM/DD").should.be.equal("1395/11/30");
+        });
+    });
 });
