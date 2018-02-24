@@ -30,6 +30,14 @@ describe("moment", function() {
             moment.locale("fa");
             var m1 = moment("1367/11/04");
             m1.format("YYYY/MM/DD").should.be.equal("1367/11/04");
+            m1 = moment("1367/11/4");
+            m1.format("YYYY/MM/DD").should.be.equal("1367/11/04");
+            m1 = moment("1367/1/4");
+            m1.format("YYYY/MM/DD").should.be.equal("1367/01/04");
+            var m1 = moment("13671124");
+            m1.format("YYYY/MM/DD").should.be.equal("1367/11/24");
+            // var m1 = moment("1367/245");
+            // m1.format("YYYY/MM/DD").should.be.equal("1367/11/04");
             moment.locale("en");
         });
 
@@ -973,7 +981,7 @@ describe("moment", function() {
             m2.clone().format("YYYY/MM/DD").should.be.equal("1367/11/03");
         });
     });
-    describe("#add or subtract when global locale is not as we expected", function () {
+    describe("add or subtract when global locale is not as we expected", function () {
         it("instance locale and clone", function () {
             moment.locale("en");
 
@@ -982,6 +990,26 @@ describe("moment", function() {
 
             m1.subtract(1, "month");
             m1.format("YYYY/MM/DD").should.be.equal("1395/11/30");
+
+            m1.subtract(1, "year");
+            m1.format("YYYY/MM/DD").should.be.equal("1394/11/30");
+        });
+    });
+    describe("test utc time", function () {
+        it("utc moment", function () {
+            moment.locale("en");
+            var m1 = moment("1395/12/30", "jYYYY/jMM/jDD", "fa", true).locale("fa");
+            m1.format("YYYY/MM/DD").should.be.equal("1395/12/30");
+        });
+    });
+    describe("test locale data", function () {
+        it("en locale", function () {
+            moment().localeData().jMonths().should.have.lengthOf(12);
+            moment().localeData().jMonthsShort().should.have.lengthOf(12);
+        });
+        it("fa locale", function () {
+            moment().locale("fa").localeData().jMonths().should.have.lengthOf(12);
+            moment().locale("fa").localeData().jMonthsShort().should.have.lengthOf(12);
         });
     });
 });
