@@ -410,6 +410,15 @@ describe("moment", function() {
     });
 
     describe("#jWeek", function() {
+        it("jweek with both locale", function() {
+            var m = moment("1396/01/05","jYYYY/jMM/jDD");
+            moment.locale('en');
+            m.locale('en');
+            m.format("jYY/jM/jD").should.be.equal("96/1/5");
+            m.jWeek().should.be.equal(2);
+            m.locale('fa');
+            m.jWeek().should.be.equal(2);
+        });
         it("should return Jalaali week of year", function() {
             var m = moment("1396/01/04","jYYYY/jMM/jDD");
             m.format("jYY/jM/jD").should.be.equal("96/1/4");

@@ -792,7 +792,7 @@ jMoment.fn.week = function (input) {
     else return moment.fn.week.call(this, input);
 };
 jMoment.fn.jWeek = function (input) {
-    var week = jWeekOfYear(this, this.localeData()._week.dow, this.localeData()._week.doy).week;
+    var week = jWeekOfYear(this, 6, 12).week;
     return isNull(input) ? week : this.add((input - week) * 7, "d");
 };
 function isJalali (momentObj) {
@@ -804,7 +804,7 @@ jMoment.fn.weekYear = function (input) {
     else return moment.fn.weekYear.call(this, input);
 };
 jMoment.fn.jWeekYear = function (input) {
-    var year = jWeekOfYear(this, this.localeData()._week.dow, this.localeData()._week.doy).year;
+    var year = jWeekOfYear(this, 6, 12).year;
     return isNull(input) ? year : this.add(input - year, "jyear");
 };
 
