@@ -12,6 +12,7 @@ module.exports = {
         libraryTarget: "umd", // universal module definition
         // the type of the exported library
     },
+    mode: 'production',
     plugins: [
         // new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /fa/),
         new UglifyJSPlugin()

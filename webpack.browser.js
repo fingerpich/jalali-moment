@@ -11,5 +11,6 @@ module.exports = {
     plugins: [
         // new UglifyJSPlugin()
     ],
+    mode: 'production',
     devtool: 'source-map'
 }
