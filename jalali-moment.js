@@ -968,6 +968,15 @@ jMoment.locale = function(locale) {
     return moment.locale.call(this, locale);
 };
 
+jMoment.from = function(date, locale, format) {
+    var lastLocale = jMoment.locale();
+    jMoment.locale(locale);
+    var m = jMoment(date, format);
+    m.locale(lastLocale);
+    jMoment.locale(lastLocale);
+    return m;
+};
+
 jMoment.bindCalendarSystemAndLocale = function () {
     moment.changeCalendarSystemByItsLocale = true;
 };

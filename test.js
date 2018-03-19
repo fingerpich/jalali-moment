@@ -946,6 +946,14 @@ describe("moment", function() {
             m3.isSame(m4, "jday").should.be.equal(false);
         });
     });
+    describe("#parse persian date", function (){
+        it("fill date with another locale", function () {
+            moment.locale("en");
+            var m1 = moment.from("1367/11/04", "fa", "YYYY/MM/DD");
+            m1.format("jYYYY/jMM/jDD").should.be.equal("1367/11/04");
+            m1.format("YYYY/MM/DD").should.be.equal("1989/01/24");
+        });
+    });
     describe("#switch calendar systems", function (){
         it("gregorian is default system", function () {
             var m1 = moment("1989/01/24","YYYY/MM/DD");
