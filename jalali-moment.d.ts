@@ -697,7 +697,7 @@ declare namespace moment {
   export function useJalaliSystemSecondary(): void;
   export var jConvert: any;
 
-  export function from (date: string, locale: string): Moment;
+  export function from (date: string, locale: string, format?: string): Moment;
 
   export function weekdays(): string[];
   export function weekdays(index: number): string;

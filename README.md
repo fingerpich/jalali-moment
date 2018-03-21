@@ -188,11 +188,21 @@ now = moment(); //get the current date and time,
 #### Parse
 
 Create a instance of moment from a Jalali (Persian) or Miladi date and time as string.[more](https://momentjs.com/docs/#/parsing/)
+###### gregorian date
+```js
+m = moment('1989/1/24');// parse a gregorian date
+m = moment('1989/1/24', 'YYYY/M/D');// parse a gregorian (miladi) date
+m = moment.from('1989/1/24', 'en');
+m = moment.from('01/1989/24', 'en', 'MM/YYYY/DD');
+```
+
+###### persian date
 ```js
 m = moment('1367/11/4', 'jYYYY/jM/jD');// parse a jalali (persian) date
-m = moment('1989/1/24', 'YYYY/M/D');// parse a gregorian (miladi) date
-
-m = moment('1989/1/24');// parse a gregorian date
+// without changing moment locale
+m = moment.from('1367/11/04', 'fa');
+m = moment.from('11/1367/04', 'fa', 'MM/YYYY/DD'); 
+// it will change all new moment obj locale
 moment.locale('fa');
 m = moment('1367/11/04');// parse a jalali (persian) date
 ```
