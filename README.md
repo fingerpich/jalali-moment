@@ -36,29 +36,39 @@ Read this in other languages: [فارسی](./README.fa.md)
 #### Usage
 
   - [Parse](#parse)
-    ```js
-    moment.locale('fa'); // set fa locale for all new moment instances
-    var m1 = moment("1367/11/04");
-    ```
+      ```js
+      // parse gregorian date
+      m = moment('1989/1/24');
+      m = moment('1989/1/24', 'YYYY/M/D');// parse a gregorian (miladi) date
+      m = moment.from('1989/1/24', 'en');
+      m = moment.from('01/1989/24', 'en', 'MM/YYYY/DD');
+
+      // parse jalali date
+      m = moment('1367/11/04', 'jYYYY/jMM/jDD');
+      m = moment.from('1367/11/04', 'fa');
+      m = moment.from('04/1367/11', 'fa', 'DD/YYYY/MM');
+
+      moment.locale('fa'); // set fa locale for all new moment instances
+      m = moment('1367/11/04');
+      ```
   - [Display](#display-jalali-or-miladi-date)
     ```js
-     m1.format("YYYY/MM/DD"); // 1367/11/04
+    m.format('jYYYY/jMM/jDD'); // 1367/11/04
+    m.locale('fa');
+    m.format('YYYY/MM/DD'); // 1367/11/04
     ```
   - [Manipulate](#manipulate)
     ```js
-    m1.add(1, "day").format("YYYY/MM/DD"); // 1367/11/05
+    m.add(1, 'day').locale('fa').format('YYYY/MM/DD'); // 1367/11/05
     ```
   - [Validate](#validate)
     ```js
-    m1.isSame(m1.clone()); // true
+    m.isSame(m.clone()); // true
     ```
   - [Convert](#convert-persianjalali--shamsi-khorshidi-to-gregorian-miladi-calendar-system)
     ```js
-    moment.locale('fa');
-    moment('1367/11/04').locale('en').format('YYYY/MM/DD'); // 1989/01/24
-    moment.locale('en');
+    moment.from('1367/11/04', 'fa').format('YYYY/MM/DD'); // 1989/01/24
     moment('1989/01/24').locale('fa').format('YYYY/MM/DD'); // 1367/11/04
-    //set en locale just for this instance
     ```
 
 ## Introduction
@@ -190,21 +200,21 @@ now = moment(); //get the current date and time,
 Create a instance of moment from a Jalali (Persian) or Miladi date and time as string.[more](https://momentjs.com/docs/#/parsing/)
 ###### gregorian date
 ```js
-m = moment('1989/1/24');// parse a gregorian date
-m = moment('1989/1/24', 'YYYY/M/D');// parse a gregorian (miladi) date
+m = moment('1989/1/24');
+m = moment('1989/1/24', 'YYYY/M/D');
 m = moment.from('1989/1/24', 'en');
 m = moment.from('01/1989/24', 'en', 'MM/YYYY/DD');
 ```
 
 ###### persian date
 ```js
-m = moment('1367/11/4', 'jYYYY/jM/jD');// parse a jalali (persian) date
-// without changing moment locale
+m = moment('1367/11/4', 'jYYYY/jM/jD');
 m = moment.from('1367/11/04', 'fa');
 m = moment.from('11/1367/04', 'fa', 'MM/YYYY/DD'); 
-// it will change all new moment obj locale
+
+// it will change locale for all new moment instance
 moment.locale('fa');
-m = moment('1367/11/04');// parse a jalali (persian) date
+m = moment('1367/11/04');
 ```
 
 #### Display jalali or miladi date

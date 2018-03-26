@@ -37,28 +37,39 @@ Read this in other languages: [فارسی](./README.fa.md)
 
   - [Parse](#parse)
     ```js
+    // parse gregorian date
+    m = moment('1989/1/24');
+    m = moment('1989/1/24', 'YYYY/M/D');// parse a gregorian (miladi) date
+    m = moment.from('1989/1/24', 'en');
+    m = moment.from('01/1989/24', 'en', 'MM/YYYY/DD');
+
+    // parse jalali date
+    m = moment('1367/11/04', 'jYYYY/jMM/jDD');
+    m = moment.from('1367/11/04', 'fa');
+    m = moment.from('04/1367/11', 'fa', 'DD/YYYY/MM');
+
     moment.locale('fa'); // set fa locale for all new moment instances
-    var m1 = moment("1367/11/04");
+    m = moment('1367/11/04');
     ```
+
   - [Display](#display-jalali-or-miladi-date)
     ```js
-     m1.format("YYYY/MM/DD"); // 1367/11/04
+        m.format('jYYYY/jMM/jDD'); // 1367/11/04
+        m.locale('fa');
+        m.format('YYYY/MM/DD'); // 1367/11/04
     ```
   - [Manipulate](#manipulate)
     ```js
-    m1.add(1, "day").format("YYYY/MM/DD"); // 1367/11/05
+        m.add(1, 'day').locale('fa').format('YYYY/MM/DD'); // 1367/11/05
     ```
   - [Validate](#validate)
     ```js
-    m1.isSame(m1.clone()); // true
+    m.isSame(m.clone()); // true
     ```
   - [Convert](#convert-persianjalali--shamsi-khorshidi-to-gregorian-miladi-calendar-system)
     ```js
-    moment.locale('fa');
-    moment('1367/11/04').locale('en').format('YYYY/MM/DD'); // 1989/01/24
-    moment.locale('en');
+    moment.from('1367/11/04', 'fa').format('YYYY/MM/DD'); // 1989/01/24
     moment('1989/01/24').locale('fa').format('YYYY/MM/DD'); // 1367/11/04
-    //set en locale just for this instance
     ```
 
 
