@@ -18,8 +18,9 @@ Read this in other languages: [فارسی](./README.fa.md)
 - [Install](#install)
 - Use jalali moment in
     - [Node.js](#using-in-nodejs)
+    - [React](#react)
     - [Typescript](#typescript)
-    - [Angular](#angular-2-or-4)
+    - [Angular](#angular)
     - [Aurelia](#aurelia)
     - [Vue](#vue)
     - [Es5](#es5)
@@ -116,6 +117,27 @@ moment().locale('fa').format('YYYY/M/D');
 </script>
 ```
 
+#### React
+```js
+import moment from 'jalali-moment'
+...
+render() {
+    return (
+        <div>
+            {
+            this.props.data.map((post,key) =>
+                <div key={key} className="post-detail">
+                    <h1>{post.title}</h1>
+                    <p>{moment(post.date).locale('fa').format('YYYY/M/D')}</p>
+                    <hr />
+                </div>
+            )}
+        </div>
+    );
+}
+
+```
+
 #### Typescript
 
 ```ts
@@ -123,7 +145,7 @@ import * as moment from 'jalali-moment';
 let todayJalali = moment().locale('fa').format('YYYY/M/D');
 ```
 
-#### Angular 2 or 4
+#### Angular
 
 ```ts
 import * as moment from 'jalali-moment';
