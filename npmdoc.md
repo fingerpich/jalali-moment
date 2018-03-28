@@ -36,7 +36,7 @@ Read this in other languages: [فارسی](./README.fa.md)
 
 #### Usage
 
-  - [Parse](#parse)
+  - [Parse](https://github.com/fingerpich/jalali-moment#parse)
     ```js
     // parse gregorian date
     m = moment('1989/1/24');
@@ -53,21 +53,21 @@ Read this in other languages: [فارسی](./README.fa.md)
     m = moment('1367/11/04');
     ```
 
-  - [Display](#display-jalali-or-miladi-date)
+  - [Display](https://github.com/fingerpich/jalali-moment#display-jalali-or-miladi-date)
     ```js
         m.format('jYYYY/jMM/jDD'); // 1367/11/04
         m.locale('fa');
         m.format('YYYY/MM/DD'); // 1367/11/04
     ```
-  - [Manipulate](#manipulate)
+  - [Manipulate](https://github.com/fingerpich/jalali-moment#manipulate)
     ```js
         m.add(1, 'day').locale('fa').format('YYYY/MM/DD'); // 1367/11/05
     ```
-  - [Validate](#validate)
+  - [Validate](https://github.com/fingerpich/jalali-moment#validate)
     ```js
     m.isSame(m.clone()); // true
     ```
-  - [Convert](#convert-persianjalali--shamsi-khorshidi-to-gregorian-miladi-calendar-system)
+  - [Convert](https://github.com/fingerpich/jalali-moment#convert-persianjalali--shamsi-khorshidi-to-gregorian-miladi-calendar-system)
     ```js
     moment.from('1367/11/04', 'fa').format('YYYY/MM/DD'); // 1989/01/24
     moment('1989/01/24').locale('fa').format('YYYY/MM/DD'); // 1367/11/04
