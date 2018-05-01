@@ -961,6 +961,8 @@ describe("moment", function() {
             var m1 = moment("1989/01/24","YYYY/MM/DD");
             m1.format("jYYYY/jMM/jDD").should.be.equal("1367/11/04");
             m1.format("YYYY/MM/DD").should.be.equal("1989/01/24");
+            // moment().isBetween(moment().subtract(1, "day"), moment().add(1, "day"), "day", "[]").should.be.equal(true);
+            // moment().subtract(2, "d").isBetween(moment().subtract(1, "day"), moment().add(1, "day"), "day", "[]").should.be.equal(false);
         });
         it("change locale globally should change the whole instances system", function () {
             moment.locale("fa");
@@ -1029,6 +1031,50 @@ describe("moment", function() {
         it("fa locale", function () {
             moment().locale("fa").localeData().jMonths().should.have.lengthOf(12);
             moment().locale("fa").localeData().jMonthsShort().should.have.lengthOf(12);
+        });
+    });
+    describe("getting year and month in both locale", function () {
+        moment.locale("en");
+        it("en locale", function () {
+            var now = moment();
+            now.locale("en");
+            var month = +now.format("M");
+            var year = +now.format("YYYY");
+            now.year().should.be.equal(year);
+            now.month().should.be.equal(month - 1);
+        });
+        it("fa locale", function () {
+            var now = moment();
+            now.locale("fa");
+            var month = +now.format("M");
+            var year = +now.format("YYYY");
+            now.year().should.be.equal(year);
+            now.month().should.be.equal(month - 1);
+        });
+    });
+    describe("getting day of year in both locale", function () {
+        moment.locale("en");
+        var now = moment();
+        it("day of year with en locale", function () {
+            now.locale("en");
+            var dayOfYear = +now.format("DDDD");
+            now.dayOfYear().should.be.equal(dayOfYear);
+        });
+        it("day of year with fa locale", function () {
+            now.locale("fa");
+            var dayOfYear = +now.format("DDDD");
+            now.dayOfYear().should.be.equal(dayOfYear);
+        });
+    });
+    describe("getting week fa locale", function () {
+        moment.locale("en");
+        var now = moment();
+        now.locale("fa");
+        it("week with fa locale", function () {
+            now.week().should.be.equal(now.jWeek());
+        });
+        it("week year with fa locale", function () {
+            now.weekYear().should.be.equal(now.jWeekYear());
         });
     });
 });

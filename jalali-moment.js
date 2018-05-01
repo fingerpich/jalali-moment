@@ -697,7 +697,7 @@ jMoment.fn.format = function (format) {
 };
 
 jMoment.fn.year = function (input) {
-    if (input && isJalali(this)) return jMoment.fn.jYear.call(this,input);
+    if (isJalali(this)) return jMoment.fn.jYear.call(this,input);
     else return moment.fn.year.call(this, input);
 };
 jMoment.fn.jYear = function (input) {
@@ -717,7 +717,7 @@ jMoment.fn.jYear = function (input) {
 };
 
 jMoment.fn.month = function (input) {
-    if (input && isJalali(this)) return jMoment.fn.jMonth.call(this,input);
+    if (isJalali(this)) return jMoment.fn.jMonth.call(this,input);
     else return moment.fn.month.call(this, input);
 };
 jMoment.fn.jMonth = function (input) {
@@ -749,12 +749,16 @@ jMoment.fn.jMonth = function (input) {
 };
 
 jMoment.fn.date = function (input) {
-    if (input && isJalali(this)) return jMoment.fn.jDate.call(this,input);
+    if (isJalali(this)) return jMoment.fn.jDate.call(this,input);
     else return moment.fn.date.call(this, input);
 };
 function getJalaliOf (momentObj) {
-    var time = moment.fn.format.call(momentObj, "YYYY-MM-DD").split("-");
-    return toJalali(+time[0], +time[1] - 1, +time[2]);
+    var d = momentObj._d;
+    if (momentObj._isUTC) {
+        return toJalali(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate());
+    } else {
+        return toJalali(d.getFullYear(), d.getMonth(), d.getDate());
+    }
 }
 jMoment.fn.jDate = function (input) {
     var j
@@ -779,7 +783,7 @@ jMoment.fn.jDay = function (input) {
 };
 
 jMoment.fn.dayOfYear = function (input) {
-    if (input && isJalali(this)) return jMoment.fn.jDayOfYear.call(this,input);
+    if (isJalali(this)) return jMoment.fn.jDayOfYear.call(this,input);
     else return moment.fn.dayOfYear.call(this, input);
 };
 jMoment.fn.jDayOfYear = function (input) {
@@ -788,7 +792,7 @@ jMoment.fn.jDayOfYear = function (input) {
 };
 
 jMoment.fn.week = function (input) {
-    if (input && isJalali(this)) return jMoment.fn.jWeek.call(this,input);
+    if (isJalali(this)) return jMoment.fn.jWeek.call(this,input);
     else return moment.fn.week.call(this, input);
 };
 jMoment.fn.jWeek = function (input) {
@@ -800,7 +804,7 @@ function isJalali (momentObj) {
 }
 
 jMoment.fn.weekYear = function (input) {
-    if (input && isJalali(this)) return jMoment.fn.jWeekYear.call(this,input);
+    if (isJalali(this)) return jMoment.fn.jWeekYear.call(this,input);
     else return moment.fn.weekYear.call(this, input);
 };
 jMoment.fn.jWeekYear = function (input) {

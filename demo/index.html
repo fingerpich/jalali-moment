@@ -3,53 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <title>Jalali Moment demo</title>
+    <meta name="author" content="Mojtaba Zarei(Fingerpich)">
+    <meta name="keywords" content="shamsi,miladi,convert,validate">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="it consits some of jalali-moment library usages">
     <style>
         body{
             text-align:center;
             color:#333;
+        }
+        p{
+            direction: rtl;
         }
         a{
             color:#07f;
             text-decoration:none;
         }
         button, input{
-            padding:15px;
-            text-align:center;
+            padding: 15px;
+            text-align: center;
+            background: #fff;
+            border: 1px solid #bbb;
+        }
+        button{
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
+            border-color: #333;
+        }
+        section{
+            padding: 20px 0;
         }
     </style>
     <script src="https://unpkg.com/jalali-moment/dist/jalali-moment.browser.js"></script>
+    <!--<script src="../dist/jalali-moment.browser.js"></script>-->
 </head>
 <body>
     <h1 class="center"><a href="https://github.com/fingerpich/jalali-moment">Jalali Moment</a> Demo</h1>
-    <p class="center">A Jalali (Jalali, Persian, Khorshidi, Shamsi) calendar system plugin for moment.js.</p>
+    <p class="center">
+        این پلاگین برای سهولت هرچه بیشتر در کار با تاریخ شمسی ایجاد شده است.
+        </p>
+
+    <section>
+        <h3>Miladi <a href="https://github.com/fingerpich/jalali-moment#convert-gregorian-miladi-to-jalali-shamsi-persian">to Shamsi</a>(تبدیل تاریخ میلادی به شمسی)</h3>
+        <p>این کتابخانه میتواند برای تبدیل تاریخ میلادی به شمسی استفاده شود.</p>
+        <form id="convertToJalaliForm">
+            <input id="gregorianInput" placeHolder="DD/MM/YYYY" value="24/1/1989">
+            <button type="submit">to Jalali</button>
+            <span id="jalaliOutput"></span>
+        </form>
+
+    </section>
+
+    <section>
+        <h3>Shamsi <a href="https://github.com/fingerpich/jalali-moment#convert-persianjalali--shamsi-khorshidi-to-gregorian-miladi-calendar-system">to Miladi</a> (تبدیل تاریخ شمسی به میلادی)</h3>
+        <p>این کتابخانه میتواند برای تبدیل تاریخ شمسی به میلادی استفاده شود.</p>
+        <form id="convertToGregorianForm">
+            <input id="jalaliInput" placeHolder="YYYY/M/D" value="1370/03/16">
+            <button id="convertToGregorian">to Gregorian</button>
+            <span id="gregorianOutput"></span>
+        </form>
+    </section>
 
     <section>
         <h3><a href="https://github.com/fingerpich/jalali-moment#validate">Validate</a> shamsi date(تعیین صحت تاریخ شمسی)</h3>
         <p>این کتابخانه برای تشخیص صحت یک تاریخ شمسی یا میلادی و همچنین مقایسه بین تاریخ ها کمک میکند.</p>
-        <input id="ShamsiInput" placeHolder="YYYY/M/D" value="1370/03/16">
-        <button id="validateShamsi">to shamsi</button>
-        <span id="ValidationOutput"></span>
+        <form id="validateShamsiForm">
+            <input id="validatingDate" placeHolder="YYYY/M/D" value="1370/03/16">
+            <button type="submit">validate</button>
+            <span id="ValidationOutput"></span>
+        </form>
     </section>
 
-    <section>
-        <h3>Convert gregorian(miladi) to jalali(shamsi)</h3>
-        <p>این کتابخانه میتواند برای تبدیل
-            <a href="https://github.com/fingerpich/jalali-moment#convert-gregorian-miladi-to-jalali-shamsi-persian">        تاریخ میلادی به شمسی</a>
-            استفاده شود.</p>
-        <input id="gregorianInput" placeHolder="YYYY/MM/D" value="1989/1/24">
-        <button id="convertToJalali">to jalali</button>
-        <span id="jalaliOutput"></span>
-    </section>
-
-    <section>
-        <h3>Convert jalali(shamsi) to gregorian(miladi) </h3>
-        <p>این کتابخانه میتواند برای تبدیل
-            <a href="https://github.com/fingerpich/jalali-moment#convert-persianjalali--shamsi-khorshidi-to-gregorian-miladi-calendar-system">تاریخ شمسی به میلادی</a>
-            استفاده شود.</p>
-        <input id="jalaliInput" placeHolder="YYYY/M/D" value="1370/03/16">
-        <button id="convertToGregorian">Validate</button>
-        <span id="gregorianOutput"></span>
-    </section>
 
     <script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -60,47 +84,24 @@
         ga('create', 'UA-98265042-4', 'auto');
         ga('send', 'pageview');
 
-        document.getElementById("convertToJalali").addEventListener("click", function(){
-            var output="";
-            try{
-                var input = document.getElementById("gregorianInput").value;
-                var m = moment(input);
-                if(m.isValid()){
-                    m.doAsJalali(true);
-                    output = m.format('ddd') + ' ' + m.format("YYYY/MMMM/DD");
-                } else {
-                    output = "it is not valid date";
-                }
-            }
-            catch(e){
-                output="input is not a date";
-            }
+        document.getElementById("convertToJalaliForm").onsubmit = function(){
+            var input = document.getElementById("gregorianInput").value;
+            var output = moment(input).locale('fa').format('DD/MM/YYYY');
             document.getElementById("jalaliOutput").innerText = output;
-        });
+            return false;
+        };
 
+        document.getElementById("convertToGregorianForm").onsubmit = function(){
+            var input = document.getElementById("jalaliInput").value;
+            var output = moment.from(input, 'fa').locale('en').format('YYYY/MM/DD');
+            document.getElementById("gregorianOutput").innerText = output;
+            return false;
+        };
 
-
-        document.getElementById("convertToGregorian").addEventListener("click", function(){
+        document.getElementById("validateShamsiForm").onsubmit = function() {
             var output="";
             try{
-                var input = document.getElementById("jalaliInput").value;
-                var m = moment(input, "jYYYY/jMM/jDD");
-                if (m.isValid()){
-                    output = m.format("YYYY/MM/D");
-                } else {
-                    output = "input is not a jalali date"
-                }
-            }
-            catch(e){
-                output="input is not a date";
-            }
-            document.getElementById("gregorianOutput").innerText = output
-        });
-
-        document.getElementById("validateShamsi").addEventListener("click", function(){
-            var output="";
-            try{
-                var input = document.getElementById("jalaliInput").value;
+                var input = document.getElementById("validatingDate").value;
                 var m = moment(input);
                 if(m.isValid()){
                     output = "معتبر است";
@@ -112,7 +113,8 @@
                 output = "معتبر نیست";
             }
             document.getElementById("ValidationOutput").innerText = output;
-        });
+            return false;
+        };
     </script>
 
 </body>
