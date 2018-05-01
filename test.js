@@ -28,13 +28,13 @@ describe("moment", function() {
         });
         it("parse persian dates", function () {
             moment.locale("fa");
-            var m1 = moment("1367/11/04");
+            var m1 = moment("1367/11/04", "YYYY/M/D");
             m1.format("YYYY/MM/DD").should.be.equal("1367/11/04");
-            m1 = moment("1367/11/4");
+            m1 = moment("1367/11/4", "YYYY/M/D");
             m1.format("YYYY/MM/DD").should.be.equal("1367/11/04");
-            m1 = moment("1367/1/4");
+            m1 = moment("1367/1/4", "YYYY/M/D");
             m1.format("YYYY/MM/DD").should.be.equal("1367/01/04");
-            var m1 = moment("13671124");
+            var m1 = moment("13671124", "YYYYMMDD");
             m1.format("YYYY/MM/DD").should.be.equal("1367/11/24");
             // var m1 = moment("1367/245");
             // m1.format("YYYY/MM/DD").should.be.equal("1367/11/04");
@@ -140,133 +140,133 @@ describe("moment", function() {
 
     describe("#format", function() {
         it("should work normally when there is no Jalaali token", function() {
-            var m = moment("1981-08-17 07:10:20");
+            var m = moment("1981-08-17 07:10:20", "YYYY-MM-DD hh:mm:ss");
             m.format("YYYY-MM-DD hh:mm:ss").should.be.equal("1981-08-17 07:10:20");
         });
 
         it("should format to Jalaali with Jalaali tokens", function() {
-            var m = moment("1981-08-17 07:10:20");
+            var m = moment("1981-08-17 07:10:20", "YYYY-MM-DD hh:mm:ss");
             m.format("jYYYY-jMM-jDD hh:mm:ss").should.be.equal("1360-05-26 07:10:20");
         });
 
         it("should format with escaped and unescaped tokens", function() {
-            var m = moment("1981-08-17");
+            var m = moment("1981-08-17", "YYYY-MM-DD");
             m.format("[My] birt\\h y[ea]r [is] jYYYY or YYYY").should.be.equal("My birth year is 1360 or 1981");
         });
 
         it("should format with mixed tokens", function() {
-            var m = moment("1981-08-17");
+            var m = moment("1981-08-17", "YYYY-MM-DD");
             m.format("jYYYY/jMM/jDD = YYYY-MM-DD").should.be.equal("1360/05/26 = 1981-08-17");
         });
 
         it("should format with jMo", function() {
-            var m = moment("1981-08-17");
+            var m = moment("1981-08-17", "YYYY-MM-DD");
             m.format("jMo").should.be.equal("5th");
         });
 
         it("should format with jM", function() {
-            var m = moment("1981-08-17");
+            var m = moment("1981-08-17", "YYYY-MM-DD");
             m.format("jM").should.be.equal("5");
         });
 
         it("should format with jMM", function() {
-            var m = moment("1981-08-17");
+            var m = moment("1981-08-17", "YYYY-MM-DD");
             m.format("jMM").should.be.equal("05");
         });
 
         it("should format with jMMM", function() {
-            var m = moment("1981-08-17");
+            var m = moment("1981-08-17", "YYYY-MM-DD");
             m.format("jMMM").should.be.equal("Amo");
         });
 
         it("should format with jMMMM", function() {
-            var m = moment("1981-08-17");
+            var m = moment("1981-08-17", "YYYY-MM-DD");
             m.format("jMMMM").should.be.equal("Mordaad");
         });
 
         it("should format with jDo", function() {
-            var m = moment("1981-08-17");
+            var m = moment("1981-08-17", "YYYY-MM-DD");
             m.format("jDo").should.be.equal("26th");
         });
 
         it("should format with jD", function() {
-            var m = moment("1981-08-17");
+            var m = moment("1981-08-17", "YYYY-MM-DD");
             m.format("jD").should.be.equal("26");
         });
 
         it("should format with jDD", function() {
-            var m = moment("1981-08-17");
+            var m = moment("1981-08-17", "YYYY-MM-DD");
             m.format("jDD").should.be.equal("26");
-            m = moment("1981-08-23");
+            m = moment("1981-08-23", "YYYY-MM-DD");
             m.format("jDD").should.be.equal("01");
         });
 
         it("should format with jDDD", function() {
-            var m = moment("1981-08-17");
+            var m = moment("1981-08-17", "YYYY-MM-DD");
             m.format("jDDD").should.be.equal("150");
         });
 
         it("should format with jDDDo", function() {
-            var m = moment("1981-08-17");
+            var m = moment("1981-08-17", "YYYY-MM-DD");
             m.format("jDDDo").should.be.equal("150th");
         });
 
         it("should format with jDDDD", function() {
-            var m = moment("1981-08-17");
+            var m = moment("1981-08-17", "YYYY-MM-DD");
             m.format("jDDDD").should.be.equal("150");
-            m = moment("1981-03-21");
+            m = moment("1981-03-21", "YYYY-MM-DD");
             m.format("jDDDD").should.be.equal("001");
         });
 
         it("should format with jwo", function() {
-            var m = moment("1981-08-17");
+            var m = moment("1981-08-17", "YYYY-MM-DD");
             m.format("jwo").should.be.equal("22nd");
         });
 
         it("should format with jw", function() {
-            var m = moment("1981-08-17");
+            var m = moment("1981-08-17", "YYYY-MM-DD");
             m.format("jw").should.be.equal("22");
         });
 
         it("should format with jww", function() {
-            var m = moment("1981-08-17");
+            var m = moment("1981-08-17", "YYYY-MM-DD");
             m.format("jww").should.be.equal("22");
-            m = moment("1981-04-23");
+            m = moment("1981-04-23", "YYYY-MM-DD");
             m.format("jww").should.be.equal("05");
         });
 
         it("should format with jYY", function() {
-            var m = moment("1981-08-17");
+            var m = moment("1981-08-17", "YYYY-MM-DD");
             m.format("jYY").should.be.equal("60");
         });
 
         it("should format with jYYYY", function() {
-            var m = moment("1981-08-17");
+            var m = moment("1981-08-17", "YYYY-MM-DD");
             m.format("jYYYY").should.be.equal("1360");
         });
 
         it("should format with jYYYYY", function() {
-            var m = moment("1981-08-17");
+            var m = moment("1981-08-17", "YYYY-MM-DD");
             m.format("jYYYYY").should.be.equal("01360");
         });
 
         it("should format with jgg", function() {
-            var m = moment("1981-08-17");
+            var m = moment("1981-08-17", "YYYY-MM-DD");
             m.format("jgg").should.be.equal("60");
         });
 
         it("should format with jgggg", function() {
-            var m = moment("1981-08-17");
+            var m = moment("1981-08-17", "YYYY-MM-DD");
             m.format("jgggg").should.be.equal("1360");
         });
 
         it("should format with jggggg", function() {
-            var m = moment("1981-08-17");
+            var m = moment("1981-08-17", "YYYY-MM-DD");
             m.format("jggggg").should.be.equal("01360");
         });
 
         it("should work with long date formats too", function() {
-            var m = moment("1981-08-17");
+            var m = moment("1981-08-17", "YYYY-MM-DD");
             m.format("LT").should.be.equal("12:00 AM");
             m.format("L").should.be.equal("1360/05/26");
             m.format("l").should.be.equal("1360/5/26");
@@ -279,7 +279,7 @@ describe("moment", function() {
         });
 
         it("should format another", function() {
-            var m = moment("1981-08-17");
+            var m = moment("1981-08-17", "YYYY-MM-DD");
             // m.format("Z").should.be.equal("+03:30"); its depend on where it executed
             // m.format("X").should.be.equal("366841800");
             m.format("dddd").should.be.equal("Monday");
@@ -292,15 +292,15 @@ describe("moment", function() {
 
     describe("#jYear", function() {
         it("should return Jalaali year", function() {
-            var m = moment("1981-08-17");
+            var m = moment("1981-08-17", "YYYY-MM-DD");
             m.jYear().should.be.equal(1360);
         });
 
         it("should set Jalaali year", function() {
-            var m = moment("1981-08-17");
+            var m = moment("1981-08-17", "YYYY-MM-DD");
             m.jYear(1392);
             m.format("jYYYY/jM/jD").should.be.equal("1392/5/26");
-            m = moment("2013-03-20");
+            m = moment("2013-03-20", "YYYY-MM-DD");
             m.format("jYY/jM/jD").should.be.equal("91/12/30");
             m.jYear(1392);
             m.format("jYY/jM/jD").should.be.equal("92/12/29");
@@ -313,15 +313,15 @@ describe("moment", function() {
 
     describe("#jMonth", function() {
         it("should return Jalaali month", function() {
-            var m = moment("1981-08-17");
+            var m = moment("1981-08-17", "YYYY-MM-DD");
             m.jMonth().should.be.equal(4);
         });
 
         it("should set Jalaali month", function() {
-            var m = moment("1981-08-17");
+            var m = moment("1981-08-17", "YYYY-MM-DD");
             m.jMonth(7);
             m.format("jYYYY/jM/jD").should.be.equal("1360/8/26");
-            m = moment("2012-08-21");
+            m = moment("2012-08-21", "YYYY-MM-DD");
             m.format("jYY/jM/jD").should.be.equal("91/5/31");
             m.jMonth(11);
             m.format("jYY/jM/jD").should.be.equal("91/12/30");
@@ -338,12 +338,12 @@ describe("moment", function() {
 
     describe("#jDay", function() {
         it("should return Jalaali week day name", function() {
-            var m = moment("1989-01-24");
+            var m = moment("1989-01-24", "YYYY-MM-DD");
             m.jDay().should.be.equal(3);
         });
 
         it("should set Jalaali month", function() {
-            var m = moment("1989-01-24");
+            var m = moment("1989-01-24", "YYYY-MM-DD");
             m.jDay(5);
             m.format("jYYYY/jM/jD").should.be.equal("1367/11/6");
         });
@@ -351,15 +351,15 @@ describe("moment", function() {
 
     describe("#jDate", function() {
         it("should return Jalaali date", function() {
-            var m = moment("1981-08-17");
+            var m = moment("1981-08-17", "YYYY-MM-DD");
             m.jDate().should.be.equal(26);
         });
 
         it("should set Jalaali date", function() {
-            var m = moment("1981-08-17");
+            var m = moment("1981-08-17", "YYYY-MM-DD");
             m.jDate(30);
             m.format("jYYYY/jM/jD").should.be.equal("1360/5/30");
-            m = moment("2013-03-01");
+            m = moment("2013-03-01", "YYYY-MM-DD");
             m.format("jYY/jM/jD").should.be.equal("91/12/11");
             m.jDate(29);
             m.format("jYY/jM/jD").should.be.equal("91/12/29");
@@ -380,18 +380,18 @@ describe("moment", function() {
 
     describe("#jDayOfYear", function() {
         it("should return Jalaali date of year", function() {
-            var m = moment("1981-08-17");
+            var m = moment("1981-08-17", "YYYY-MM-DD");
             m.jDayOfYear().should.be.equal(150);
-            m = moment("1981-03-21");
+            m = moment("1981-03-21", "YYYY-MM-DD");
             m.jDayOfYear().should.be.equal(1);
-            m = moment("1982-03-20");
+            m = moment("1982-03-20", "YYYY-MM-DD");
             m.jDayOfYear().should.be.equal(365);
-            m = moment("1984-03-20");
+            m = moment("1984-03-20", "YYYY-MM-DD");
             m.jDayOfYear().should.be.equal(366);
         });
 
         it("should set Jalaali date of year", function() {
-            var m = moment("1981-08-17");
+            var m = moment("1981-08-17", "YYYY-MM-DD");
             m.jDayOfYear(30);
             m.format("jYYYY/jM/jD").should.be.equal("1360/1/30");
             m.jDayOfYear(364);
@@ -426,7 +426,7 @@ describe("moment", function() {
             m = moment("1396/01/05","jYYYY/jMM/jDD");
             m.format("jYY/jM/jD").should.be.equal("96/1/5");
             m.jWeek().should.be.equal(2);
-            m = moment("1981-08-17");
+            m = moment("1981-08-17", "YYYY-MM-DD");
             m.jWeek().should.be.equal(22);
             m.jDayOfYear(1);
             m.format("jYY/jM/jD").should.be.equal("60/1/1");
@@ -503,7 +503,7 @@ describe("moment", function() {
         });
 
         it("should set Jalaali week of year", function() {
-            var m = moment("1981-08-17");
+            var m = moment("1981-08-17", "YYYY-MM-DD");
             m.jWeek(1);
             m.format("jYY/jM/jD").should.be.equal("60/1/3");
             m.jWeek(22);
@@ -523,7 +523,7 @@ describe("moment", function() {
 
     describe("#jWeekYear", function() {
         it("should return Jalaali week year", function() {
-            var m = moment("1981-08-17");
+            var m = moment("1981-08-17", "YYYY-MM-DD");
             m.jWeekYear().should.be.equal(1360);
             m.jDayOfYear(1);
             m.format("jYY/jM/jD").should.be.equal("60/1/1");
@@ -582,7 +582,7 @@ describe("moment", function() {
         });
 
         it("should set Jalaali week year", function() {
-            var m = moment("1981-08-17");
+            var m = moment("1981-08-17", "YYYY-MM-DD");
             m.jWeekYear(1361);
             m.format("jYY/jM/jD").should.be.equal("61/5/26");
             m.jWeekYear(1364);
@@ -598,24 +598,24 @@ describe("moment", function() {
 
     describe("#startOf", function() {
         it("should work as expected without jYear and jMonth", function() {
-            var m = moment("1981-08-17 07:10:20");
+            var m = moment("1981-08-17 07:10:20", "YYYY-MM-DD HH:mm:ss");
             m.startOf("year").format("YYYY-MM-DD HH:mm:ss").should.be.equal("1981-01-01 00:00:00");
-            m = moment("1981-08-17 07:10:20");
+            m = moment("1981-08-17 07:10:20", "YYYY-MM-DD HH:mm:ss");
             m.startOf("month").format("YYYY-MM-DD HH:mm:ss").should.be.equal("1981-08-01 00:00:00");
             m = moment("1981-08-17 07:10:20");
             m.startOf("day").format("YYYY-MM-DD HH:mm:ss").should.be.equal("1981-08-17 00:00:00");
-            m = moment("1981-08-17 07:10:20");
+            m = moment("1981-08-17 07:10:20", "YYYY-MM-DD HH:mm:ss");
             m.startOf("week").format("YYYY-MM-DD HH:mm:ss").should.be.equal("1981-08-15 00:00:00");
         });
 
         it("should return start of Jalaali year, month and date", function() {
-            var m = moment("1981-08-17 07:10:20");
+            var m = moment("1981-08-17 07:10:20", "YYYY-MM-DD HH:mm:ss");
             m.startOf("jYear").format("jYYYY-jMM-jDD HH:mm:ss").should.be.equal("1360-01-01 00:00:00");
-            m = moment("1981-08-17 07:10:20");
+            m = moment("1981-08-17 07:10:20", "YYYY-MM-DD HH:mm:ss");
             m.startOf("jMonth").format("jYYYY-jMM-jDD HH:mm:ss").should.be.equal("1360-05-01 00:00:00");
-            m = moment("1981-08-17 07:10:20");
+            m = moment("1981-08-17 07:10:20", "YYYY-MM-DD HH:mm:ss");
             m.startOf("day").format("jYYYY-jMM-jDD HH:mm:ss").should.be.equal("1360-05-26 00:00:00");
-            m = moment("2017-12-14 07:10:20");
+            m = moment("2017-12-14 07:10:20", "YYYY-MM-DD HH:mm:ss");
             m.startOf("jweek").format("jYYYY-jMM-jDD HH:mm:ss").should.be.equal("1396-09-18 00:00:00");
             m.locale("fa").startOf("week").format("jYYYY-jMM-jDD HH:mm:ss").should.be.equal("1396-09-18 00:00:00");
         });
@@ -623,24 +623,24 @@ describe("moment", function() {
 
     describe("#endOf", function() {
         it("should work as expected without jYear and jMonth", function() {
-            var m = moment("1981-08-17 07:10:20");
+            var m = moment("1981-08-17 07:10:20", "YYYY-MM-DD HH:mm:ss");
             m.endOf("year").format("YYYY-MM-DD HH:mm:ss").should.be.equal("1981-12-31 23:59:59");
-            m = moment("1981-08-17 07:10:20");
+            m = moment("1981-08-17 07:10:20", "YYYY-MM-DD HH:mm:ss");
             m.endOf("month").format("YYYY-MM-DD HH:mm:ss").should.be.equal("1981-08-31 23:59:59");
-            m = moment("1981-08-17 07:10:20");
+            m = moment("1981-08-17 07:10:20", "YYYY-MM-DD HH:mm:ss");
             m.endOf("day").format("YYYY-MM-DD HH:mm:ss").should.be.equal("1981-08-17 23:59:59");
-            m = moment("1981-08-17 07:10:20");
+            m = moment("1981-08-17 07:10:20", "YYYY-MM-DD HH:mm:ss");
             m.endOf("week").format("YYYY-MM-DD HH:mm:ss").should.be.equal("1981-08-21 23:59:59");
         });
 
         it("should return end of Jalaali year, month and date", function() {
-            var m = moment("1981-08-17 07:10:20");
+            var m = moment("1981-08-17 07:10:20", "YYYY-MM-DD HH:mm:ss");
             m.endOf("jYear").format("jYYYY-jMM-jDD HH:mm:ss").should.be.equal("1360-12-29 23:59:59");
-            m = moment("1981-08-17 07:10:20");
+            m = moment("1981-08-17 07:10:20", "YYYY-MM-DD HH:mm:ss");
             m.endOf("jMonth").format("jYYYY-jMM-jDD HH:mm:ss").should.be.equal("1360-05-31 23:59:59");
-            m = moment("1981-08-17 07:10:20");
+            m = moment("1981-08-17 07:10:20", "YYYY-MM-DD HH:mm:ss");
             m.endOf("day").format("jYYYY-jMM-jDD HH:mm:ss").should.be.equal("1360-05-26 23:59:59");
-            m = moment("1981-08-17 07:10:20");
+            m = moment("1981-08-17 07:10:20", "YYYY-MM-DD HH:mm:ss");
             m.endOf("week").format("jYYYY-jMM-jDD HH:mm:ss").should.be.equal("1360-05-30 23:59:59");
         });
     });
@@ -868,38 +868,38 @@ describe("moment", function() {
     });
     describe("#isSame", function () {
         it("should work correctly for same year", function () {
-            var m1 = moment("2016-02-04");
-            var m2 = moment("2016-01-01");
-            var m3 = moment("2015-12-31");
-            var m4 = moment("2017-01-01");
+            var m1 = moment("2016-02-04", "YYYY-MM-DD");
+            var m2 = moment("2016-01-01", "YYYY-MM-DD");
+            var m3 = moment("2015-12-31", "YYYY-MM-DD");
+            var m4 = moment("2017-01-01", "YYYY-MM-DD");
             m1.isSame(m2, "year").should.be.equal(true);
             m1.isSame(m3, "year").should.be.equal(false);
             m1.isSame(m4, "year").should.be.equal(false);
             m2.isSame(m3, "year").should.be.equal(false);
             m2.isSame(m4, "year").should.be.equal(false);
             m3.isSame(m4, "year").should.be.equal(false);
-            m1.isSame(moment("2016-02-04"), "day").should.be.equal(true);
+            m1.isSame(moment("2016-02-04", "YYYY-MM-DD"), "day").should.be.equal(true);
         });
 
         it("should work correctly for same month", function () {
-            var m1 = moment("2016-02-04");
-            var m2 = moment("2016-02-01");
-            var m3 = moment("2016-01-01");
-            var m4 = moment("2016-03-01");
+            var m1 = moment("2016-02-04", "YYYY-MM-DD");
+            var m2 = moment("2016-02-01", "YYYY-MM-DD");
+            var m3 = moment("2016-01-01", "YYYY-MM-DD");
+            var m4 = moment("2016-03-01", "YYYY-MM-DD");
             m1.isSame(m2, "month").should.be.equal(true);
             m1.isSame(m3, "month").should.be.equal(false);
             m1.isSame(m4, "month").should.be.equal(false);
             m2.isSame(m3, "month").should.be.equal(false);
             m2.isSame(m4, "month").should.be.equal(false);
             m3.isSame(m4, "month").should.be.equal(false);
-            m1.isSame(moment("2016-02-04"), "day").should.be.equal(true);
+            m1.isSame(moment("2016-02-04", "YYYY-MM-DD"), "day").should.be.equal(true);
         });
 
         it("should work correctly for same day", function () {
-            var m1 = moment("2016-02-04 06:00");
-            var m2 = moment("2016-02-04 07:00");
-            var m3 = moment("2016-02-03 06:00");
-            var m4 = moment("2016-02-05 06:00");
+            var m1 = moment("2016-02-04 06:00", "YYYY-MM-DD HH:mm");
+            var m2 = moment("2016-02-04 07:00", "YYYY-MM-DD HH:mm");
+            var m3 = moment("2016-02-03 06:00", "YYYY-MM-DD HH:mm");
+            var m4 = moment("2016-02-05 06:00", "YYYY-MM-DD HH:mm");
             m1.isSame(m2, "day").should.be.equal(true);
             m1.isSame(m3, "day").should.be.equal(false);
             m1.isSame(m4, "day").should.be.equal(false);
@@ -934,10 +934,10 @@ describe("moment", function() {
             m3.isSame(m4, "jmonth").should.be.equal(false);
         });
         it("it absolutely should work correctly for same jday", function () {
-            var m1 = moment("2016-02-04 06:00");
-            var m2 = moment("2016-02-04 07:00");
-            var m3 = moment("2016-02-03 06:00");
-            var m4 = moment("2016-02-05 06:00");
+            var m1 = moment("2016-02-04 06:00", "YYYY-MM-DD HH:mm");
+            var m2 = moment("2016-02-04 07:00", "YYYY-MM-DD HH:mm");
+            var m3 = moment("2016-02-03 06:00", "YYYY-MM-DD HH:mm");
+            var m4 = moment("2016-02-05 06:00", "YYYY-MM-DD HH:mm");
             m1.isSame(m2, "jday").should.be.equal(true);
             m1.isSame(m3, "jday").should.be.equal(false);
             m1.isSame(m4, "jday").should.be.equal(false);
