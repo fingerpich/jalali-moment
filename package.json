@@ -40,6 +40,9 @@
     "type": "git",
     "url": "git://github.com/fingerpich/jalali-moment.git"
   },
+  "bin": {
+    "jm": "./cli.js"
+  },
   "devDependencies": {
     "chai": "^4.1.2",
     "codacy-coverage": "^2.1.0",
@@ -53,6 +56,8 @@
     "webpack-cli": "^2.0.12"
   },
   "dependencies": {
+    "commander": "^2.15.1",
+    "inquirer": "^5.2.0",
     "moment": "^2.21.0"
   },
   "typings": "./jalali-moment.d.ts"
