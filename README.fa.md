@@ -33,7 +33,7 @@ module.exports = function override(config, env) {
   config = injectBabelPlugin(['import', { libraryName: 'antd', libraryDirectory: 'es', style: 'css' }], config);
   config = injectBabelPlugin(['import', { libraryName: 'antd', style: true }], config);
   config = injectBabelPlugin(['syntax-dynamic-import'], config);
-  config.resolve.alias['moment'] = 'jalali-moment'; // this is where we use alias
+  config.resolve.alias['moment'] = 'antd-jalali-moment'; // this is where we use alias
   return config;
 };
 ```

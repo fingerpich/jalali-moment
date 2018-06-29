@@ -1,6 +1,6 @@
 {
   "name": "antd-jalali-moment",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Support for jalali dates and time for ant-design(antd)",
   "author": {
     "name": "Vahid Alizad",
@@ -30,7 +30,7 @@
     "test": "mocha --reporter spec --ui bdd --colors --check-leaks  test.js",
     "build": "webpack --config webpack.browser.js",
     "dev": "webpack --progress --colors --watch",
-    "publish": "mkdir -p pkg;cp -r ./* ./pkg; cp npmdoc.md ./pkg/README.md; cd ./pkg;npm run build",
+    "publish2": "mkdir -p pkg;cp -r ./* ./pkg; cp npmdoc.md ./pkg/README.md; cd ./pkg;npm run build",
     "postPublish": "npm publish pkg;rm -rf pkg",
     "lint": "eslint antd-jalali-moment.js && eslint test.js"
   },
