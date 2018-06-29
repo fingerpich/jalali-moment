@@ -1,12 +1,14 @@
 {
-  "name": "jalali-moment",
-  "description": "Jalali (Persian, Khorshidi, Shamsi) calendar system to use in javascript or typescript.",
-  "main": "jalali-moment.js",
+  "name": "antd-jalali-moment",
+  "description": "Jalali (Persian, Khorshidi, Shamsi) calendar system to use in ant-design when using fa locale",
+  "main": "antd-jalali-moment.js",
   "authors": [
-    "Mojtaba Zarei (Fingerpich)"
+    "Vahid Alizad"
   ],
   "license": "MIT",
   "keywords": [
+    "and-design",
+    "antd",
     "jalali",
     "convert",
     "miladi",
@@ -19,7 +21,7 @@
     "time",
     "calendar"
   ],
-  "homepage": "https://github.com/fingerpich/jalali-moment",
+  "homepage": "https://github.com/vahidalizad/ant-design-jalali",
   "ignore": [
     "**/.*",
     "node_modules",

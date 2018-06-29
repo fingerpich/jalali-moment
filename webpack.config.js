@@ -2,12 +2,12 @@ const path = require('path');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
-    entry: "./jalali-moment.js", // string | object | array
+    entry: "./antd-jalali-moment.js", // string | object | array
     output: {
         path: path.resolve(__dirname, "dist"), // string
-        filename: "jalali-moment.js", // string
+        filename: "antd-jalali-moment.js", // string
         // the url to the output directory resolved relative to the HTML page
-        library: "jalali-moment", // string,
+        library: "antd-jalali-moment", // string,
         // the name of the exported library
         libraryTarget: "umd", // universal module definition
         // the type of the exported library

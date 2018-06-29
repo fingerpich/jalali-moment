@@ -1,13 +1,15 @@
 {
-  "name": "jalali-moment",
-  "version": "3.1.2",
-  "description": "Display, parse, manipulate ,validate and convert jalali (Persian, Khorshidi, Shamsi) date and time",
+  "name": "antd-jalali-moment",
+  "version": "1.0.0",
+  "description": "Support for jalali dates and time for ant-design(antd)",
   "author": {
-    "name": "Mojtaba Zarei (Fingerpich)",
-    "email": "zarei.bs@gmail.com"
+    "name": "Vahid Alizad",
+    "email": "azizalizad@gmail.com"
   },
   "license": "MIT",
   "keywords": [
+    "ant-design",
+    "antd",
     "manipulate",
     "validate",
     "jalali",
@@ -22,7 +24,7 @@
     "time",
     "calendar"
   ],
-  "main": "jalali-moment.js",
+  "main": "antd-jalali-moment.js",
   "scripts": {
     "report-coverage": "export CODACY_PROJECT_TOKEN=7f46b99d0c1e4e0e9f176d98d70f972c; istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/.bin/codacy-coverage && rm -rf ./coverage",
     "test": "mocha --reporter spec --ui bdd --colors --check-leaks  test.js",
@@ -30,15 +32,15 @@
     "dev": "webpack --progress --colors --watch",
     "publish": "mkdir -p pkg;cp -r ./* ./pkg; cp npmdoc.md ./pkg/README.md; cd ./pkg;npm run build",
     "postPublish": "npm publish pkg;rm -rf pkg",
-    "lint": "eslint jalali-moment.js && eslint test.js"
+    "lint": "eslint antd-jalali-moment.js && eslint test.js"
   },
-  "homepage": "https://github.com/fingerpich/jalali-moment",
+  "homepage": "https://github.com/vahidalizad/ant-design-jalali",
   "bugs": {
-    "url": "https://github.com/fingerpich/jalali-moment/issues"
+    "url": "https://github.com/vahidalizad/ant-design-jalali/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/fingerpich/jalali-moment.git"
+    "url": "git://github.com/vahidalizad/ant-design-jalali.git"
   },
   "devDependencies": {
     "chai": "^4.1.2",
@@ -55,5 +57,5 @@
   "dependencies": {
     "moment": "^2.21.0"
   },
-  "typings": "./jalali-moment.d.ts"
+  "typings": "./antd-jalali-moment.d.ts"
 }

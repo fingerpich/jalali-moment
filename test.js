@@ -1,6 +1,6 @@
 
 var chai = require("chai")
-    , moment = require("./jalali-moment.js");
+    , moment = require("./antd-jalali-moment.js");
 
 chai.should();
 
