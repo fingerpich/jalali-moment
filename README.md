@@ -24,6 +24,7 @@ Read this in other languages: [فارسی](./README.fa.md)
     - [Aurelia](#aurelia)
     - [Vue](#vue)
     - [Es5](#es5)
+    - [Command Line](#Command-Line)
     - [Plunker](#using-in-plunker)
 - [Use API](#api)
     
@@ -199,6 +200,15 @@ Use [vue-jalali-moment](https://github.com/fingerpich/vue-jalali-moment) library
 
 ```html
 <span>{{ someDate | moment('dddd, MMMM Do YYYY') }}</span>
+```
+
+#### Command Line
+
+```npm i -g jalali-moment```
+
+```
+jalalim tojalali 1989/1/24
+jalalim togregorian 1392/5/8
 ```
 
 ## API
