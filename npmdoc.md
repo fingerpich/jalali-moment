@@ -24,6 +24,7 @@ Read this in [فارسی](./README.fa.md)
     - [Aurelia](https://github.com/fingerpich/jalali-moment#aurelia)
     - [Vue](https://github.com/fingerpich/jalali-moment#vue)
     - [Es5](https://github.com/fingerpich/jalali-moment#es5)
+    - [Command Line](https://github.com/fingerpich/jalali-moment#command-line)
     - [Plunker](https://github.com/fingerpich/jalali-moment#using-in-plunker)
 - [Use API](https://github.com/fingerpich/jalali-moment#api)
 

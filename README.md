@@ -24,7 +24,7 @@ Read this in other languages: [فارسی](./README.fa.md)
     - [Aurelia](#aurelia)
     - [Vue](#vue)
     - [Es5](#es5)
-    - [Command Line](#Command-Line)
+    - [Command Line](#command-line)
     - [Plunker](#using-in-plunker)
 - [Use API](#api)
     
