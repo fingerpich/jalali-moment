@@ -19,12 +19,13 @@ Read this in other languages: [فارسی](./README.fa.md)
 - Use jalali moment in
     - [Node.js](#using-in-nodejs)
     - [React](#react)
+    - [Es5](#es5)
     - [Typescript](#typescript)
     - [Angular](#angular)
     - [Aurelia](#aurelia)
     - [Vue](#vue)
-    - [Es5](#es5)
     - [Command Line](#command-line)
+    - [Jquery](#jquery)
     - [Plunker](#using-in-plunker)
 - [Use API](#api)
     
@@ -103,10 +104,14 @@ moment().locale('fa').format('YYYY/M/D');
 
 #### ES5
 
+get library using bower, npm, cdn, or cloning the repository
+
 ```HTML
 <!--<script src="bower_components/jalali-moment/dist/jalali-moment.browser.js"></script>-->
 <!--<script src="node_modules/jalali-moment/dist/jalali-moment.browser.js"></script>-->
-<script src="thisRepositoryPath/dist/jalali-moment.browser.js"></script>
+<script src="https://unpkg.com/jalali-moment/dist/jalali-moment.browser.js"></script>
+<!--<script src="thisRepositoryPath/dist/jalali-moment.browser.js"></script>-->
+
 <script>
   moment().locale('fa').format('YYYY/M/D');
 </script>
@@ -204,11 +209,30 @@ Use [vue-jalali-moment](https://github.com/fingerpich/vue-jalali-moment) library
 
 #### Command Line
 
+Its cli needs to get installed globally
+
 ```npm i -g jalali-moment```
+
+Then you will be able to convert jalali to gregorian and vice versa in terminal or command line as the following
 
 ```
 jalalim tojalali 1989/1/24
 jalalim togregorian 1392/5/8
+```
+
+#### Jquery
+
+get library using bower, npm, cdn, or cloning the repository
+
+```HTML
+<!--<script src="bower_components/jalali-moment/dist/jalali-moment.browser.js"></script>-->
+<!--<script src="node_modules/jalali-moment/dist/jalali-moment.browser.js"></script>-->
+<script src="https://unpkg.com/jalali-moment/dist/jalali-moment.browser.js"></script>
+<!--<script src="thisRepositoryPath/dist/jalali-moment.browser.js"></script>-->
+
+<script>
+  $("#show-date").text(moment().locale('fa').format('YYYY/M/D'));
+</script>
 ```
 
 ## API

@@ -28,8 +28,8 @@
     "test": "mocha --reporter spec --ui bdd --colors --check-leaks  test.js",
     "build": "webpack --config webpack.browser.js",
     "dev": "webpack --progress --colors --watch",
-    "publish": "mkdir -p pkg;cp -r ./* ./pkg; cp npmdoc.md ./pkg/README.md; cd ./pkg;npm run build",
-    "postPublish": "npm publish pkg;rm -rf pkg",
+    "publishready": "mkdir -p pkg;cp -r ./* ./pkg; cp npmdoc.md ./pkg/README.md; cd ./pkg;npm run build",
+    "dopublish": "npm publish pkg;rm -rf pkg",
     "lint": "eslint jalali-moment.js && eslint test.js"
   },
   "homepage": "https://github.com/fingerpich/jalali-moment",
