@@ -213,7 +213,7 @@ Its cli needs to get installed globally
 
 ```npm i -g jalali-moment```
 
-Then you will be able to convert jalali to gregorian and vice versa in terminal or command line as the following
+Then you will be able to convert Persian date to Gregorian and vice versa in terminal or command line as the following
 
 ```
 jalalim tojalali 1989/1/24

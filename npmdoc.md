@@ -24,7 +24,7 @@ Read this in [فارسی](./README.fa.md)
     - [Angular](https://github.com/fingerpich/jalali-moment#angular)
     - [Aurelia](https://github.com/fingerpich/jalali-moment#aurelia)
     - [Vue](https://github.com/fingerpich/jalali-moment#vue)
-    - [Command Line](https://github.com/fingerpich/jalali-moment#command-line)
+    - [Terminal(Command Line)](https://github.com/fingerpich/jalali-moment#command-line)
     - [Jquery](https://github.com/fingerpich/jalali-moment#jquery)
     - [Plunker](https://github.com/fingerpich/jalali-moment#using-in-plunker)
 - [Use API](https://github.com/fingerpich/jalali-moment#api)
@@ -38,7 +38,7 @@ Read this in [فارسی](./README.fa.md)
 
 #### Usage
 
-  - [Parse](#parse)
+  - [Parse](https://github.com/fingerpich/jalali-moment#parse)
       ```js
       // parse gregorian date
       m = moment('1989/1/24', 'YYYY/M/D');// parse a gregorian (miladi) date
@@ -49,20 +49,20 @@ Read this in [فارسی](./README.fa.md)
       m = moment.from('1367/04/11', 'fa', 'YYYY/MM/DD');
       m = moment.from('04/1367/11', 'fa', 'DD/YYYY/MM');
       ```
-  - [Display](#display-jalali-or-miladi-date)
+  - [Display](https://github.com/fingerpich/jalali-moment#display-jalali-or-miladi-date)
     ```js
     m.format('jYYYY/jMM/jDD'); // 1367/11/04
     m.locale('fa').format('YYYY/MM/DD'); // 1367/11/04
     ```
-  - [Manipulate](#manipulate)
+  - [Manipulate](https://github.com/fingerpich/jalali-moment#manipulate)
     ```js
     m.add(1, 'day').locale('fa').format('YYYY/MM/DD'); // 1367/11/05
     ```
-  - [Validate](#validate)
+  - [Validate](https://github.com/fingerpich/jalali-moment#validate)
     ```js
     m.isSame(m.clone()); // true
     ```
-  - [Convert](#convert-persianjalali--shamsi-khorshidi-to-gregorian-miladi-calendar-system)
+  - [Convert](https://github.com/fingerpich/jalali-moment#convert-persianjalali--shamsi-khorshidi-to-gregorian-miladi-calendar-system)
     ```js
     moment.from('1367/11/04', 'fa', 'YYYY/MM/DD').format('YYYY/MM/DD'); // 1989/01/24
     moment('1989/01/24', 'YYYY/MM/DD').locale('fa').format('YYYY/MM/DD'); // 1367/11/04
