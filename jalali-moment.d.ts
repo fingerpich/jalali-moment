@@ -692,7 +692,7 @@ declare namespace moment {
 
   export function jWeekOfYear(mom: Moment, firstDayOfWeek: number, firstDayOfWeekOfYear: number): MomentInput;
   export function jDaysInMonth(jMear: number, jMonth: number): number;
-  export function jIsLeapYear(jYear): boolean;
+  export function jIsLeapYear(jYear: number): boolean;
   export function useJalaliSystemPrimarily(): void;
   export function useJalaliSystemSecondary(): void;
   export var jConvert: any;
