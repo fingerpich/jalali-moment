@@ -24,7 +24,7 @@ Read this in other languages: [فارسی](./README.fa.md)
     - [Angular](#angular)
     - [Aurelia](#aurelia)
     - [Vue](#vue)
-    - [Command Line](#command-line)
+    - [Terminal(Command Line)](#command-line)
     - [Jquery](#jquery)
     - [Plunker](#using-in-plunker)
 - [Use API](#api)
@@ -35,6 +35,26 @@ Read this in other languages: [فارسی](./README.fa.md)
     ```.locale('fa');``` it will use jalali calendar system
 
     ```.locale('any other locale');``` it will use gregorian calendar system
+    
+    You can set locale for a moment instance(locally) or set it globally
+    example of changing locale locally
+    ```javascript
+    const m = moment();
+    m.locale('fa');
+    m.format('YY-MM-DD'); // it would be in jalali system
+    ```
+    change locale globally
+    ```javascript
+    moment.locale('fa');
+    moment().format();// it would be in jalali system
+    moment().add(1,'m').format();// it would be in jalali system  
+    ```
+    **Notice** : When you need parse a date which is not in the system you have set for global locale you can use of method ```moment.from(date, 'another locale')```
+    ```javascript
+    moment.locale('fa');
+    moment.from('2018-04-04', 'en', 'YYYY-MM-DD').format();// it would be in jalali system
+    ```
+    
 
 #### Usage
 

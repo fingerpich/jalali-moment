@@ -1,7 +1,7 @@
 {
   "name": "jalali-moment",
   "version": "3.2.3",
-  "description": "Display, parse, manipulate ,validate and convert jalali (Persian, Khorshidi, Shamsi) date and time",
+  "description": "Manipulate and convert Jalali and Gregorian date easily",
   "author": {
     "name": "Mojtaba Zarei (Fingerpich)",
     "email": "zarei.bs@gmail.com"
