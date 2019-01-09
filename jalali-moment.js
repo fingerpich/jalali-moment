@@ -1015,7 +1015,7 @@ jMoment.jDaysInMonth = function (year, month) {
 
 jMoment.jIsLeapYear = isLeapJalaliYear;
 
-moment.defineLocale("fa", {
+moment.updateLocale("fa", {
         months: ("ژانویه_فوریه_مارس_آوریل_مه_ژوئن_ژوئیه_اوت_سپتامبر_اکتبر_نوامبر_دسامبر").split("_")
         , monthsShort: ("ژانویه_فوریه_مارس_آوریل_مه_ژوئن_ژوئیه_اوت_سپتامبر_اکتبر_نوامبر_دسامبر").split("_")
         , weekdays: ("یک\u200cشنبه_دوشنبه_سه\u200cشنبه_چهارشنبه_پنج\u200cشنبه_جمعه_شنبه").split("_")
@@ -1051,7 +1051,13 @@ moment.defineLocale("fa", {
                 , y: "1 سال"
                 , yy: "%d سال"
             }
-        , ordinal: "%dم"
+        , ordinal: "%dم",
+        preparse: function (string) {
+            return string;
+        },
+        postformat: function (string) {
+            return string;
+        }
         , week:
             { dow: 6 // Saturday is the first day of the week.
                 , doy: 12 // The week that contains Jan 1st is the first week of the year.

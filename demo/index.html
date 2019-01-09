@@ -6,7 +6,7 @@
     <meta name="author" content="Mojtaba Zarei(Fingerpich)">
     <meta name="keywords" content="shamsi,miladi,convert,validate">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="it consits some of jalali-moment library usages">
+    <meta name="description" content="این کتابخانه استفاده از تاریخ شمسی را در جاوااسکریپت (js) یا تایپ اسکریپت را تاحد امکان سهولت میبخشد.">
     <style>
         body{
             text-align:center;
@@ -15,11 +15,17 @@
         }
         p{
             direction: rtl;
-            font-size: 0.7rem;
+            font-size: 0.8rem;
+            line-height: 1.6rem;
+            max-width: 500px;
+            margin: auto;
         }
         a{
             color:#07f;
             text-decoration:none;
+        }
+        .rtl{
+          direction: rtl;
         }
         button, input{
             padding: 15px;
@@ -40,13 +46,13 @@
             color: #777777;
         }
     </style>
-    <script src="https://unpkg.com/jalali-moment/dist/jalali-moment.browser.js"></script>
-    <!--<script src="../dist/jalali-moment.browser.js"></script>-->
+    <!--<script src="https://unpkg.com/jalali-moment/dist/jalali-moment.browser.js"></script>-->
+    <script src="../dist/jalali-moment.browser.js"></script>
 </head>
 <body>
-<h1 class="center"><a href="https://github.com/fingerpich/jalali-moment">Jalali Moment</a> Demo</h1>
-<p class="center">
-    این پلاگین برای سهولت هرچه بیشتر در کار با تاریخ شمسی ایجاد شده است.
+<h1 class="center rtl">تاریخ شمسی با کتابخانه <a href="https://github.com/fingerpich/jalali-moment">Jalali Moment</a></h1>
+<p class="center rtl">
+    این پلاگین برای سهولت هرچه بیشتر در کار با تاریخ شمسی در جاوااسکریپت js یا تایپ اسکریپت ts ایجاد شده است. اگر میخواهید یک تقویم میلادی را به تقویم شمسی تبدیل کنید این کتابخانه مناسب ترین گزینه است.
 </p>
 
 <section>
