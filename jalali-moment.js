@@ -2,6 +2,7 @@
 module.exports = jMoment;
 
 var moment = require("moment");
+require("moment/locale/fa");
 
 /************************************
  Constants
