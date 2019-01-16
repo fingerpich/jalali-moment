@@ -1077,4 +1077,53 @@ describe("moment", function() {
             now.weekYear().should.be.equal(now.jWeekYear());
         });
     });
+    describe("getting week fa locale", function () {
+        moment.locale("en");
+        var now = moment();
+        now.locale("fa");
+        it("week with fa locale", function () {
+            now.week().should.be.equal(now.jWeek());
+        });
+        it("week year with fa locale", function () {
+            now.weekYear().should.be.equal(now.jWeekYear());
+        });
+    });
+    describe("getting from now with fa locale", function () {
+        moment.locale("fa");
+        it("just now", function () {
+            var now = moment();
+            now.locale("fa");
+            now.fromNow().should.be.equal("چند ثانیه پیش");
+        });
+        it("10 seconds ago", function () {
+            var now = moment();
+            now.locale("fa");
+            now.subtract(10, "s");
+            now.fromNow().should.be.equal("چند ثانیه پیش");
+        });
+        it("100 seconds ago", function () {
+            var now = moment();
+            now.locale("fa");
+            now.subtract(100, "s");
+            now.fromNow().should.be.equal("2 دقیقه پیش");
+        });
+        it("5 days ago", function () {
+            var now = moment();
+            now.locale("fa");
+            now.subtract(5, "d");
+            now.fromNow().should.be.equal("5 روز پیش");
+        });
+        it("1 month ago", function () {
+            var now = moment();
+            now.locale("fa");
+            now.subtract(1, "months");
+            now.fromNow().should.be.equal("1 ماه پیش");
+        });
+        it("3 years ago", function () {
+            var now = moment();
+            now.locale("fa");
+            now.subtract(3, "year");
+            now.fromNow().should.be.equal("3 سال پیش");
+        });
+    });
 });
