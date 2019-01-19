@@ -1126,4 +1126,15 @@ describe("moment", function() {
             now.fromNow().should.be.equal("3 سال پیش");
         });
     });
+    describe("use gregorian parser in 'fa' locale", function () {
+        it("ignore gregorian calendar when useGregorianParser is false in fa locale", function () {
+            moment.locale("fa", { useGregorianParser: false });
+            moment("1370-10-17").format("YYYY-MM-DD").should.be.equal("1370-10-17");
+        });
+        it("parse using gregorian calendar in fa locale", function () {
+            moment.locale("fa", { useGregorianParser: true });
+            moment("2019-01-17T08:19:19.975Z").format("YYYY-MM-DD hh:mm:ss").should.be.equal("1397-10-27 11:49:19");
+            moment("2019-02-23").format("YYYY-MM-DD hh:mm:ss").should.be.equal("1397-12-04 12:00:00");
+        });
+    });
 });
