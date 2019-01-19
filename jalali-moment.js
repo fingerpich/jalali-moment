@@ -573,7 +573,7 @@ function makeMoment(input, format, lang, strict, utc) {
         lang = undefined;
     }
     var itsJalaliDate = (isJalali(this));
-    if(input && (typeof input === "string") && !format && itsJalaliDate) {
+    if(input && (typeof input === "string") && !format && itsJalaliDate && !moment.useGregorianParser) {
         input = input.replace(/\//g,"-");
         if(/\d{4}\-\d{2}\-\d{2}/.test(input)) {
             format = "jYYYY-jMM-jDD";
@@ -905,7 +905,7 @@ jMoment.fn.clone = function () {
     return jMoment(this);
 };
 
-jMoment.fn.doAsJalali = function () {
+jMoment.fn.doAsJalali = function (options) {
     this.calSystem = 1;
     return this;
 };
@@ -962,10 +962,10 @@ jMoment.fn.locale = function(locale) {
 /************************************
  jMoment Statics
  ************************************/
-jMoment.locale = function(locale) {
+jMoment.locale = function(locale, options) {
     if (locale && moment.changeCalendarSystemByItsLocale) {
         if (locale === "fa") {
-            this.useJalaliSystemPrimarily();
+            this.useJalaliSystemPrimarily(options);
         } else {
             this.useJalaliSystemSecondary();
         }
@@ -989,8 +989,13 @@ jMoment.unBindCalendarSystemAndLocale = function () {
     moment.changeCalendarSystemByItsLocale = false;
 };
 
-jMoment.useJalaliSystemPrimarily = function () {
+jMoment.useJalaliSystemPrimarily = function (options) {
     moment.justUseJalali = true;
+    useGregorianParser = false;
+    if (options) {
+        useGregorianParser = options.useGregorianParser;
+    }
+    moment.useGregorianParser = useGregorianParser;
 };
 jMoment.useJalaliSystemSecondary = function () {
     moment.justUseJalali = false;
