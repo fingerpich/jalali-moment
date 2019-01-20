@@ -1,13 +1,13 @@
 # Jalali Moment
 
-Display, parse, manipulate and validate jalali (Persian, Khorshidi, Shamsi) or Gregorian (Miladi) dates and times and also 
+Display, parse, manipulate and validate jalali (Persian, Khorshidi, Shamsi) or Gregorian (Miladi) dates and times and also
 convert Jalali (Persian, Khorshidi, Shamsi) date to Gregorian (Miladi) or vice versa in javascript or typescript. [DEMO](https://fingerpich.github.io/jalali-moment)
 
 Read this in other languages: [فارسی](./README.fa.md)
 
 [![MIT License][license-image]][license-url]
 [![Build Status][travis-image]][travis-url]
-[![NPM version][npm-version-image]][npm-url] 
+[![NPM version][npm-version-image]][npm-url]
 [![Package Quality][packageQuality-image]][packageQuality-url]
 [![dependencies Quality][dependencies-quality]][dependencies-quality-url]
 [![dev dependencies Quality][dev-dependencies-quality]][dev-dependencies-quality-url]
@@ -28,14 +28,14 @@ Read this in other languages: [فارسی](./README.fa.md)
     - [Jquery](#jquery)
     - [Plunker](#using-in-plunker)
 - [Use API](#api)
-    
+
     This plugin provides using jalali and gregorian calendar system together
     on [momentjs](https://momentjs.com/docs/) api.
 
     ```.locale('fa');``` it will use jalali calendar system
 
     ```.locale('any other locale');``` it will use gregorian calendar system
-    
+
     You can set locale for a moment instance(locally) or set it globally
     example of changing locale locally
     ```javascript
@@ -47,14 +47,20 @@ Read this in other languages: [فارسی](./README.fa.md)
     ```javascript
     moment.locale('fa');
     moment().format();// it would be in jalali system
-    moment().add(1,'m').format();// it would be in jalali system  
+    moment().add(1,'m').format();// it would be in jalali system
     ```
     **Notice** : When you need parse a date which is not in the system you have set for global locale you can use of method ```moment.from(date, 'another locale')```
     ```javascript
     moment.locale('fa');
     moment.from('2018-04-04', 'en', 'YYYY-MM-DD').format();// it would be in jalali system
     ```
-    
+
+    It's also possible to use gregorian calendar for parsing a date, when locale is globally set to 'fa', by setting `{ useGregorianParser: true }` as `locale` method second parameter.
+    ```javascript
+    moment.locale('fa', { useGregorianParser: true });
+    moment('2018-04-04').format();// it would be in jalali system
+    moment('2019-01-17T08:19:19.975Z').format();// it would be in jalali system
+    ```
 
 #### Usage
 
@@ -277,7 +283,7 @@ m = moment.from('01/1989/24', 'en', 'MM/YYYY/DD');
 ```js
 m = moment('1367/11/4', 'jYYYY/jM/jD');
 m = moment.from('1367/11/04', 'fa', 'YYYY/MM/DD');
-m = moment.from('11/1367/04', 'fa', 'MM/YYYY/DD'); 
+m = moment.from('11/1367/04', 'fa', 'MM/YYYY/DD');
 
 // it will change locale for all new moment instance
 moment.locale('fa');

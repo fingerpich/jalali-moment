@@ -120,6 +120,7 @@ declare namespace moment {
   type WeekdaySimpleFn = (momentToFormat: Moment) => string;
 
   interface LocaleSpecification {
+    useGregorianParser?: boolean;
     months?: string[] | StandaloneFormatSpec | MonthWeekdayFn;
     monthsShort?: string[] | StandaloneFormatSpec | MonthWeekdayFn;
 
