@@ -905,7 +905,7 @@ jMoment.fn.clone = function () {
     return jMoment(this);
 };
 
-jMoment.fn.doAsJalali = function (options) {
+jMoment.fn.doAsJalali = function () {
     this.calSystem = 1;
     return this;
 };

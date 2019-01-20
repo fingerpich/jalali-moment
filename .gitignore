@@ -1,4 +1,6 @@
+.vscode
 node_modules
 npm-debug.log
 pkg
 .idea
+.DS_Store

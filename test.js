@@ -1127,7 +1127,7 @@ describe("moment", function() {
         });
     });
     describe("use gregorian calendar parser in 'fa' locale", function () {
-        it("ignore gregorian calendar when useGregorianParser is false in fa locale", function () {
+        it("use jalali calendar when useGregorianParser is false in fa locale", function () {
             moment.locale("fa", { useGregorianParser: false });
             moment("1370-10-17").format("YYYY-MM-DD").should.be.equal("1370-10-17");
         });

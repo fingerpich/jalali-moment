@@ -54,12 +54,13 @@ Read this in other languages: [فارسی](./README.fa.md)
     moment.locale('fa');
     moment.from('2018-04-04', 'en', 'YYYY-MM-DD').format();// it would be in jalali system
     ```
-
-    It's also possible to use gregorian calendar for parsing a date, when locale is globally set to 'fa', by setting `{ useGregorianParser: true }` as `locale` method second parameter.
+    When locale is globally set to 'fa', it's also possible to use gregorian calendar for parsing a date.
+    By setting `{ useGregorianParser: true }` as second parameter of `.locale()` you can reach this.
+    `useGregorianParser` default value is `false` in `'fa'` locale.
     ```javascript
-    moment.locale('fa', { useGregorianParser: true });
-    moment('2018-04-04').format();// it would be in jalali system
-    moment('2019-01-17T08:19:19.975Z').format();// it would be in jalali system
+    moment.locale('fa', { useGregorianParser: true });  
+    moment('2018-04-04').format();// it would be in jalali system  
+    moment('2019-01-17T08:19:19.975Z').format();// it would be in jalali system  
     ```
 
 #### Usage
