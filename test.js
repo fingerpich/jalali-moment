@@ -1133,8 +1133,8 @@ describe("moment", function() {
         });
         it("parse using gregorian calendar in fa locale", function () {
             moment.locale("fa", { useGregorianParser: true });
-            moment("2019-01-17T08:19:19.975Z").format("YYYY-MM-DD hh:mm:ss").should.be.equal("1397-10-27 11:49:19");
-            moment("2019-02-23").format("YYYY-MM-DD hh:mm:ss").should.be.equal("1397-12-04 12:00:00");
+            moment("2019-01-17T08:19:19.975Z").format("YYYY-MM-DD").should.be.equal("1397-10-27");
+            moment("2019-02-23").format("YYYY-MM-DD").should.be.equal("1397-12-04");
         });
     });
 });
