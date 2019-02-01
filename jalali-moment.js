@@ -801,7 +801,8 @@ jMoment.fn.jWeek = function (input) {
     return isNull(input) ? week : this.add((input - week) * 7, "d");
 };
 function isJalali (momentObj) {
-    return momentObj && momentObj.calSystem === 1 || (moment.justUseJalali && momentObj.calSystem !== 2);
+    var calSystem = momentObj ? momentObj.calSystem : 1;
+    return calSystem === 1 || (moment.justUseJalali && calSystem !== 2);
 }
 
 jMoment.fn.weekYear = function (input) {
