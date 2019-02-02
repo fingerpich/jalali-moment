@@ -153,6 +153,7 @@ function toJalaliFormat(format) {
  **/
 function toJalaliUnit(units) {
     switch (units) {
+        case "week" : return "jWeek";
         case "year" : return "jYear";
         case "month" : return "jMonth";
         case "months" : return "jMonths";
@@ -851,15 +852,19 @@ jMoment.fn.subtract = function (val, units) {
 };
 
 jMoment.fn.startOf = function (units) {
-    units = normalizeUnits(units, this);
-    if( units === "jweek"){
+    var nunit = normalizeUnits(units, this);
+    if( nunit === "jweek"){
         return this.startOf("day").subtract(this.jDay() , "day");
     }
-    if (units === "jyear" || units === "jmonth") {
-        if (units === "jyear") {
-            this.jMonth(0);
-        }
+    if (nunit === "jyear") {
+        this.jMonth(0);
+        nunit = "jmonth";
+    }
+    if (nunit === "jmonth") {
         this.jDate(1);
+        nunit = "day";
+    }
+    if (nunit === "day") {
         this.hours(0);
         this.minutes(0);
         this.seconds(0);
