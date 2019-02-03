@@ -31,7 +31,7 @@
         'ހޮނިހިރު'
     ];
 
-    var dv = moment.defineLocale('dv', {
+    var dv = moment.updateLocale('dv', {
         months : months,
         monthsShort : months,
         weekdays : weekdays,

@@ -32,7 +32,7 @@
         'ہفتہ'
     ];
 
-    var ur = moment.defineLocale('ur', {
+    var ur = moment.updateLocale('ur', {
         months : months,
         monthsShort : months,
         weekdays : days,

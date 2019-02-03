@@ -8,7 +8,7 @@
 }(this, (function (moment) { 'use strict';
 
 
-    var uz = moment.defineLocale('uz', {
+    var uz = moment.updateLocale('uz', {
         months : 'январ_феврал_март_апрел_май_июн_июл_август_сентябр_октябр_ноябр_декабр'.split('_'),
         monthsShort : 'янв_фев_мар_апр_май_июн_июл_авг_сен_окт_ноя_дек'.split('_'),
         weekdays : 'Якшанба_Душанба_Сешанба_Чоршанба_Пайшанба_Жума_Шанба'.split('_'),

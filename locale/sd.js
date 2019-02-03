@@ -32,7 +32,7 @@
         'ڇنڇر'
     ];
 
-    var sd = moment.defineLocale('sd', {
+    var sd = moment.updateLocale('sd', {
         months : months,
         monthsShort : months,
         weekdays : days,

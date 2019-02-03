@@ -22,7 +22,7 @@
         return withoutSuffix ? format[key][0] : format[key][1];
     }
 
-    var deAt = moment.defineLocale('de-at', {
+    var deAt = moment.updateLocale('de-at', {
         months : 'Jänner_Februar_März_April_Mai_Juni_Juli_August_September_Oktober_November_Dezember'.split('_'),
         monthsShort : 'Jän._Feb._März_Apr._Mai_Juni_Juli_Aug._Sep._Okt._Nov._Dez.'.split('_'),
         monthsParseExact : true,

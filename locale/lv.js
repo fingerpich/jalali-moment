@@ -44,7 +44,7 @@
         return withoutSuffix ? 'dažas sekundes' : 'dažām sekundēm';
     }
 
-    var lv = moment.defineLocale('lv', {
+    var lv = moment.updateLocale('lv', {
         months : 'janvāris_februāris_marts_aprīlis_maijs_jūnijs_jūlijs_augusts_septembris_oktobris_novembris_decembris'.split('_'),
         monthsShort : 'jan_feb_mar_apr_mai_jūn_jūl_aug_sep_okt_nov_dec'.split('_'),
         weekdays : 'svētdiena_pirmdiena_otrdiena_trešdiena_ceturtdiena_piektdiena_sestdiena'.split('_'),

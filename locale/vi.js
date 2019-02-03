@@ -8,7 +8,7 @@
 }(this, (function (moment) { 'use strict';
 
 
-    var vi = moment.defineLocale('vi', {
+    var vi = moment.updateLocale('vi', {
         months : 'tháng 1_tháng 2_tháng 3_tháng 4_tháng 5_tháng 6_tháng 7_tháng 8_tháng 9_tháng 10_tháng 11_tháng 12'.split('_'),
         monthsShort : 'Th01_Th02_Th03_Th04_Th05_Th06_Th07_Th08_Th09_Th10_Th11_Th12'.split('_'),
         monthsParseExact : true,

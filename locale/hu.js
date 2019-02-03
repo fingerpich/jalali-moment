@@ -43,7 +43,7 @@
         return (isFuture ? '' : '[múlt] ') + '[' + weekEndings[this.day()] + '] LT[-kor]';
     }
 
-    var hu = moment.defineLocale('hu', {
+    var hu = moment.updateLocale('hu', {
         months : 'január_február_március_április_május_június_július_augusztus_szeptember_október_november_december'.split('_'),
         monthsShort : 'jan_feb_márc_ápr_máj_jún_júl_aug_szept_okt_nov_dec'.split('_'),
         weekdays : 'vasárnap_hétfő_kedd_szerda_csütörtök_péntek_szombat'.split('_'),

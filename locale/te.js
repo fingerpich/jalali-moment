@@ -8,7 +8,7 @@
 }(this, (function (moment) { 'use strict';
 
 
-    var te = moment.defineLocale('te', {
+    var te = moment.updateLocale('te', {
         months : 'జనవరి_ఫిబ్రవరి_మార్చి_ఏప్రిల్_మే_జూన్_జులై_ఆగస్టు_సెప్టెంబర్_అక్టోబర్_నవంబర్_డిసెంబర్'.split('_'),
         monthsShort : 'జన._ఫిబ్ర._మార్చి_ఏప్రి._మే_జూన్_జులై_ఆగ._సెప్._అక్టో._నవ._డిసె.'.split('_'),
         monthsParseExact : true,

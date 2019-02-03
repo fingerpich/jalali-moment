@@ -47,7 +47,7 @@
     ];
 
 
-    var ku = moment.defineLocale('ku', {
+    var ku = moment.updateLocale('ku', {
         months : months,
         monthsShort : months,
         weekdays : 'یه‌كشه‌ممه‌_دووشه‌ممه‌_سێشه‌ممه‌_چوارشه‌ممه‌_پێنجشه‌ممه‌_هه‌ینی_شه‌ممه‌'.split('_'),

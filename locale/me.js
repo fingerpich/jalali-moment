@@ -32,7 +32,7 @@
         }
     };
 
-    var me = moment.defineLocale('me', {
+    var me = moment.updateLocale('me', {
         months: 'januar_februar_mart_april_maj_jun_jul_avgust_septembar_oktobar_novembar_decembar'.split('_'),
         monthsShort: 'jan._feb._mar._apr._maj_jun_jul_avg._sep._okt._nov._dec.'.split('_'),
         monthsParseExact : true,

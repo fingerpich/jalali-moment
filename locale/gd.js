@@ -20,7 +20,7 @@
 
     var weekdaysMin = ['Dò', 'Lu', 'Mà', 'Ci', 'Ar', 'Ha', 'Sa'];
 
-    var gd = moment.defineLocale('gd', {
+    var gd = moment.updateLocale('gd', {
         months : months,
         monthsShort : monthsShort,
         monthsParseExact : true,

@@ -8,7 +8,7 @@
 }(this, (function (moment) { 'use strict';
 
 
-    var arKw = moment.defineLocale('ar-kw', {
+    var arKw = moment.updateLocale('ar-kw', {
         months : 'يناير_فبراير_مارس_أبريل_ماي_يونيو_يوليوز_غشت_شتنبر_أكتوبر_نونبر_دجنبر'.split('_'),
         monthsShort : 'يناير_فبراير_مارس_أبريل_ماي_يونيو_يوليوز_غشت_شتنبر_أكتوبر_نونبر_دجنبر'.split('_'),
         weekdays : 'الأحد_الإتنين_الثلاثاء_الأربعاء_الخميس_الجمعة_السبت'.split('_'),

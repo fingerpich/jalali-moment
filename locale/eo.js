@@ -8,7 +8,7 @@
 }(this, (function (moment) { 'use strict';
 
 
-    var eo = moment.defineLocale('eo', {
+    var eo = moment.updateLocale('eo', {
         months : 'januaro_februaro_marto_aprilo_majo_junio_julio_aŭgusto_septembro_oktobro_novembro_decembro'.split('_'),
         monthsShort : 'jan_feb_mar_apr_maj_jun_jul_aŭg_sep_okt_nov_dec'.split('_'),
         weekdays : 'dimanĉo_lundo_mardo_merkredo_ĵaŭdo_vendredo_sabato'.split('_'),

@@ -8,7 +8,7 @@
 }(this, (function (moment) { 'use strict';
 
 
-    var uzLatn = moment.defineLocale('uz-latn', {
+    var uzLatn = moment.updateLocale('uz-latn', {
         months : 'Yanvar_Fevral_Mart_Aprel_May_Iyun_Iyul_Avgust_Sentabr_Oktabr_Noyabr_Dekabr'.split('_'),
         monthsShort : 'Yan_Fev_Mar_Apr_May_Iyun_Iyul_Avg_Sen_Okt_Noy_Dek'.split('_'),
         weekdays : 'Yakshanba_Dushanba_Seshanba_Chorshanba_Payshanba_Juma_Shanba'.split('_'),

@@ -8,7 +8,7 @@
 }(this, (function (moment) { 'use strict';
 
 
-    var sv = moment.defineLocale('sv', {
+    var sv = moment.updateLocale('sv', {
         months : 'januari_februari_mars_april_maj_juni_juli_augusti_september_oktober_november_december'.split('_'),
         monthsShort : 'jan_feb_mar_apr_maj_jun_jul_aug_sep_okt_nov_dec'.split('_'),
         weekdays : 'söndag_måndag_tisdag_onsdag_torsdag_fredag_lördag'.split('_'),

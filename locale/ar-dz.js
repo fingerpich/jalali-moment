@@ -8,7 +8,7 @@
 }(this, (function (moment) { 'use strict';
 
 
-    var arDz = moment.defineLocale('ar-dz', {
+    var arDz = moment.updateLocale('ar-dz', {
         months : 'جانفي_فيفري_مارس_أفريل_ماي_جوان_جويلية_أوت_سبتمبر_أكتوبر_نوفمبر_ديسمبر'.split('_'),
         monthsShort : 'جانفي_فيفري_مارس_أفريل_ماي_جوان_جويلية_أوت_سبتمبر_أكتوبر_نوفمبر_ديسمبر'.split('_'),
         weekdays : 'الأحد_الإثنين_الثلاثاء_الأربعاء_الخميس_الجمعة_السبت'.split('_'),

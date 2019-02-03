@@ -79,7 +79,7 @@
         }
     }
 
-    var cs = moment.defineLocale('cs', {
+    var cs = moment.updateLocale('cs', {
         months : months,
         monthsShort : monthsShort,
         monthsRegex : monthsRegex,

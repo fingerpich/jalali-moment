@@ -52,7 +52,7 @@
         'ديسمبر'
     ];
 
-    var arLy = moment.defineLocale('ar-ly', {
+    var arLy = moment.updateLocale('ar-ly', {
         months : months,
         monthsShort : months,
         weekdays : 'الأحد_الإثنين_الثلاثاء_الأربعاء_الخميس_الجمعة_السبت'.split('_'),

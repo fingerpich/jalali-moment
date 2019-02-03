@@ -73,7 +73,7 @@
         }
     }
 
-    var sk = moment.defineLocale('sk', {
+    var sk = moment.updateLocale('sk', {
         months : months,
         monthsShort : monthsShort,
         weekdays : 'nedeľa_pondelok_utorok_streda_štvrtok_piatok_sobota'.split('_'),

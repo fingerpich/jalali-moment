@@ -33,7 +33,7 @@
         '०': '0'
     };
 
-    var hi = moment.defineLocale('hi', {
+    var hi = moment.updateLocale('hi', {
         months : 'जनवरी_फ़रवरी_मार्च_अप्रैल_मई_जून_जुलाई_अगस्त_सितम्बर_अक्टूबर_नवम्बर_दिसम्बर'.split('_'),
         monthsShort : 'जन._फ़र._मार्च_अप्रै._मई_जून_जुल._अग._सित._अक्टू._नव._दिस.'.split('_'),
         monthsParseExact: true,

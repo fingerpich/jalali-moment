@@ -8,7 +8,7 @@
 }(this, (function (moment) { 'use strict';
 
 
-    var hyAm = moment.defineLocale('hy-am', {
+    var hyAm = moment.updateLocale('hy-am', {
         months : {
             format: 'հունվարի_փետրվարի_մարտի_ապրիլի_մայիսի_հունիսի_հուլիսի_օգոստոսի_սեպտեմբերի_հոկտեմբերի_նոյեմբերի_դեկտեմբերի'.split('_'),
             standalone: 'հունվար_փետրվար_մարտ_ապրիլ_մայիս_հունիս_հուլիս_օգոստոս_սեպտեմբեր_հոկտեմբեր_նոյեմբեր_դեկտեմբեր'.split('_')
