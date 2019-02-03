@@ -2,6 +2,7 @@
 module.exports = jMoment;
 
 var moment = require("../moment");
+require("../moment/locale/fa");
 
 /************************************
  Constants
@@ -152,6 +153,7 @@ function toJalaliFormat(format) {
  **/
 function toJalaliUnit(units) {
     switch (units) {
+        case "week" : return "jWeek";
         case "year" : return "jYear";
         case "month" : return "jMonth";
         case "months" : return "jMonths";
@@ -572,7 +574,7 @@ function makeMoment(input, format, lang, strict, utc) {
         lang = undefined;
     }
     var itsJalaliDate = (isJalali(this));
-    if(input && (typeof input === "string") && !format && itsJalaliDate) {
+    if(input && (typeof input === "string") && !format && itsJalaliDate && !moment.useGregorianParser) {
         input = input.replace(/\//g,"-");
         if(/\d{4}\-\d{2}\-\d{2}/.test(input)) {
             format = "jYYYY-jMM-jDD";
@@ -726,7 +728,7 @@ jMoment.fn.jMonth = function (input) {
         , g;
     if (!isNull(input)) {
         if (typeof input === "string") {
-            input = this.lang().jMonthsParse(input);
+            input = this.localeData().jMonthsParse(input);
             if (typeof input !== "number"){
                 return this;
             }
@@ -800,7 +802,8 @@ jMoment.fn.jWeek = function (input) {
     return isNull(input) ? week : this.add((input - week) * 7, "d");
 };
 function isJalali (momentObj) {
-    return momentObj.calSystem === 1 || (moment.justUseJalali && momentObj.calSystem !== 2);
+    var calSystem = momentObj ? momentObj.calSystem : 1;
+    return calSystem === 1 || (moment.justUseJalali && calSystem !== 2);
 }
 
 jMoment.fn.weekYear = function (input) {
@@ -849,15 +852,19 @@ jMoment.fn.subtract = function (val, units) {
 };
 
 jMoment.fn.startOf = function (units) {
-    units = normalizeUnits(units, this);
-    if( units === "jweek"){
+    var nunit = normalizeUnits(units, this);
+    if( nunit === "jweek"){
         return this.startOf("day").subtract(this.jDay() , "day");
     }
-    if (units === "jyear" || units === "jmonth") {
-        if (units === "jyear") {
-            this.jMonth(0);
-        }
+    if (nunit === "jyear") {
+        this.jMonth(0);
+        nunit = "jmonth";
+    }
+    if (nunit === "jmonth") {
         this.jDate(1);
+        nunit = "day";
+    }
+    if (nunit === "day") {
         this.hours(0);
         this.minutes(0);
         this.seconds(0);
@@ -961,10 +968,10 @@ jMoment.fn.locale = function(locale) {
 /************************************
  jMoment Statics
  ************************************/
-jMoment.locale = function(locale) {
+jMoment.locale = function(locale, options) {
     if (locale && moment.changeCalendarSystemByItsLocale) {
         if (locale === "fa") {
-            this.useJalaliSystemPrimarily();
+            this.useJalaliSystemPrimarily(options);
         } else {
             this.useJalaliSystemSecondary();
         }
@@ -988,8 +995,13 @@ jMoment.unBindCalendarSystemAndLocale = function () {
     moment.changeCalendarSystemByItsLocale = false;
 };
 
-jMoment.useJalaliSystemPrimarily = function () {
+jMoment.useJalaliSystemPrimarily = function (options) {
     moment.justUseJalali = true;
+    useGregorianParser = false;
+    if (options) {
+        useGregorianParser = options.useGregorianParser;
+    }
+    moment.useGregorianParser = useGregorianParser;
 };
 jMoment.useJalaliSystemSecondary = function () {
     moment.justUseJalali = false;
@@ -1015,12 +1027,12 @@ jMoment.jDaysInMonth = function (year, month) {
 
 jMoment.jIsLeapYear = isLeapJalaliYear;
 
-moment.defineLocale("fa", {
+moment.updateLocale("fa", {
         months: ("ژانویه_فوریه_مارس_آوریل_مه_ژوئن_ژوئیه_اوت_سپتامبر_اکتبر_نوامبر_دسامبر").split("_")
         , monthsShort: ("ژانویه_فوریه_مارس_آوریل_مه_ژوئن_ژوئیه_اوت_سپتامبر_اکتبر_نوامبر_دسامبر").split("_")
-        , weekdays: ("یک\u200cشنبه_دوشنبه_سه\u200cشنبه_چهارشنبه_پنج\u200cشنبه_آدینه_شنبه").split("_")
-        , weekdaysShort: ("یک\u200cشنبه_دوشنبه_سه\u200cشنبه_چهارشنبه_پنج\u200cشنبه_آدینه_شنبه").split("_")
-        , weekdaysMin: "ی_د_س_چ_پ_آ_ش".split("_")
+        , weekdays: ("یک\u200cشنبه_دوشنبه_سه\u200cشنبه_چهارشنبه_پنج\u200cشنبه_جمعه_شنبه").split("_")
+        , weekdaysShort: ("یک\u200cشنبه_دوشنبه_سه\u200cشنبه_چهارشنبه_پنج\u200cشنبه_جمعه_شنبه").split("_")
+        , weekdaysMin: "ی_د_س_چ_پ_ج_ش".split("_")
         , longDateFormat:
             { LT: "HH:mm"
                 , L: "jYYYY/jMM/jDD"
@@ -1051,7 +1063,13 @@ moment.defineLocale("fa", {
                 , y: "1 سال"
                 , yy: "%d سال"
             }
-        , ordinal: "%dم"
+        , ordinal: "%dم",
+        preparse: function (string) {
+            return string;
+        },
+        postformat: function (string) {
+            return string;
+        }
         , week:
             { dow: 6 // Saturday is the first day of the week.
                 , doy: 12 // The week that contains Jan 1st is the first week of the year.
@@ -1060,7 +1078,7 @@ moment.defineLocale("fa", {
             return hour < 12 ? "ق.ظ" : "ب.ظ";
         }
         , jMonths: ("فروردین_اردیبهشت_خرداد_تیر_مرداد_شهریور_مهر_آبان_آذر_دی_بهمن_اسفند").split("_")
-        , jMonthsShort: "فرو_ارد_خرد_تیر_مرد_شهر_مهر_آبا_آذر_دی_بهم_اسف".split("_")
+        , jMonthsShort: "فروردین_اردیبهشت_خرداد_تیر_مرداد_شهریور_مهر_آبان_آذر_دی_بهمن_اسفند".split("_")
     });
 jMoment.bindCalendarSystemAndLocale();
 moment.locale("en");

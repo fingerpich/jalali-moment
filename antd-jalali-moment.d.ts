@@ -120,6 +120,7 @@ declare namespace moment {
   type WeekdaySimpleFn = (momentToFormat: Moment) => string;
 
   interface LocaleSpecification {
+    useGregorianParser?: boolean;
     months?: string[] | StandaloneFormatSpec | MonthWeekdayFn;
     monthsShort?: string[] | StandaloneFormatSpec | MonthWeekdayFn;
 
@@ -692,7 +693,7 @@ declare namespace moment {
 
   export function jWeekOfYear(mom: Moment, firstDayOfWeek: number, firstDayOfWeekOfYear: number): MomentInput;
   export function jDaysInMonth(jMear: number, jMonth: number): number;
-  export function jIsLeapYear(jYear): boolean;
+  export function jIsLeapYear(jYear: number): boolean;
   export function useJalaliSystemPrimarily(): void;
   export function useJalaliSystemSecondary(): void;
   export var jConvert: any;

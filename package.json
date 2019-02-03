@@ -1,6 +1,6 @@
 {
   "name": "antd-jalali-moment",
-  "version": "3.1.2",
+  "version": "3.3.1",
   "description": "Support for jalali dates and time for ant-design(antd)",
   "author": {
     "name": "Vahid Alizad",
@@ -43,19 +43,20 @@
     "url": "git://github.com/vahidalizad/ant-design-jalali.git"
   },
   "devDependencies": {
-    "chai": "^4.1.2",
-    "codacy-coverage": "^2.1.0",
-    "eslint": "^4.19.0",
+    "chai": "^4.2.0",
+    "codacy-coverage": "^3.4.0",
+    "eslint": "^5.13.0",
     "istanbul": "^0.4.5",
-    "mocha": "^5.0.4",
+    "mocha": "^5.2.0",
     "mocha-lcov-reporter": "^1.3.0",
-    "path": "^0.12.7",
-    "uglifyjs-webpack-plugin": "^1.2.4",
-    "webpack": "^4.1.1",
-    "webpack-cli": "^2.0.12"
+    "uglifyjs-webpack-plugin": "^2.1.1",
+    "webpack": "^4.29.0",
+    "webpack-cli": "^3.2.1"
   },
   "dependencies": {
-    "moment": "^2.21.0"
+    "commander": "^2.19.0",
+    "inquirer": "^6.2.2",
+    "moment": "^2.23.0"
   },
   "typings": "./antd-jalali-moment.d.ts"
 }
