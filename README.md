@@ -1,9 +1,12 @@
 # Jalali Moment
 
 Display, parse, manipulate and validate jalali (Persian, Khorshidi, Shamsi) or Gregorian (Miladi) dates and times and also
-convert Jalali (Persian, Khorshidi, Shamsi) date to Gregorian (Miladi) or vice versa in javascript or typescript. [DEMO](https://fingerpich.github.io/jalali-moment)
+convert Jalali (Persian, Khorshidi, Shamsi) date to Gregorian (Miladi) or vice versa in javascript or typescript. [DEMO](https://fingerpich.github.io/jalali-moment)  
 
 Read this in other languages: [فارسی](./README.fa.md)
+
+It was a fork of [moment-jalali](https://github.com/jalaali/moment-jalaali) but the main goal of this repository is to facilitate converting any library using [moment.js](https://momentjs.com/) to be compatible with jalali calendar system. 
+[List of packages](https://www.npmjs.com/browse/depended/jalali-moment) use [jalali-moment](https://github.com/fingerpich/jalali-moment) to convert calendar system.
 
 [![MIT License][license-image]][license-url]
 [![Build Status][travis-image]][travis-url]
