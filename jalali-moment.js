@@ -997,7 +997,7 @@ jMoment.unBindCalendarSystemAndLocale = function () {
 
 jMoment.useJalaliSystemPrimarily = function (options) {
     moment.justUseJalali = true;
-    useGregorianParser = false;
+    var useGregorianParser = false;
     if (options) {
         useGregorianParser = options.useGregorianParser;
     }
