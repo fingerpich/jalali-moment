@@ -169,7 +169,7 @@ function normalizeUnits(units, momentObj) {
     if (isJalali(momentObj)) {
         units = toJalaliUnit(units);
     }
-    if (units) {
+    if (units && units[0].toLowerCase()==='j') {
         var lowered = units.toLowerCase();
         units = unitAliases[lowered] || lowered;
     }
