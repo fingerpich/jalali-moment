@@ -802,7 +802,7 @@ jMoment.fn.jWeek = function (input) {
     return isNull(input) ? week : this.add((input - week) * 7, "d");
 };
 function isJalali (momentObj) {
-    var calSystem = momentObj ? momentObj.calSystem : 1;
+    var calSystem = (momentObj && momentObj.calSystem) ? momentObj.calSystem : 1;
     return calSystem === 1 || (moment.justUseJalali && calSystem !== 2);
 }
 
