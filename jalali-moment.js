@@ -169,13 +169,13 @@ function normalizeUnits(units, momentObj) {
     if (isJalali(momentObj)) {
         units = toJalaliUnit(units);
     }
-    if (units && units[0].toLowerCase()==='j') {
+    if (units) {
         var lowered = units.toLowerCase();
-        units = unitAliases[lowered] || lowered;
+        if (lowered.startsWith('j') units = unitAliases[lowered] || lowered;
+        // TODO : add unit test
+        if (units === "jday") units = "day";
+        else if (units === "jd") units = "d";
     }
-    // TODO : add unit test
-    if (units === "jday") units = "day";
-    else if (units === "jd") units = "d";
     return units;
 }
 
