@@ -136,7 +136,6 @@ function isArray(input) {
  * @example toJalaliFormat("YYYY/MMM/DD") => "jYYYY/jMMM/jDD"
  **/
 function toJalaliFormat(format) {
-    if (typeof format === "function")
     for (var i = 0; i < format.length; i++) {
         if(!i || (format[i-1] !== "j" && format[i-1] !== format[i])) {
             if (format[i] === "Y" || format[i] === "M" || format[i] === "D" || format[i] === "g") {
