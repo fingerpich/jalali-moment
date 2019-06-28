@@ -171,7 +171,7 @@ function normalizeUnits(units, momentObj) {
     }
     if (units) {
         var lowered = units.toLowerCase();
-        if (lowered.startsWith('j') units = unitAliases[lowered] || lowered;
+        if (lowered.startsWith('j')) units = unitAliases[lowered] || lowered;
         // TODO : add unit test
         if (units === "jday") units = "day";
         else if (units === "jd") units = "d";
