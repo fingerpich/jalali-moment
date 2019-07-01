@@ -573,7 +573,7 @@ function makeMoment(input, format, lang, strict, utc) {
         strict = lang;
         lang = undefined;
     }
- if (moment0.isMoment(input)) {
+ if (moment.isMoment(input)) {
             let config = input; // more understandable name
             m = moment(config);
             m._jDiff = config._jDiff || 0;
