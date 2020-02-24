@@ -683,6 +683,7 @@ function fixFormat(format, _moment) {
 }
 
 jMoment.fn.format = function (format) {
+	format = format || jMoment.defaultFormat;
     if (format) {
         if(isJalali(this)) {
             format = toJalaliFormat(format);
