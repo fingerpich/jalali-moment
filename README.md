@@ -1,5 +1,7 @@
 # Jalali Moment
 
+I dont have enough time for this project so let [me](https://github.com/fingerpich) know if you can help to fix the issues.
+
 Display, parse, manipulate and validate jalali (Persian, Khorshidi, Shamsi) or Gregorian (Miladi) dates and times and also
 convert Jalali (Persian, Khorshidi, Shamsi) date to Gregorian (Miladi) or vice versa in javascript or typescript. [DEMO](https://fingerpich.github.io/jalali-moment)  
 
