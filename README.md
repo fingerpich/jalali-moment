@@ -17,7 +17,7 @@ It was a fork of [moment-jalali](https://github.com/jalaali/moment-jalaali) but 
 [![Codacy Badge][codacy-quality]][codacy-quality-url]
 [![Codacy Badge][codacy-coverage]][codacy-coverage-url]
 
-> I dont have enough time for this project so let [me](https://github.com/fingerpich) know if you can help to fix the issues.
+> I cant spend enough time for this project so let [me](https://github.com/fingerpich) know if you can help to handle the issues.
 
 ## How to
 - [Install](#install)
