@@ -573,6 +573,20 @@ function makeMoment(input, format, lang, strict, utc) {
         strict = lang;
         lang = undefined;
     }
+ if (moment.isMoment(input)) {
+            let config = input; // more understandable name
+            m = moment(config);
+            m._jDiff = config._jDiff || 0;
+            jm = objectCreate(jMoment.fn);
+            extend(jm, m);
+            if (strict && jm.isValid()) {
+                format = typeof format === 'string' ? format : "jYYYY-jMM-jDD HH:mm:ss" //fails if format is array
+                jm._isValid = jm.format(format) === input.format(format);
+            }
+
+            return jm;
+        }
+ 
     var itsJalaliDate = (isJalali(this));
     if(input && (typeof input === "string") && !format && itsJalaliDate && !moment.useGregorianParser) {
         input = input.replace(/\//g,"-");
