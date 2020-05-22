@@ -351,6 +351,20 @@ describe("moment", function() {
             m.format("jYYYY/jM/jD").should.be.equal("1367/11/6");
         });
     });
+    describe("#jDaysInMonth", function() {
+        it("should return Jalaali days count in month", function() {
+            const md = jalaliMoment.from('1398/12/01', 'fa', 'YYYY/MM/DD').jDaysInMonth()
+            md.should.be.equal(29);
+        });
+        it("should return ordibehesht days count", function() {
+            const md = jalaliMoment.from('1398/01/01', 'fa', 'jYYYY/jMM/jDD').jDaysInMonth();
+            md.should.be.equal(31);
+        });
+        it("should return leap year esfand days count", function() {
+            const md = jalaliMoment.jDaysInMonth(1398, 11); // esfand 98
+            md.should.be.equal(29);
+        });
+    });
 
     describe("#jDate", function() {
         it("should return Jalaali date", function() {
