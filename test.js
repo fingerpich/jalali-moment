@@ -1167,4 +1167,12 @@ describe("moment", function() {
             a.locale('en').format('YYMMDD-HH:mm').should.be.equal(b.format('YYMMDD-HH:mm'));
         });
     });
+    describe("test diff", function () {
+        it("diff locale fa", function () {
+            //https://github.com/fingerpich/jalali-moment/issues/78
+            const d1 = moment('2019-10-26').locale('fa').diff(moment('2019-10-28').locale('fa'), 'month')
+            const d2 = moment('2019-10-26').locale('en').diff(moment('2019-10-28').locale('en'), 'month')
+            d1.should.be.equal(d2);
+        });
+    });
 });
