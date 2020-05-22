@@ -171,7 +171,7 @@
         var output="";
         try{
             var input = document.getElementById("validatingDate").value;
-            var m = moment(input, 'YYYY/MM/DD');
+            var m = moment(input, 'jYYYY/jMM/jDD');
             if(m.isValid()){
                 output = "معتبر است";
             } else {
