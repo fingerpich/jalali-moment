@@ -1168,6 +1168,12 @@ describe("moment", function() {
         });
     });
     describe("test diff", function () {
+        it("ISO_8601", function () {
+            //https://github.com/fingerpich/jalali-moment/issues/70
+            const d1 = moment('2019-10-26', moment.ISO_8601).format();
+            const d2 = jalaliMoment('2019-10-26', moment.ISO_8601).format();
+            d1.should.be.equal(d2);
+        });
         it("diff locale fa", function () {
             //https://github.com/fingerpich/jalali-moment/issues/78
             const d1 = moment('2019-10-26').locale('fa').diff(moment('2019-10-28').locale('fa'), 'month')

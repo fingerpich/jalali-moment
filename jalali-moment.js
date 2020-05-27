@@ -584,6 +584,9 @@ function makeMoment(input, format, lang, strict, utc) {
         strict = lang;
         lang = undefined;
     }
+    if (moment.ISO_8601 === format) {
+        format = 'YYYY-MM-DDTHH:mm:ss.SSSZ';
+    }
     const inputIsJalali = isInputJalali(format, this, input);
     // var itsJalaliDate = (isJalali(this));
     if(input && (typeof input === "string") && !format && inputIsJalali && !moment.useGregorianParser) {
