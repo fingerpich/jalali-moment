@@ -801,6 +801,19 @@ jMoment.fn.jDay = function (input) {
         return (moment.fn.day.call(this) + 1) % 7;
     }
 };
+jMoment.fn.diff = function (input, unitOfTime) {
+    if (isJalali(this)) {
+        if (unitOfTime === 'd' || unitOfTime === 'day') {
+            return moment.fn.diff.call(this, input, unitOfTime);
+        } else if (unitOfTime === 'm' || unitOfTime === 'month') {
+            return Math.abs(this.jMonth() - input.jMonth());
+        } else if (unitOfTime === 'y' || unitOfTime === 'year') {
+            return Math.abs(this.jYear() - input.jYear());
+        }
+    } else {
+        return moment.fn.diff.call(this, input, unitOfTime);
+    }
+};
 
 jMoment.fn.dayOfYear = function (input) {
     if (isJalali(this)) return jMoment.fn.jDayOfYear.call(this,input);
