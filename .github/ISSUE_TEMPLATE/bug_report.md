@@ -7,4 +7,4 @@ A clear and concise description of what the bug is.
 3. Change the code to reproduce the bug
 4. Share and copy the url here
 
-If you didn't create a demo we would just close the issue, so please take your time to create a demo.
+> If you didn't create a demo we would just close the issue, so please take your time to create a demo.
