@@ -576,7 +576,7 @@ function isJalali (momentObj) {
         (moment.justUseJalali && momentObj.calSystem !== CalendarSystems.Gregorian);
 }
 function isInputJalali(format, momentObj, input) {
-    return (moment.justUseJalali || (momentObj.calSystem === CalendarSystems.Jalali))
+    return (moment.justUseJalali || (momentObj && momentObj.calSystem === CalendarSystems.Jalali))
 }
 function makeMoment(input, format, lang, strict, utc) {
     if (typeof lang === "boolean") {
