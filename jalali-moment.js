@@ -801,19 +801,55 @@ jMoment.fn.jDay = function (input) {
         return (moment.fn.day.call(this) + 1) % 7;
     }
 };
-jMoment.fn.diff = function (input, unitOfTime) {
-    if (isJalali(this)) {
-        if (unitOfTime === 'd' || unitOfTime === 'day') {
-            return moment.fn.diff.call(this, input, unitOfTime);
-        } else if (unitOfTime === 'm' || unitOfTime === 'month') {
-            return Math.abs(this.jMonth() - input.jMonth());
-        } else if (unitOfTime === 'y' || unitOfTime === 'year') {
-            return Math.abs(this.jYear() - input.jYear());
-        }
-    } else {
-        return moment.fn.diff.call(this, input, unitOfTime);
+jMoment.fn.diff = function (input, unitOfTime, asFloat) {
+    //code taken and adjusted for jalali calendar from original moment diff module https://github.com/moment/moment/blob/develop/src/lib/moment/diff.js
+    if (!isJalali(this))
+        return moment.fn.diff.call(this, input, unitOfTime, asFloat);
+
+    var output;
+    switch (unitOfTime) {
+        case "year":
+            output = monthDiff(this, input) / 12;
+            break;
+        case "month":
+            output = monthDiff(this, input);
+            break;
+        case "quarter":
+            output = monthDiff(this, input) / 3;
+            break;
+        default:
+            output = moment.fn.diff.call(this, input, unitOfTime, asFloat);
     }
-};
+
+    return asFloat ? output : (output < 0 ? Math.ceil(output) || 0 : Math.floor(output));
+
+    function monthDiff(a, b) {
+        if (a.date() < b.date()) {
+            // end-of-month calculations work correct when the start month has more
+            // days than the end month.
+            return -monthDiff(b, a);
+        }
+        // difference in months
+        var wholeMonthDiff = (b.jYear() - a.jYear()) * 12 + (b.jMonth() - a.jMonth()),
+            // b is in (anchor - 1 month, anchor + 1 month)
+            anchor = a.clone().add(wholeMonthDiff, "months"),
+            anchor2,
+            adjust
+
+        if (b - anchor < 0) {
+            anchor2 = a.clone().add(wholeMonthDiff - 1, "months");
+            // linear across the month
+            adjust = (b - anchor) / (anchor - anchor2);
+        } else {
+            anchor2 = a.clone().add(wholeMonthDiff + 1, "months");
+            // linear across the month
+            adjust = (b - anchor) / (anchor2 - anchor);
+        }
+
+        //check for negative zero, return zero if negative zero
+        return -(wholeMonthDiff + adjust) || 0;
+    }
+}
 
 jMoment.fn.dayOfYear = function (input) {
     if (isJalali(this)) return jMoment.fn.jDayOfYear.call(this,input);
