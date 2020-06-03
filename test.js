@@ -1176,11 +1176,66 @@ describe("moment", function() {
         });
         it("diff locale fa", function () {
             //https://github.com/fingerpich/jalali-moment/issues/78
-            const d1 = jalaliMoment('2019-10-26').locale('fa').diff(jalaliMoment('2019-10-28').locale('fa'), 'month');
-            const d2 = jalaliMoment('2019-10-26').locale('en').diff(jalaliMoment('2019-10-28').locale('en'), 'month');
-            const d3 = moment('2019-10-26').diff(moment('2019-10-28'), 'month');
-            d1.should.be.equal(d2);
-            d2.should.be.equal(d3);
+            const testDates = [
+                {
+                    d1: jalaliMoment("2020-03-20").locale("fa"), //1399/1/1
+                    d2: jalaliMoment("2021-03-21").locale("fa"), //1400/1/1
+                    diff: "year",
+                    result: -1,
+                },
+                {
+                    d1: jalaliMoment("2021-03-21").locale("fa"),
+                    d2: jalaliMoment("2020-03-20").locale("fa"),
+                    diff: "year",
+                    result: 1,
+                },
+                {
+                    d1: jalaliMoment("2020-03-21").locale("fa"), //1399/1/2
+                    d2: jalaliMoment("2021-03-21").locale("fa"), //1400/1/1
+                    diff: "year",
+                    result: 0,
+                },
+                {
+                    d1: jalaliMoment("2020-03-20").locale("fa"),
+                    d2: jalaliMoment("2021-03-21").locale("fa"),
+                    diff: "month",
+                    result: -12,
+                },
+                {
+                    d1: jalaliMoment("2021-03-21").locale("fa"),
+                    d2: jalaliMoment("2020-03-20").locale("fa"),
+                    diff: "month",
+                    result: 12,
+                },
+                {
+                    d1: jalaliMoment("2020-07-21").locale("fa"), //1399/04/31
+                    d2: jalaliMoment("2020-06-21").locale("fa"), //1399/04/01
+                    diff: "month",
+                    result: 0,
+                },
+                {
+                    d1: jalaliMoment("2020-07-21").locale("fa"), //1399/04/31
+                    d2: jalaliMoment("2020-06-20").locale("fa"), //1399/03/31
+                    diff: "month",
+                    result: 1,
+                },
+                {
+                    d1: jalaliMoment("2021-03-21").locale("fa"),
+                    d2: jalaliMoment("2020-03-20").locale("fa"),
+                    diff: "day",
+                    result: 366, //1399 is leap year
+                },
+                {
+                    d1: jalaliMoment("2020-07-21").locale("fa"), //1399/04/31
+                    d2: jalaliMoment("2020-06-20").locale("fa"), //1399/03/31
+                    diff: "day",
+                    result: 31,
+                },
+            ]
+
+            testDates.forEach((date) => {
+                date.d1.diff(date.d2, date.diff).should.be.equal(date.result)
+            })
         });
     });
 });
