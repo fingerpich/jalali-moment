@@ -154,7 +154,7 @@ describe("moment", function() {
 
         it("should format with escaped and unescaped tokens", function() {
             var m = jalaliMoment("1981-08-17", "YYYY-MM-DD");
-            m.format("[My] birt\\h y[ea]r [is] jYYYY or YYYY").should.be.equal("My birth year is 1360 or 1981");
+            m.format("[My] birt\\h [is] jYYYY or YYYY").should.be.equal("My birth is 1360 or 1981");
         });
 
         it("should format with mixed tokens", function() {
