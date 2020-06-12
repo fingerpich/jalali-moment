@@ -17,7 +17,7 @@ It was a fork of [moment-jalali](https://github.com/jalaali/moment-jalaali) but 
 [![Codacy Badge][codacy-quality]][codacy-quality-url]
 [![Codacy Badge][codacy-coverage]][codacy-coverage-url]
 
-> I cant spend enough time for this project so let [me](https://github.com/fingerpich) know if you can help to handle the issues.
+> Please take a look at [day.js](https://github.com/iamkun/dayjs), [jalaliday](https://github.com/alibaba-aero/jalaliday) module.
 
 ## How to
 - [Install](#install)
