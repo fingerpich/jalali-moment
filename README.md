@@ -252,6 +252,22 @@ jalalim tojalali 1989/1/24
 jalalim togregorian 1392/5/8
 ```
 
+If you want something faster, checkout https://github.com/NightMachinary/jalalicli:
+```
+❯ hyperfine --warmup 5 'jalalicli tojalali 2001/09/11' 'jalalim tojalali 2001/09/11'
+Benchmark #1: jalalicli tojalali 2001/09/11
+  Time (mean ± σ):       4.4 ms ±  13.3 ms    [User: 2.8 ms, System: 2.8 ms]
+  Range (min … max):     0.0 ms … 107.0 ms    97 runs
+
+Benchmark #2: jalalim tojalali 2001/09/11
+  Time (mean ± σ):     148.9 ms ±  76.5 ms    [User: 88.5 ms, System: 19.4 ms]
+  Range (min … max):    96.9 ms … 343.0 ms    21 runs
+
+Summary
+  'jalalicli tojalali 2001/09/11' ran
+   33.88 ± 103.80 times faster than 'jalalim tojalali 2001/09/11'
+```
+
 #### Jquery
 
 get library using bower, npm, cdn, or cloning the repository
