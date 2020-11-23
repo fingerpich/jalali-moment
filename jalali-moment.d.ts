@@ -198,7 +198,7 @@ declare namespace moment {
     locale(locale: LocaleSpecifier): Duration;
     localeData(): Locale;
 
-    toISOString(): string;
+    toISOString(keepTimeOffset?: boolean): string;
     toJSON(): string;
 
     /**
