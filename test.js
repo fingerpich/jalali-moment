@@ -1160,6 +1160,25 @@ describe("moment", function() {
             jalaliMoment("2019-02-23").format("YYYY-MM-DD").should.be.equal("1397-12-04");
         });
     });
+
+    describe("jalaliMoment toISOString", function () {
+        jalaliMoment.locale("en");
+        it("toISOString(false) with 00:00 time and GMT+ timezone should decrease day", function () {
+            const date = jalaliMoment("2020-11-23T00:00:00.000+03:30");
+            const isoString = date.toISOString();
+            const dateWithoutTimezone = jalaliMoment(isoString.split('T')[0]);
+            date.date().should.be.equal(dateWithoutTimezone.date() + 1);
+            date.format("YYYY-MM-DD").should.not.equal(dateWithoutTimezone.format("YYYY-MM-DD"));
+        });
+        
+        it("toISOString(true) with 00:00 time and GMT+ timezone should preserve date", function () {
+            const date = jalaliMoment("2020-11-23T00:00:00.000+03:30");
+            const isoString = date.toISOString(true);
+            const dateWithoutTimezone = jalaliMoment(isoString.split('T')[0]);
+            date.format("YYYY-MM-DD").should.be.equal(dateWithoutTimezone.format("YYYY-MM-DD"));
+        });
+    });
+
     describe("compare jalaliMoment and moment", function () {
         it("utc should be the same", function () {
             const a = jalaliMoment.utc("09:30", "HH:mm");
