@@ -886,6 +886,7 @@ jMoment.fn.add = function (val, units) {
         units = temp;
     }
     units = normalizeUnits(units, this);
+    if (units === 'jweek' || units==='isoweek') { units = 'week' }
     if (units === "jyear") {
         this.jYear(this.jYear() + val);
     } else if (units === "jmonth") {
@@ -943,7 +944,7 @@ jMoment.fn.endOf = function (units) {
     if (units === undefined || units === "milisecond") {
         return this;
     }
-    return this.startOf(units).add(1, (units === "isoweek" ? "week" : units)).subtract(1, "ms");
+    return this.startOf(units).add(1, units).subtract(1, "ms");
 };
 
 jMoment.fn.isSame = function (other, units) {
