@@ -660,6 +660,9 @@ describe("moment", function() {
             m = jalaliMoment("1981-08-17 07:10:20", "YYYY-MM-DD HH:mm:ss");
             m.endOf("week").format("jYYYY-jMM-jDD HH:mm:ss").should.be.equal("1360-05-30 23:59:59");
         });
+        // it("endOf week in locale fa #109", function() {
+        //     m.locale('fa').endOf("week").format("YYYY-MM-DD").should.be.equal(m.locale('fa').startOf('week').add(1, 'week').subtract(1, 'ms').format("YYYY-MM-DD"));
+        // });
     });
 
     describe("#isValid", function() {
