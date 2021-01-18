@@ -21,7 +21,7 @@
     - [Jquery](https://github.com/fingerpich/jalali-moment#jquery)
   - [توابع تاریخ شمسی٬ جلالی٬ خورشیدی و میلادی](https://github.com/fingerpich/jalali-moment#api)
     - [گرفتن تاریخ از یک رشته](https://github.com/fingerpich/jalali-moment#parse)
-    - [نمابش](https://github.com/fingerpich/jalali-moment#display-jalali-or-miladi-date)
+    - [نمایش](https://github.com/fingerpich/jalali-moment#display-jalali-or-miladi-date)
     - [تغییر](https://github.com/fingerpich/jalali-moment#manipulate)
     - [بررسی صحت](https://github.com/fingerpich/jalali-moment#validate)
     - [میلادی به شمسی](https://github.com/fingerpich/jalali-moment#convert-gregorian-miladi-to-jalali-shamsi-persian)
