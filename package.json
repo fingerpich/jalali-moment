@@ -56,7 +56,7 @@
   },
   "dependencies": {
     "commander": "^7.0.0",
-    "inquirer": "^7.1.0",
+    "inquirer": "^8.0.0",
     "moment": "^2.26.0"
   },
   "typings": "./jalali-moment.d.ts"
