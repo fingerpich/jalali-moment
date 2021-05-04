@@ -1169,8 +1169,9 @@ describe("moment", function() {
     describe("jalaliMoment toISOString", function () {
         jalaliMoment.locale("en");
         it("toISOString(false) with 00:00 time and GMT+ timezone should decrease day", function () {
-            const date = jalaliMoment("2020-11-23").utcOffset("+03:30");
-            const isoString = date.toISOString();
+            // const date = jalaliMoment("2020-11-23 +03:30", 'YYYY-MM-DD ZZ').utcOffset("+03:30");
+            const date = jalaliMoment.utc("2020-11-23 +03:30", 'YYYY-MM-DD ZZ').utcOffset("+03:30");
+            const isoString = date.toISOString(false);
             const dateWithoutTimezone = jalaliMoment(isoString.split('T')[0]);
             date.date().should.be.equal(dateWithoutTimezone.date() + 1);
             date.format("YYYY-MM-DD").should.not.equal(dateWithoutTimezone.format("YYYY-MM-DD"));
