@@ -1169,7 +1169,7 @@ describe("moment", function() {
     describe("jalaliMoment toISOString", function () {
         jalaliMoment.locale("en");
         it("toISOString(false) with 00:00 time and GMT+ timezone should decrease day", function () {
-            const date = jalaliMoment("2020-11-23").zone("+03:30");
+            const date = jalaliMoment("2020-11-23").utcOffset("+03:30");
             const isoString = date.toISOString();
             const dateWithoutTimezone = jalaliMoment(isoString.split('T')[0]);
             date.date().should.be.equal(dateWithoutTimezone.date() + 1);
@@ -1177,7 +1177,7 @@ describe("moment", function() {
         });
         
         it("toISOString(true) with 00:00 time and GMT+ timezone should preserve date", function () {
-            const date = jalaliMoment("2020-11-23").zone("+03:30");
+            const date = jalaliMoment("2020-11-23").utcOffset("+03:30");
             const isoString = date.toISOString(true);
             const dateWithoutTimezone = jalaliMoment(isoString.split('T')[0]);
             date.format("YYYY-MM-DD").should.be.equal(dateWithoutTimezone.format("YYYY-MM-DD"));
