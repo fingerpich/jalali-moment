@@ -983,8 +983,11 @@ describe("moment", function() {
             var m1 = jalaliMoment("1989/01/24","YYYY/MM/DD");
             m1.format("jYYYY/jMM/jDD").should.be.equal("1367/11/04");
             m1.format("YYYY/MM/DD").should.be.equal("1989/01/24");
-            // jalaliMoment().isBetween(jalaliMoment().subtract(1, "day"), jalaliMoment().add(1, "day"), "day", "[]").should.be.equal(true);
-            // jalaliMoment().subtract(2, "d").isBetween(jalaliMoment().subtract(1, "day"), jalaliMoment().add(1, "day"), "day", "[]").should.be.equal(false);
+            m1.isBetween(m1.clone().subtract(1, "day"), m1.clone().add(1, "day"), "day", "[]").should.be.equal(true);
+            m1.clone().subtract(2, "d").isBetween(m1.clone().subtract(1, "day"), m1.clone().add(1, "day"), "day", "[]").should.be.equal(false);
+
+            jalaliMoment().isBetween(jalaliMoment().subtract(1, "day"), jalaliMoment().add(1, "day"), "day", "[]").should.be.equal(true);
+            jalaliMoment().subtract(2, "d").isBetween(jalaliMoment().subtract(1, "day"), jalaliMoment().add(1, "day"), "day", "[]").should.be.equal(false);
         });
         it("change locale globally should change the whole instances system", function () {
             jalaliMoment.locale("fa");

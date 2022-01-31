@@ -1,7 +1,7 @@
 
 module.exports = jMoment;
 
-var moment = require("moment");
+var moment = require("moment/moment");
 require("moment/locale/fa");
 
 /************************************
