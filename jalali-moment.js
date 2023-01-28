@@ -944,7 +944,7 @@ jMoment.fn.endOf = function (units) {
     if (units === undefined || units === "milisecond") {
         return this;
     }
-    return this.startOf(units).add(1, units).subtract(1, "ms");
+    return this.add(1, units).startOf(units).subtract(1, "ms");
 };
 
 jMoment.fn.isSame = function (other, units) {
