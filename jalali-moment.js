@@ -1144,6 +1144,112 @@ moment.updateLocale("fa", {
         , jMonths: ("فروردین_اردیبهشت_خرداد_تیر_مرداد_شهریور_مهر_آبان_آذر_دی_بهمن_اسفند").split("_")
         , jMonthsShort: "فروردین_اردیبهشت_خرداد_تیر_مرداد_شهریور_مهر_آبان_آذر_دی_بهمن_اسفند".split("_")
     });
+moment.updateLocale("fa-af", {
+        months: ("جنوری_فبروری_مارچ_اپریل_می_جون_جولای_آگست_سپتمبر_اکتوبر_نومبر_دیسمبر").split("_")
+        , monthsShort: ("جنوری_فبروری_مارچ_اپریل_می_جون_جولای_آگست_سپتمبر_اکتوبر_نومبر_دیسمبر").split("_")
+        , weekdays: ("یک\u200cشنبه_دوشنبه_سه\u200cشنبه_چهارشنبه_پنج\u200cشنبه_جمعه_شنبه").split("_")
+        , weekdaysShort: ("یک\u200cشنبه_دوشنبه_سه\u200cشنبه_چهارشنبه_پنج\u200cشنبه_جمعه_شنبه").split("_")
+        , weekdaysMin: "ی_د_س_چ_پ_ج_ش".split("_")
+        , longDateFormat:
+            { LT: "HH:mm"
+                , L: "jYYYY/jMM/jDD"
+                , LL: "jD jMMMM jYYYY"
+                , LLL: "jD jMMMM jYYYY LT"
+                , LLLL: "dddd، jD jMMMM jYYYY LT"
+            }
+        , calendar:
+            { sameDay: "[امروز ساعت] LT"
+                , nextDay: "[فردا ساعت] LT"
+                , nextWeek: "dddd [ساعت] LT"
+                , lastDay: "[دیروز ساعت] LT"
+                , lastWeek: "dddd [ی پیش ساعت] LT"
+                , sameElse: "L"
+            }
+        , relativeTime:
+            { future: "در %s"
+                , past: "%s پیش"
+                , s: "چند ثانیه"
+                , m: "1 دقیقه"
+                , mm: "%d دقیقه"
+                , h: "1 ساعت"
+                , hh: "%d ساعت"
+                , d: "1 روز"
+                , dd: "%d روز"
+                , M: "1 ماه"
+                , MM: "%d ماه"
+                , y: "1 سال"
+                , yy: "%d سال"
+            }
+        , ordinal: "%dم",
+        preparse: function (string) {
+            return string;
+        },
+        postformat: function (string) {
+            return string;
+        }
+        , week:
+            { dow: 6 // Saturday is the first day of the week.
+                , doy: 12 // The week that contains Jan 1st is the first week of the year.
+            }
+        , meridiem: function (hour) {
+            return hour < 12 ? "ق.ظ" : "ب.ظ";
+        }
+        , jMonths: ("حمل_ثور_جوزا_سرطان_اسد_سنبله_میزان_عقرب_قوس_جدی_دلو_حوت").split("_")
+        , jMonthsShort: "حمل_ثور_جوزا_سرطان_اسد_سنبله_میزان_عقرب_قوس_جدی_دلو_حوت".split("_")
+    });
+moment.updateLocale("ps-af", {
+        months: ("جنوری_فبروری_مارچ_اپریل_می_جون_جولای_آگست_سپتمبر_اکتوبر_نومبر_دیسمبر").split("_")
+        , monthsShort: ("جنوری_فبروری_مارچ_اپریل_می_جون_جولای_آگست_سپتمبر_اکتوبر_نومبر_دیسمبر").split("_")
+        , weekdays: ("یک\u200cشنبه_دوشنبه_سه\u200cشنبه_چهارشنبه_پنج\u200cشنبه_جمعه_شنبه").split("_")
+        , weekdaysShort: ("یک\u200cشنبه_دوشنبه_سه\u200cشنبه_چهارشنبه_پنج\u200cشنبه_جمعه_شنبه").split("_")
+        , weekdaysMin: "ی_د_س_چ_پ_ج_ش".split("_")
+        , longDateFormat:
+            { LT: "HH:mm"
+                , L: "jYYYY/jMM/jDD"
+                , LL: "jD jMMMM jYYYY"
+                , LLL: "jD jMMMM jYYYY LT"
+                , LLLL: "dddd، jD jMMMM jYYYY LT"
+            }
+        , calendar:
+            { sameDay: "[امروز ساعت] LT"
+                , nextDay: "[فردا ساعت] LT"
+                , nextWeek: "dddd [ساعت] LT"
+                , lastDay: "[دیروز ساعت] LT"
+                , lastWeek: "dddd [ی پیش ساعت] LT"
+                , sameElse: "L"
+            }
+        , relativeTime:
+            { future: "در %s"
+                , past: "%s پیش"
+                , s: "چند ثانیه"
+                , m: "1 دقیقه"
+                , mm: "%d دقیقه"
+                , h: "1 ساعت"
+                , hh: "%d ساعت"
+                , d: "1 روز"
+                , dd: "%d روز"
+                , M: "1 ماه"
+                , MM: "%d ماه"
+                , y: "1 سال"
+                , yy: "%d سال"
+            }
+        , ordinal: "%dم",
+        preparse: function (string) {
+            return string;
+        },
+        postformat: function (string) {
+            return string;
+        }
+        , week:
+            { dow: 6 // Saturday is the first day of the week.
+                , doy: 12 // The week that contains Jan 1st is the first week of the year.
+            }
+        , meridiem: function (hour) {
+            return hour < 12 ? "غ.م" : "غ.و";
+        }
+        , jMonths: ("وری_غویی_غبرګولی_چنګاښ_زمری_وږی_تله_لړم_لیندی_مرغومی_سلواغه_کب").split("_")
+        , jMonthsShort: "وری_غویی_غبرګولی_چنګاښ_زمری_وږی_تله_لړم_لیندی_مرغومی_سلواغه_کب".split("_")
+    });
 jMoment.bindCalendarSystemAndLocale();
 moment.locale("en");
 
